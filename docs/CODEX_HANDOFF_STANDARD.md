@@ -1,14 +1,7 @@
 # Codex Handoff Standard
 
-Codex executes inside one target repo and one lane at a time.
+Codex works inside the target product repo only.
 
-Codex handoff must include:
+The Codex prompt must include repo name, repo path, branch, baseline SHA, lane, goal, allowed files, banned files, validation commands, repo-specific doctrine, clean file disposition rule, compact evidence return format, and no-raw-diff default.
 
-- Target repo key and absolute local path
-- Lane name
-- Branch and baseline SHA
-- Allowed and banned files
-- Validation command
-- Required return checkpoint
-
-Codex must not close a lane until the target repo worktree is clean.
+Codex must return compact evidence and final worktree status.

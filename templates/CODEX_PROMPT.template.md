@@ -1,8 +1,9 @@
 # Codex Prompt
 
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
-Local path: {{REPO_PATH}}
-Lane: {{LANE_NAME}}
+Repo path: {{REPO_PATH}}
+Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
+Lane: {{LANE_NAME}}
 
-Work only inside the target repo. Do not copy product source into Gawain-Main. Do not close with a dirty worktree.
+Work only inside the target repo. Return compact evidence. Do not include raw/full diffs by default. Do not close with unresolved files.

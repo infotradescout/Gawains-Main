@@ -1,14 +1,15 @@
 # Review Packet Standard
 
-Review packets live under `review-packets/<repo-key>/<lane>/`.
+Review packets live under `review-packets/<repo-key>/<safe-lane>/`.
 
-Each packet must include:
+Each review packet includes:
 
-- Repo and lane identity
-- Branch and baseline SHA
-- File disposition
-- Worktree status
-- Validation log
-- Review notes
+- `REVIEW_PACKET.md`
+- `VALIDATION_LOG.txt`
+- `FILE_LIST.txt`
+- `STATUS.txt`
+- `FILE_DISPOSITION.txt`
 
-Review packets do not include raw/full git diffs by default.
+Review packets must include worktree status, file disposition, validation summary, behavior summary, scope boundaries, risks checked, review question, repo doctrine, and scope warnings.
+
+No raw/full diff output is included by default.

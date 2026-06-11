@@ -1,3 +1,5 @@
-Validation command:
-Result:
-Output:
+Validation commands:
+{{VALIDATION_COMMANDS}}
+
+Validation summary:
+{{VALIDATION_SUMMARY}}

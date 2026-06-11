@@ -1,17 +1,11 @@
 # Lane Intake Standard
 
-Every lane starts with a lane packet under `lane-packets/<repo-key>/<lane>/`.
+Lane packets live under `lane-packets/<repo-key>/<safe-lane>/`.
 
-Required intake fields:
+Each lane packet includes:
 
-- Repo key and local path
-- Current branch
-- Baseline SHA
-- Worktree status
-- Goal
-- Allowed files
-- Banned files
-- Validation plan
-- Gemini objector status when applicable
+- `LANE_INTAKE.md`
+- `CODEX_PROMPT.md`
+- `STATUS.txt`
 
-Use `node scripts/create-lane-packet.mjs --repo-key <key> --lane <lane>`.
+Lane intake must include repo path, branch, baseline SHA, goal, allowed files, banned files, validation commands, repo doctrine, contamination warnings, clean worktree rule, and no-raw-diff default.

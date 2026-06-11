@@ -1,16 +1,21 @@
 # Review Packet
 
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
-Lane: {{LANE_NAME}}
 Branch: {{BRANCH}}
+Lane: {{LANE_NAME}}
 Baseline SHA: {{BASELINE_SHA}}
+Commit SHA: {{COMMIT_SHA}}
+
+## Files Changed
+{{FILES_CHANGED}}
+
+## Validation Summary
+{{VALIDATION_SUMMARY}}
+
+## File Disposition
+{{FILE_DISPOSITION}}
 
 ## Worktree Status
 {{WORKTREE_STATUS}}
 
-## File Disposition
-
-## Validation Log
-
-## Notes
 No raw/full diff included by default.

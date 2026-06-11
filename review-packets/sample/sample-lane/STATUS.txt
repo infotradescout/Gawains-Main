@@ -1,11 +1,2 @@
 Worktree status:
- M client/src/AppRoutes.tsx
-?? Dockerfile.prod
-?? MealScoutScoutPlan.txt
-?? "TradeScout master plan.txt"
-?? client/src/pages/NextBrowse.tsx
-?? client/src/pages/NextHome.tsx
-?? client/src/pages/NextLanding.tsx
-?? docker-compose-laptop.yml
-?? "fix log 2.txt"
-?? setup-old-laptop.ps1
+clean

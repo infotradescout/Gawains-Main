@@ -1,56 +1,80 @@
 #!/usr/bin/env node
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import {
-  ROOT,
-  formatStatus,
   getRepoByKey,
   getRepoSnapshot,
-  nowIso,
+  laneRoot,
+  packetValues,
   parseArgs,
   requireLane,
   renderTemplate,
   writeTextFile
 } from './repo-registry.mjs';
 
-const args = parseArgs();
-const repo = getRepoByKey(args['repo-key']);
-const lane = requireLane(args);
-const snapshot = getRepoSnapshot(repo);
-const outputRoot = args['output-root'] || path.join(ROOT, 'lane-packets', repo.key);
-const outputDir = path.join(outputRoot, lane);
-
-const prompt = renderTemplate(`# Codex Prompt
+export function renderCodexPrompt(values) {
+  return renderTemplate(`# Codex Prompt
 
 Created: {{CREATED_AT}}
-Repo key: {{REPO_KEY}}
-Repo name: {{REPO_NAME}}
-Local repo path: {{REPO_PATH}}
-Lane: {{LANE_NAME}}
-Current branch: {{BRANCH}}
+Repo: {{REPO_NAME}} ({{REPO_KEY}})
+Repo path: {{REPO_PATH}}
+Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
-Worktree status: {{WORKTREE_STATUS}}
+Lane: {{LANE_NAME}}
 
-You are working inside the product repo listed above, not inside Gawain-Main.
+## Goal
+{{GOAL}}
 
-Rules:
-- Use only the target product repo path.
-- Do not copy product source into Gawain-Main.
-- Do not close the lane with untracked, modified, or deleted files.
-- Return files inspected, files changed, validation output, commit SHA, push status, and final git status.
-- Do not send raw git diff output to Gemini by default.
+## Allowed Files
+{{ALLOWED_FILES}}
 
-Goal:
-TBD
-`, {
-  CREATED_AT: nowIso(),
-  REPO_KEY: repo.key,
-  REPO_NAME: repo.name,
-  REPO_PATH: repo.localPath,
-  LANE_NAME: lane,
-  BRANCH: snapshot.branch,
-  BASELINE_SHA: snapshot.head,
-  WORKTREE_STATUS: formatStatus(snapshot)
-});
+## Banned Files
+{{BANNED_FILES}}
 
-await writeTextFile(path.join(outputDir, 'CODEX_PROMPT.md'), prompt);
-console.log(path.join(outputDir, 'CODEX_PROMPT.md'));
+## Validation Commands
+{{VALIDATION_COMMANDS}}
+
+## Repo Doctrine And Brand Rules
+{{BRAND_RULES}}
+
+## Banned Cross-Contamination
+{{CROSS_CONTAMINATION_RULES}}
+
+## Clean File Disposition Rule
+No lane may close with untracked or uncommitted files. Every file must be committed, deleted, moved to an approved artifact location, or blocked with a named next action and owner.
+
+## Evidence Return Rule
+Return compact evidence only by default. Do not include raw/full git diff output unless Thomas explicitly asks, Gemini specifically requests it, or line-level review is required to resolve a blocker.
+
+## Required Codex Return Format
+Repo:
+Lane:
+Branch:
+Baseline SHA:
+Commit SHA:
+Files inspected:
+Files changed:
+Validation commands:
+Validation result:
+Behavior summary:
+Scope boundaries:
+Risks checked:
+File disposition:
+Final worktree status:
+Push status:
+Open blockers with owner:
+`, values);
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const args = parseArgs();
+  const repo = getRepoByKey(args['repo-key']);
+  const laneSlug = requireLane(args);
+  const snapshot = getRepoSnapshot(repo);
+  const values = packetValues(repo, args, snapshot, laneSlug);
+  const outputDir = path.join(laneRoot(repo, args['output-root']), laneSlug);
+  const outputFile = path.join(outputDir, 'CODEX_PROMPT.md');
+
+  await writeTextFile(outputFile, renderCodexPrompt(values));
+  console.log(outputFile);
+}

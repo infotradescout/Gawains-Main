@@ -4,6 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "repos:list": "node scripts/list-repos.mjs",
+    "repo:check": "node scripts/check-repo.mjs",
+    "lane:clean": "node scripts/check-lane-clean.mjs",
+    "lane:create": "node scripts/create-lane-packet.mjs",
+    "packet:create": "node scripts/create-review-packet.mjs",
+    "prompt:create": "node scripts/create-codex-prompt.mjs",
     "check:scripts": "node --check scripts/repo-registry.mjs && node --check scripts/list-repos.mjs && node --check scripts/check-repo.mjs && node --check scripts/check-lane-clean.mjs && node --check scripts/create-lane-packet.mjs && node --check scripts/create-codex-prompt.mjs && node --check scripts/create-review-packet.mjs"
   }
 }

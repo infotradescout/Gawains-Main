@@ -1,5 +1,4 @@
-Added:
-Modified:
-Deleted:
-Untracked:
-Notes:
+File disposition:
+{{FILE_DISPOSITION}}
+
+Every file must be committed, deleted, moved to an approved artifact location, or blocked with named next action and owner.

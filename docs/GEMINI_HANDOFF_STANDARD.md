@@ -1,14 +1,23 @@
 # Gemini Handoff Standard
 
-Gemini handoff files live under `exports/gemini/<repo-key>/<lane>/`.
+Gemini gets compact packets only by default. No full/raw diff is included by default.
 
-Gemini receives a bounded request with:
+Gemini can request targeted file content or a targeted diff only if needed to resolve a specific blocker.
 
-- Repo and lane identity
-- Branch and baseline SHA
-- File disposition
-- Validation log
-- Worktree status
-- Specific PASS/FAIL questions
+Every Gemini request must include:
 
-Raw/full diffs are omitted by default. Add them only when Gawain explicitly authorizes a raw evidence packet.
+- repo
+- branch
+- lane
+- baseline SHA
+- commit SHA
+- files changed
+- validation summary
+- behavior summary
+- scope boundaries
+- risks checked
+- file disposition
+- worktree status
+- review question
+
+Raw diffs are exception-only when Thomas explicitly asks, Gemini specifically requests it, or line-level review is required to resolve a blocker.

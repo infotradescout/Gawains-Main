@@ -9,6 +9,13 @@
       "localPath": "EDIT_ME_ABSOLUTE_LOCAL_PATH",
       "remote": "https://github.com/example/example.git",
       "defaultBranch": "main",
+      "validationCommands": ["EDIT_ME_VALIDATION_COMMAND"],
+      "reviewPacketRoot": "review-packets/example",
+      "lanePacketRoot": "lane-packets/example",
+      "brandRules": ["EDIT_ME_BRAND_RULE"],
+      "bannedCrossContamination": ["EDIT_ME_CROSS_CONTAMINATION_RULE"],
+      "defaultAllowedFiles": ["src/**", "tests/**", "docs/**"],
+      "defaultBannedFiles": ["registry/**", "lane-packets/**", "review-packets/**", "exports/**"],
       "status": "placeholder",
       "notes": "Use placeholders only until the local repo path is known."
     }

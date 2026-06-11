@@ -1,10 +1,16 @@
 # Drive Sync Standard
 
-Drive may receive exported review packets for visibility and archival review.
+Gawains-Main may be copied or synced to Drive for review and archival use.
 
-Rules:
+Drive-safe content:
 
-- Gawain-Main remains the local workflow authority.
-- Drive exports are copies, not live product repos.
-- Do not sync product source into Drive through Gawain-Main.
-- Export only lane packets, review packets, Gemini requests, status files, and validation logs.
+- docs
+- templates
+- lane packets
+- review packets
+- Gemini exports
+- status and validation logs
+
+Product repos should not be nested inside Gawains-Main. Live product `.git` folders should not be copied into Gawains-Main.
+
+Gemini reviews files from `exports/gemini/` or `review-packets/`. Raw diffs are exception-only.

@@ -1,13 +1,13 @@
 # Merge Readiness Standard
 
-A lane is merge-ready only when all are true:
+Merge readiness requires:
 
-- Codex PASS
-- Gawain PASS
-- Gemini PASS
-- Target repo worktree clean
-- Validation log captured
-- File disposition captured
-- No unresolved lane files remain
+- Codex validation PASS
+- Gawain review PASS
+- Gemini review PASS
+- clean target repo worktree
+- resolved file disposition
+- no scope violations
+- no brand contamination
 
-Codex does not grant itself merge authority. Gawain gives the merge instruction after review passes.
+Codex does not grant itself merge authority. Gawain gives merge instruction only after the complete route is approved.

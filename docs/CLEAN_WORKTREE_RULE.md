@@ -1,7 +1,14 @@
 # Clean Worktree Rule
 
-No lane may close with target repo changes left untracked, modified, or deleted.
+No lane may close with untracked or uncommitted files.
 
-`node scripts/check-lane-clean.mjs --repo-key <key>` fails when `git status --porcelain` reports any output.
+Every file must be:
 
-This rule applies to product repos and Gawain-Main itself.
+- committed
+- deleted
+- moved to an approved artifact location
+- blocked with named next action and owner
+
+A repo with unresolved files is not merge-ready.
+
+`node scripts/check-lane-clean.mjs --repo-key <key>` exits 0 only when the target repo has a clean `git status --porcelain`.

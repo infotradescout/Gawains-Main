@@ -1,4 +1,2 @@
-Added:
-Modified:
-Deleted:
-Untracked:
+Files changed:
+{{FILES_CHANGED}}

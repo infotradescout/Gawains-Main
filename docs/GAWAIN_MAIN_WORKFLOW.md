@@ -1,23 +1,24 @@
-# Gawain-Main Workflow
+# Gawains-Main Workflow
 
-Gawain-Main is the command layer for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, and Gemini exports.
+Gawains-Main is the cross-repo command layer for Thomas/Gawain repos. It coordinates all repos by `registry/repos.json`; it does not replace product repos and does not contain product source code.
 
-It is not a product source mirror. Product repos stay separate and are referenced through `registry/repos.json`.
+Gawains-Main creates:
 
-## Operating Loop
+- lane packets in `lane-packets/`
+- Codex prompts in lane packet folders
+- compact review packets in `review-packets/`
+- Gemini handoff files in `exports/gemini/`
 
-1. Select a repo by `--repo-key`.
-2. Confirm the local repo path from `registry/repos.json`.
-3. Create a lane packet in `lane-packets/`.
-4. Run Codex in the target product repo only.
-5. Create a review packet in `review-packets/`.
-6. Create a Gemini handoff in `exports/gemini/`.
-7. Close only after Codex PASS, Gawain PASS, Gemini PASS, and a clean target worktree.
+## Operating Rules
 
-## Non-Negotiables
+- Product repos remain isolated.
+- Product paths come from `registry/repos.json`.
+- No live product repo belongs inside Gawains-Main.
+- Gemini receives compact review packets only by default.
+- Raw/full diffs are exception-only when Thomas explicitly asks, Gemini specifically requests it, or line-level review is required to resolve a blocker.
+- No lane may close with untracked or uncommitted files.
+- Every file must be committed, deleted, moved to an approved artifact location, or blocked with named next action and owner.
 
-- Do not copy product source into Gawain-Main.
-- Do not place live product repos inside Gawain-Main.
-- Scripts must resolve product paths from `registry/repos.json`.
-- No lane may close with modified, deleted, or untracked files.
-- No raw/full diffs go to Gemini by default.
+## Merge Readiness
+
+Merge readiness requires Codex validation PASS, Gawain review PASS, Gemini review PASS, a clean target repo worktree, resolved file disposition, no scope violations, and no brand contamination.

@@ -9,6 +9,21 @@
       "localPath": "D:\\AAATraderCorner\\TradeScout\\TradeScoutPro",
       "remote": "https://github.com/infotradescout/tradescoutAI.git",
       "defaultBranch": "main",
+      "validationCommands": ["npm run check"],
+      "reviewPacketRoot": "review-packets/tradescout",
+      "lanePacketRoot": "lane-packets/tradescout",
+      "brandRules": [
+        "Businesses + communities.",
+        "Direct Connect primary.",
+        "Scout is search/local summary, not chatbot.",
+        "Do not frame as contractor/homeowner-only."
+      ],
+      "bannedCrossContamination": [
+        "Do not import MealScout restaurant/truck framing.",
+        "Do not import Sway Premium Request/Tip/Boost surface terms unless explicitly approved."
+      ],
+      "defaultAllowedFiles": ["src/**", "client/**", "server/**", "tests/**", "docs/**"],
+      "defaultBannedFiles": ["registry/**", "lane-packets/**", "review-packets/**", "exports/**"],
       "status": "discovered",
       "notes": "Discovered as local git repo for infotradescout/tradescoutAI."
     },
@@ -19,6 +34,21 @@
       "localPath": "D:\\AAATraderCorner\\TradeScout\\MealScout",
       "remote": "https://github.com/infotradescout/MealScout.git",
       "defaultBranch": "main",
+      "validationCommands": ["npm run check"],
+      "reviewPacketRoot": "review-packets/mealscout",
+      "lanePacketRoot": "lane-packets/mealscout",
+      "brandRules": [
+        "Restaurants/trucks.",
+        "Menus, schedules, profiles, onboarding, affiliate tracking.",
+        "Clean affiliate/referral URLs.",
+        "Food truck addresses are business/admin evidence unless owner-confirmed as public location."
+      ],
+      "bannedCrossContamination": [
+        "Do not import TradeScout Direct Connect positioning.",
+        "Do not import Sway venue queue terminology unless explicitly approved."
+      ],
+      "defaultAllowedFiles": ["src/**", "app/**", "client/**", "server/**", "tests/**", "docs/**"],
+      "defaultBannedFiles": ["registry/**", "lane-packets/**", "review-packets/**", "exports/**"],
       "status": "discovered",
       "notes": "Discovered as local git repo."
     },
@@ -29,6 +59,21 @@
       "localPath": "D:\\AAATraderCorner\\TradeScout\\sway\\sway.tips",
       "remote": "https://github.com/infotradescout/sway.tips.git",
       "defaultBranch": "main",
+      "validationCommands": ["npm run check"],
+      "reviewPacketRoot": "review-packets/sway",
+      "lanePacketRoot": "lane-packets/sway",
+      "brandRules": [
+        "Premium Request/Tip/Boost product.",
+        "No MVP framing.",
+        "Use Request, Tip, Boost, Pending, Approved, Playing, Up Next, Paused, Ended.",
+        "Avoid checkout, invoice, preview, and internal terminology on user surfaces."
+      ],
+      "bannedCrossContamination": [
+        "Do not import TradeScout local-search positioning.",
+        "Do not import MealScout restaurant/truck onboarding unless explicitly approved."
+      ],
+      "defaultAllowedFiles": ["src/**", "app/**", "components/**", "tests/**", "docs/**"],
+      "defaultBannedFiles": ["registry/**", "lane-packets/**", "review-packets/**", "exports/**"],
       "status": "discovered",
       "notes": "Discovered as nested local git repo."
     },
@@ -39,6 +84,21 @@
       "localPath": "D:\\AAATraderCorner\\TradeScout\\merlin-os-action-layer",
       "remote": "https://github.com/infotradescout/merlin-os-action-layer.git",
       "defaultBranch": "main",
+      "validationCommands": ["npm run check"],
+      "reviewPacketRoot": "review-packets/merlin",
+      "lanePacketRoot": "lane-packets/merlin",
+      "brandRules": [
+        "Intake + Search.",
+        "Evidence-linked.",
+        "No fake execution claims.",
+        "Drafts and action cards require review/approval before apply."
+      ],
+      "bannedCrossContamination": [
+        "Do not claim product repo changes were applied unless validated in that repo.",
+        "Do not mix Albion approval doctrine into runtime claims."
+      ],
+      "defaultAllowedFiles": ["src/**", "docs/**", "scripts/**", "tests/**", "artifacts/**"],
+      "defaultBannedFiles": ["registry/**", "lane-packets/**", "review-packets/**", "exports/**"],
       "status": "discovered",
       "notes": "Current local branch may differ from default branch."
     },
@@ -49,6 +109,27 @@
       "localPath": "D:\\AAATraderCorner\\TradeScout\\AI Council",
       "remote": "https://github.com/infotradescout/Albion.git",
       "defaultBranch": "main",
+      "validationCommands": ["npm run check"],
+      "reviewPacketRoot": "review-packets/albion",
+      "lanePacketRoot": "lane-packets/albion",
+      "brandRules": [
+        "Governance.",
+        "Knights are AI+human pairings, not AI-only and not human-only.",
+        "Gawain = Thomas + Gawain.",
+        "Lancelot = Levon + Lancelot.",
+        "Percival = Dylan + Percival.",
+        "There are exactly three Knights.",
+        "There will never be more Knights.",
+        "AI-related approvals require unanimous 3/3 when governance applies.",
+        "High Court is advisory only.",
+        "Merlin executes only approved complete routes."
+      ],
+      "bannedCrossContamination": [
+        "Do not treat advisory review as execution authority.",
+        "Do not import product-specific brand claims into governance doctrine."
+      ],
+      "defaultAllowedFiles": ["docs/**", "src/**", "tests/**", "scripts/**"],
+      "defaultBannedFiles": ["registry/**", "lane-packets/**", "review-packets/**", "exports/**"],
       "status": "discovered",
       "notes": "Discovered as local git repo."
     },
@@ -59,6 +140,21 @@
       "localPath": "D:\\AAATraderCorner\\TradeScout\\AlpacaTradingbot",
       "remote": "https://github.com/infotradescout/AutoBott.git",
       "defaultBranch": "main",
+      "validationCommands": ["npm run check"],
+      "reviewPacketRoot": "review-packets/autobott",
+      "lanePacketRoot": "lane-packets/autobott",
+      "brandRules": [
+        "Trading/sports only.",
+        "Risk controls required.",
+        "Real validation required.",
+        "No fake backtest/runtime claims."
+      ],
+      "bannedCrossContamination": [
+        "Do not import restaurant, municipal, or venue queue language.",
+        "Do not expand risk claims without validation."
+      ],
+      "defaultAllowedFiles": ["src/**", "docs/**", "tests/**", "scripts/**"],
+      "defaultBannedFiles": ["registry/**", "lane-packets/**", "review-packets/**", "exports/**"],
       "status": "discovered",
       "notes": "Discovered as local git repo; current branch may differ from default branch."
     },
@@ -69,6 +165,22 @@
       "localPath": "D:\\AAATraderCorner\\TradeScout\\CodeScout",
       "remote": "https://github.com/infotradescout/CodeScout.git",
       "defaultBranch": "main",
+      "validationCommands": ["npm run check"],
+      "reviewPacketRoot": "review-packets/codescout",
+      "lanePacketRoot": "lane-packets/codescout",
+      "brandRules": [
+        "Municipal/code intelligence.",
+        "AHJ disclaimers required.",
+        "Neutral terms: status, evidence completeness, ambiguity.",
+        "No permit/fee/inspection/risk-scope expansion unless explicitly approved."
+      ],
+      "bannedCrossContamination": [
+        "Do not import TradeScout business/community positioning.",
+        "Do not import Sway payment or queue terminology.",
+        "Do not claim AHJ certainty without evidence."
+      ],
+      "defaultAllowedFiles": ["src/**", "docs/**", "tests/**", "scripts/**"],
+      "defaultBannedFiles": ["registry/**", "lane-packets/**", "review-packets/**", "exports/**"],
       "status": "discovered",
       "notes": "Discovered as local git repo."
     }

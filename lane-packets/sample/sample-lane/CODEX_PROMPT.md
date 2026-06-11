@@ -1,31 +1,56 @@
 # Codex Prompt
 
-Created: 2026-06-11T22:31:21.533Z
-Repo key: tradescout
-Repo name: TradeScout
-Local repo path: D:\AAATraderCorner\TradeScout\TradeScoutPro
+Created: 2026-06-11T23:15:53.166Z
+Repo: Merlin (merlin)
+Repo path: D:\AAATraderCorner\TradeScout\merlin-os-action-layer
+Branch: governance/example
+Baseline SHA: abc123
 Lane: sample-lane
-Current branch: DETACHED
-Baseline SHA: 0e371a60
-Worktree status:  M client/src/AppRoutes.tsx
-?? Dockerfile.prod
-?? MealScoutScoutPlan.txt
-?? "TradeScout master plan.txt"
-?? client/src/pages/NextBrowse.tsx
-?? client/src/pages/NextHome.tsx
-?? client/src/pages/NextLanding.tsx
-?? docker-compose-laptop.yml
-?? "fix log 2.txt"
-?? setup-old-laptop.ps1
 
-You are working inside the product repo listed above, not inside Gawain-Main.
+## Goal
+Example control-layer lane
 
-Rules:
-- Use only the target product repo path.
-- Do not copy product source into Gawain-Main.
-- Do not close the lane with untracked, modified, or deleted files.
-- Return files inspected, files changed, validation output, commit SHA, push status, and final git status.
-- Do not send raw git diff output to Gemini by default.
+## Allowed Files
+- src/**
+- tests/**
 
-Goal:
-TBD
+## Banned Files
+- public/**
+- server/**
+
+## Validation Commands
+- npm run check
+
+## Repo Doctrine And Brand Rules
+- Intake + Search.
+- Evidence-linked.
+- No fake execution claims.
+- Drafts and action cards require review/approval before apply.
+
+## Banned Cross-Contamination
+- Do not claim product repo changes were applied unless validated in that repo.
+- Do not mix Albion approval doctrine into runtime claims.
+
+## Clean File Disposition Rule
+No lane may close with untracked or uncommitted files. Every file must be committed, deleted, moved to an approved artifact location, or blocked with a named next action and owner.
+
+## Evidence Return Rule
+Return compact evidence only by default. Do not include raw/full git diff output unless Thomas explicitly asks, Gemini specifically requests it, or line-level review is required to resolve a blocker.
+
+## Required Codex Return Format
+Repo:
+Lane:
+Branch:
+Baseline SHA:
+Commit SHA:
+Files inspected:
+Files changed:
+Validation commands:
+Validation result:
+Behavior summary:
+Scope boundaries:
+Risks checked:
+File disposition:
+Final worktree status:
+Push status:
+Open blockers with owner:

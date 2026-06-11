@@ -9,21 +9,49 @@ const __dirname = path.dirname(__filename);
 export const ROOT = path.resolve(__dirname, '..');
 export const REGISTRY_PATH = path.join(ROOT, 'registry', 'repos.json');
 
+const REQUIRED_REPO_FIELDS = [
+  'key',
+  'name',
+  'localPath',
+  'defaultBranch',
+  'validationCommands',
+  'reviewPacketRoot',
+  'lanePacketRoot',
+  'brandRules',
+  'bannedCrossContamination',
+  'defaultAllowedFiles',
+  'defaultBannedFiles'
+];
+
 export function loadRegistry() {
-  const raw = readFileSync(REGISTRY_PATH, 'utf8');
-  const registry = JSON.parse(raw);
+  const registry = JSON.parse(readFileSync(REGISTRY_PATH, 'utf8'));
   if (!Array.isArray(registry.repos)) {
     throw new Error('registry/repos.json must contain a repos array');
   }
+  for (const repo of registry.repos) {
+    validateRepo(repo);
+  }
   return registry;
+}
+
+export function validateRepo(repo) {
+  for (const field of REQUIRED_REPO_FIELDS) {
+    if (repo[field] === undefined || repo[field] === null || repo[field] === '') {
+      throw new Error(`Registry entry ${repo.key ?? '(missing key)'} missing required field: ${field}`);
+    }
+  }
+  for (const field of ['validationCommands', 'brandRules', 'bannedCrossContamination', 'defaultAllowedFiles', 'defaultBannedFiles']) {
+    if (!Array.isArray(repo[field])) {
+      throw new Error(`Registry entry ${repo.key} field ${field} must be an array`);
+    }
+  }
 }
 
 export function getRepoByKey(repoKey) {
   if (!repoKey) {
     throw new Error('Missing required --repo-key');
   }
-  const registry = loadRegistry();
-  const repo = registry.repos.find((entry) => entry.key === repoKey);
+  const repo = loadRegistry().repos.find((entry) => entry.key === repoKey);
   if (!repo) {
     throw new Error(`Unknown repo key: ${repoKey}`);
   }
@@ -76,32 +104,12 @@ export function isGitRepo(repo) {
 }
 
 export function getRepoSnapshot(repo) {
-  const missing = !repoExists(repo);
-  if (missing) {
-    return {
-      exists: false,
-      isGitRepo: false,
-      branch: 'UNKNOWN',
-      head: 'UNKNOWN',
-      status: 'PATH_MISSING',
-      porcelain: '',
-      remote: repo.remote ?? ''
-    };
+  if (!repoExists(repo)) {
+    return snapshotBase(repo, false, false, 'PATH_MISSING');
   }
-
-  const gitRepo = isGitRepo(repo);
-  if (!gitRepo) {
-    return {
-      exists: true,
-      isGitRepo: false,
-      branch: 'UNKNOWN',
-      head: 'UNKNOWN',
-      status: 'NOT_GIT_REPO',
-      porcelain: '',
-      remote: repo.remote ?? ''
-    };
+  if (!isGitRepo(repo)) {
+    return snapshotBase(repo, true, false, 'NOT_GIT_REPO');
   }
-
   const branch = runGit(repo.localPath, ['branch', '--show-current']).stdout || 'DETACHED';
   const head = runGit(repo.localPath, ['rev-parse', '--short', 'HEAD']).stdout || 'UNKNOWN';
   const porcelain = runGit(repo.localPath, ['status', '--porcelain']).stdout;
@@ -117,6 +125,18 @@ export function getRepoSnapshot(repo) {
   };
 }
 
+function snapshotBase(repo, exists, isGit, status) {
+  return {
+    exists,
+    isGitRepo: isGit,
+    branch: 'UNKNOWN',
+    head: 'UNKNOWN',
+    status,
+    porcelain: '',
+    remote: repo.remote ?? ''
+  };
+}
+
 export function assertCleanRepo(repo) {
   const snapshot = getRepoSnapshot(repo);
   if (!snapshot.exists || !snapshot.isGitRepo) {
@@ -126,6 +146,44 @@ export function assertCleanRepo(repo) {
     throw new Error(`${repo.key} has uncommitted, deleted, or untracked files:\n${snapshot.porcelain}`);
   }
   return snapshot;
+}
+
+export function normalizeOutputPath(outputPath) {
+  if (!outputPath) {
+    throw new Error('Missing output path');
+  }
+  return path.isAbsolute(outputPath) ? outputPath : path.join(ROOT, outputPath);
+}
+
+export function laneRoot(repo, override) {
+  return normalizeOutputPath(override || repo.lanePacketRoot);
+}
+
+export function reviewRoot(repo, override) {
+  return normalizeOutputPath(override || repo.reviewPacketRoot);
+}
+
+export function geminiRoot(repo, override) {
+  return normalizeOutputPath(override || path.join('exports', 'gemini', repo.key));
+}
+
+export function listValue(value, fallback = []) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+  if (typeof value === 'string' && value.trim()) {
+    return value.split(',').map((item) => item.trim()).filter(Boolean);
+  }
+  return fallback;
+}
+
+export function multilineList(items) {
+  const values = listValue(items);
+  return values.length ? values.map((item) => `- ${item}`).join('\n') : '- TBD';
+}
+
+export function csv(items) {
+  return listValue(items).join(', ');
 }
 
 export function slugify(value) {
@@ -145,10 +203,12 @@ export function requireLane(args) {
   return slug;
 }
 
+export function displayLane(args, slug) {
+  return args.lane || args['lane-name'] || slug;
+}
+
 export function renderTemplate(template, values) {
-  return template.replace(/\{\{([A-Z0-9_]+)\}\}/g, (match, key) => {
-    return values[key] ?? match;
-  });
+  return template.replace(/\{\{([A-Z0-9_]+)\}\}/g, (match, key) => values[key] ?? match);
 }
 
 export async function writeTextFile(filePath, content) {
@@ -157,12 +217,46 @@ export async function writeTextFile(filePath, content) {
 }
 
 export function formatStatus(snapshot) {
-  if (!snapshot.porcelain) {
-    return 'clean';
-  }
-  return snapshot.porcelain;
+  return snapshot.porcelain || 'clean';
 }
 
 export function nowIso() {
   return new Date().toISOString();
+}
+
+export function packetValues(repo, args, snapshot, laneSlug) {
+  const branch = args.branch || snapshot.branch || repo.defaultBranch;
+  const baseline = args['baseline-sha'] || snapshot.head || 'TBD';
+  const allowed = listValue(args['allowed-files'], repo.defaultAllowedFiles);
+  const banned = listValue(args['banned-files'], repo.defaultBannedFiles);
+  const validation = listValue(args['validation-commands'], repo.validationCommands);
+  return {
+    CREATED_AT: nowIso(),
+    REPO_KEY: repo.key,
+    REPO_NAME: repo.name,
+    REPO_PATH: repo.localPath,
+    REPO_REMOTE: snapshot.remote || repo.remote || '',
+    LANE_NAME: displayLane(args, laneSlug),
+    LANE_SLUG: laneSlug,
+    BRANCH: branch,
+    BASELINE_SHA: baseline,
+    COMMIT_SHA: args['commit-sha'] || 'TBD',
+    GOAL: args.goal || 'TBD',
+    ALLOWED_FILES: multilineList(allowed),
+    BANNED_FILES: multilineList(banned),
+    VALIDATION_COMMANDS: multilineList(validation),
+    BRAND_RULES: multilineList(repo.brandRules),
+    CROSS_CONTAMINATION_RULES: multilineList(repo.bannedCrossContamination),
+    FILES_CHANGED: args['files-changed'] || 'TBD',
+    VALIDATION_SUMMARY: args['validation-summary'] || 'TBD',
+    BEHAVIOR_SUMMARY: args['behavior-summary'] || 'TBD',
+    SCOPE_BOUNDARIES: args['scope-boundaries'] || 'TBD',
+    RISKS_CHECKED: args['risks-checked'] || 'TBD',
+    FILE_DISPOSITION: args['file-disposition'] || 'TBD',
+    WORKTREE_STATUS: args['worktree-status'] || formatStatus(snapshot),
+    REVIEW_QUESTION: args['review-question'] || 'Does this lane satisfy scope, doctrine, validation, and merge-readiness requirements?',
+    ALLOWED_FILES_CSV: csv(allowed),
+    BANNED_FILES_CSV: csv(banned),
+    VALIDATION_COMMANDS_CSV: csv(validation)
+  };
 }

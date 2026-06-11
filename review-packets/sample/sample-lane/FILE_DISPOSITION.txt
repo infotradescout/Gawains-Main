@@ -1,4 +1,1 @@
-Added:
-Modified:
-Deleted:
-Untracked:
+clean

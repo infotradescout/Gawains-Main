@@ -1,31 +1,39 @@
 # Lane Intake
 
-Created: 2026-06-11T22:31:21.534Z
-Repo: TradeScout (tradescout)
-Local path: D:\AAATraderCorner\TradeScout\TradeScoutPro
-Remote: https://github.com/infotradescout/tradescoutAI.git
+Created: 2026-06-11T23:15:53.101Z
+Repo: Merlin (merlin)
+Local path: D:\AAATraderCorner\TradeScout\merlin-os-action-layer
+Remote: https://github.com/infotradescout/merlin-os-action-layer.git
+Branch: governance/example
+Baseline SHA: abc123
 Lane: sample-lane
-Current branch: DETACHED
-Baseline SHA: 0e371a60
-Worktree status:  M client/src/AppRoutes.tsx
-?? Dockerfile.prod
-?? MealScoutScoutPlan.txt
-?? "TradeScout master plan.txt"
-?? client/src/pages/NextBrowse.tsx
-?? client/src/pages/NextHome.tsx
-?? client/src/pages/NextLanding.tsx
-?? docker-compose-laptop.yml
-?? "fix log 2.txt"
-?? setup-old-laptop.ps1
 
 ## Goal
-TBD
+Example control-layer lane
 
 ## Allowed Files
-TBD
+- src/**
+- tests/**
 
 ## Banned Files
-Product repos must remain isolated. Do not copy source into Gawain-Main.
+- public/**
+- server/**
 
-## Validation Plan
-TBD
+## Validation Commands
+- npm run check
+
+## Repo Doctrine And Brand Rules
+- Intake + Search.
+- Evidence-linked.
+- No fake execution claims.
+- Drafts and action cards require review/approval before apply.
+
+## Banned Cross-Contamination
+- Do not claim product repo changes were applied unless validated in that repo.
+- Do not mix Albion approval doctrine into runtime claims.
+
+## Clean Worktree Rule
+No lane may close with untracked or uncommitted files. Every file must be committed, deleted, moved to an approved artifact location, or blocked with a named next action and owner.
+
+## Gemini Evidence Rule
+Gemini receives compact review packets only by default. Raw/full diffs are exception-only.
