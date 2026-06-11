@@ -2,7 +2,7 @@
 
 Gawain's Main is the lightweight operating index for Thomas's product repos.
 
-It is not a product repo. It is not a source-code mirror. It is the control plane for repo summaries, lane maps, active work, review rules, and Gawain/Codex/Gemini execution packets.
+It is not a product repo. It is not a source-code mirror. It is the control plane for repo summaries, lane maps, active work, review rules, routing queues, and Gawain/Codex/Gemini execution packets.
 
 ## Core Operating Model
 
@@ -39,6 +39,20 @@ Gawain drafts lane
 ```
 
 Skipping the Gemini objector step is a workflow violation.
+
+## Queue-First Safety Rule
+
+If work is large, unclear, risky, cross-repo, Gemini-required, or submitted by anyone other than Thomas, it must become a queued Gawain's Main issue before Codex execution.
+
+```text
+Too big / unclear / risky / partner-submitted
+→ queue issue
+→ Gawain route decision
+→ Gemini objector pass
+→ Codex lane prompt
+```
+
+No direct Codex implementation prompt should be issued for queued work until the route and lane are approved.
 
 ## Source of Truth Rule
 
