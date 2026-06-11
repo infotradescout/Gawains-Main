@@ -1,8 +1,8 @@
 # Gawain's Main
 
-Gawain's Main is the lightweight operating index for Thomas's product repos.
+Gawain's Main is the lightweight operating index and Round Table for Thomas's product repos.
 
-It is not a product repo. It is not a source-code mirror. It is the control plane for repo summaries, lane maps, active work, review rules, routing queues, and Gawain/Codex/Gemini execution packets.
+It is not a product repo. It is not a source-code mirror. It is the control plane for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, and Gawain/Codex/Gemini execution packets.
 
 ## Core Operating Model
 
@@ -12,6 +12,20 @@ It is not a product repo. It is not a source-code mirror. It is the control plan
 Inside each repo = sequential lanes, one branch at a time
 Across repos = parallel work
 ```
+
+## Round Table Model
+
+Gawain's Main is the real-world Round Table for Albion.
+
+```text
+Thomas = human counterpart to Gawain
+Levon = human counterpart to Lancelot
+Dylan = human counterpart to Percival
+```
+
+Human Knights hold absolute authority over AI Knights. AI Personas orchestrate digital workflows and reviews; they do not replace the consent or authority of their Human Counterparts.
+
+See `ROUND_TABLE.md`.
 
 ## Authority Model
 
@@ -40,19 +54,25 @@ Gawain drafts lane
 
 Skipping the Gemini objector step is a workflow violation.
 
+## Minimum Change Rule
+
+No repo change proceeds without the minimum parameters needed to reduce drift, hallucinations, branch confusion, and governance mistakes.
+
+See `MINIMUM_CHANGE_PARAMETERS.md`.
+
 ## Queue-First Safety Rule
 
-If work is large, unclear, risky, cross-repo, Gemini-required, or submitted by anyone other than Thomas, it must become a queued Gawain's Main issue before Codex execution.
+The queue is for non-Thomas requests or changes, partner/team requests, already-made outside changes, unclear requests, and work Thomas chooses to park.
+
+Thomas works the queue. The queue does not block Thomas from giving direct instructions.
 
 ```text
-Too big / unclear / risky / partner-submitted
+Non-Thomas / unclear / partner-submitted
 → queue issue
 → Gawain route decision
 → Gemini objector pass
 → Codex lane prompt
 ```
-
-No direct Codex implementation prompt should be issued for queued work until the route and lane are approved.
 
 ## Source of Truth Rule
 
