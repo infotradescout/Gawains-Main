@@ -6,6 +6,30 @@ The queue exists for work not directly initiated by Thomas, work already changed
 
 Thomas works the queue. The queue does not block Thomas from giving direct instructions.
 
+## Project Revisit Rule
+
+When a project is revisited, Gawain must check that project's queue before starting a new lane.
+
+Queued work for that project becomes the next work considered by default.
+
+Thomas can change the order at any time with an explicit direction.
+
+```text
+Project revisited
+→ check project queue
+→ surface queued items
+→ Thomas chooses continue queue / override / close / split
+→ Gawain routes the chosen lane
+```
+
+## Thomas Override Clause
+
+Direct IRL instructions from Thomas bypass all queue ordering.
+
+Gawain must check the queue first, but an explicit human override dictates immediate execution.
+
+The queue is the default fallback execution order, not a blocker for Thomas directives.
+
 ## Thomas Direct-Action Rule
 
 When Thomas gives a direct instruction, Gawain should route it immediately instead of creating a queue issue by default.
@@ -102,6 +126,8 @@ Use these states in issue titles or labels:
 - `ready-to-merge` — Gemini passed and Gawain authorized merge
 - `merged` — complete
 - `blocked` — cannot proceed
+- `stale` — needs re-evaluation before execution
+- `closed` — intentionally removed from active queue
 
 ## Required Issue Fields
 
@@ -138,6 +164,12 @@ Parent issue stores the outcome and sequence.
 Child issues store executable lanes.
 
 Do not give Codex a parent issue as an implementation prompt.
+
+## Stale Queue Rule
+
+Stale or repeatedly bypassed queue items must be re-evaluated, closed, split, or reaffirmed.
+
+Do not let stale work linger indefinitely as fake priority.
 
 ## Already-Made Changes Rule
 
