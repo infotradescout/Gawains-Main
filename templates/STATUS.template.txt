@@ -1,0 +1,6 @@
+Repo: {{REPO_KEY}}
+Lane: {{LANE_NAME}}
+Branch: {{BRANCH}}
+Baseline SHA: {{BASELINE_SHA}}
+Worktree status:
+{{WORKTREE_STATUS}}

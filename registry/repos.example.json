@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "sourceOfTruth": "local",
+  "repos": [
+    {
+      "key": "example",
+      "name": "Example Product",
+      "kind": "product",
+      "localPath": "EDIT_ME_ABSOLUTE_LOCAL_PATH",
+      "remote": "https://github.com/example/example.git",
+      "defaultBranch": "main",
+      "status": "placeholder",
+      "notes": "Use placeholders only until the local repo path is known."
+    }
+  ]
+}

@@ -25,7 +25,7 @@ Protected areas touched:
 Validation command:
 Gemini objector status:
 Codex checkpoint requirement:
-Raw diff requirement:
+Review evidence requirement:
 Gemini implementation review requirement:
 Merge instruction owner:
 ```
@@ -70,17 +70,20 @@ The packet must include:
 - validation plan
 - specific objector questions
 
-## Raw Payload Requirement
+## Review Evidence Requirement
 
-After Codex returns a checkpoint, Gawain must obtain raw evidence before Gemini implementation review.
+After Codex returns a checkpoint, Gawain must obtain review evidence before Gemini implementation review.
 
-Accepted payloads:
+Default evidence:
 
 ```text
-git show --stat --patch <commit>
-git diff <base>..<head>
-git diff main...<branch>
+file disposition
+worktree status
+validation log
+lane scope
 ```
+
+Raw/full diffs are omitted by default and require explicit Gawain authorization.
 
 ## Merge Requirement
 

@@ -1,8 +1,10 @@
 # Gawain's Main
 
-Gawain's Main is the lightweight operating index and Round Table for Thomas's product repos.
+Gawain's Main is the lightweight operating index, command layer, and Round Table for Thomas's product repos.
 
 It is not a product repo. It is not a source-code mirror. It is the control plane for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, and Gawain/Codex/Gemini execution packets.
+
+Use `registry/repos.json` as the live local repo registry. Scripts operate by `--repo-key` and resolve product paths from that registry.
 
 ## Core Operating Model
 
@@ -46,7 +48,7 @@ Gawain drafts lane
 → Gawain reconciles objections
 → Codex executes
 → Codex returns checkpoint
-→ Gawain supplies raw diff/full payload
+→ Gawain supplies bounded review evidence
 → Gemini reviews implementation
 → Gawain reconciles
 → Codex merges only after Gawain instruction
@@ -93,21 +95,18 @@ This repo stores summaries and operating context only.
 
 Gemini has no repo, file, PR, or connector access.
 
-Every Gemini review packet must include the actual payload:
+Gemini review packets include worktree status, file disposition, validation logs, and targeted evidence. Raw/full diffs are not included by default. Gawain may explicitly authorize a raw evidence packet when needed.
 
-```text
-git show <commit>
+## Command Layer
+
+```bash
+npm run check:scripts
+node scripts/list-repos.mjs
+node scripts/check-repo.mjs --repo-key tradescout
+node scripts/check-lane-clean.mjs --repo-key tradescout
+node scripts/create-lane-packet.mjs --repo-key tradescout --lane example-lane
+node scripts/create-review-packet.mjs --repo-key tradescout --lane example-lane
 ```
-
-or:
-
-```text
-git diff <base>..<head>
-```
-
-or full changed-file contents with enough context to verify doctrine and scope.
-
-No summaries-only Gemini reviews.
 
 ## Connector Rule
 

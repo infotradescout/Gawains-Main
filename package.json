@@ -1,0 +1,9 @@
+{
+  "name": "gawains-main",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:scripts": "node --check scripts/repo-registry.mjs && node --check scripts/list-repos.mjs && node --check scripts/check-repo.mjs && node --check scripts/check-lane-clean.mjs && node --check scripts/create-lane-packet.mjs && node --check scripts/create-codex-prompt.mjs && node --check scripts/create-review-packet.mjs"
+  }
+}

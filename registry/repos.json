@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "sourceOfTruth": "local",
+  "repos": [
+    {
+      "key": "tradescout",
+      "name": "TradeScout",
+      "kind": "product",
+      "localPath": "D:\\AAATraderCorner\\TradeScout\\TradeScoutPro",
+      "remote": "https://github.com/infotradescout/tradescoutAI.git",
+      "defaultBranch": "main",
+      "status": "discovered",
+      "notes": "Discovered as local git repo for infotradescout/tradescoutAI."
+    },
+    {
+      "key": "mealscout",
+      "name": "MealScout",
+      "kind": "product",
+      "localPath": "D:\\AAATraderCorner\\TradeScout\\MealScout",
+      "remote": "https://github.com/infotradescout/MealScout.git",
+      "defaultBranch": "main",
+      "status": "discovered",
+      "notes": "Discovered as local git repo."
+    },
+    {
+      "key": "sway",
+      "name": "Sway",
+      "kind": "product",
+      "localPath": "D:\\AAATraderCorner\\TradeScout\\sway\\sway.tips",
+      "remote": "https://github.com/infotradescout/sway.tips.git",
+      "defaultBranch": "main",
+      "status": "discovered",
+      "notes": "Discovered as nested local git repo."
+    },
+    {
+      "key": "merlin",
+      "name": "Merlin",
+      "kind": "workflow",
+      "localPath": "D:\\AAATraderCorner\\TradeScout\\merlin-os-action-layer",
+      "remote": "https://github.com/infotradescout/merlin-os-action-layer.git",
+      "defaultBranch": "main",
+      "status": "discovered",
+      "notes": "Current local branch may differ from default branch."
+    },
+    {
+      "key": "albion",
+      "name": "Albion",
+      "kind": "governance",
+      "localPath": "D:\\AAATraderCorner\\TradeScout\\AI Council",
+      "remote": "https://github.com/infotradescout/Albion.git",
+      "defaultBranch": "main",
+      "status": "discovered",
+      "notes": "Discovered as local git repo."
+    },
+    {
+      "key": "autobott",
+      "name": "AutoBott",
+      "kind": "product",
+      "localPath": "D:\\AAATraderCorner\\TradeScout\\AlpacaTradingbot",
+      "remote": "https://github.com/infotradescout/AutoBott.git",
+      "defaultBranch": "main",
+      "status": "discovered",
+      "notes": "Discovered as local git repo; current branch may differ from default branch."
+    },
+    {
+      "key": "codescout",
+      "name": "CodeScout",
+      "kind": "tooling",
+      "localPath": "D:\\AAATraderCorner\\TradeScout\\CodeScout",
+      "remote": "https://github.com/infotradescout/CodeScout.git",
+      "defaultBranch": "main",
+      "status": "discovered",
+      "notes": "Discovered as local git repo."
+    }
+  ]
+}

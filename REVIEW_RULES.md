@@ -10,7 +10,7 @@ This rule applies across all workflows and all repos.
 
 ```text
 No Gemini objector pass = no Codex execution.
-No raw payload = no Gemini implementation review.
+No review evidence = no Gemini implementation review.
 No Gemini implementation pass = no merge instruction.
 ```
 
@@ -23,7 +23,7 @@ No Gemini implementation pass = no merge instruction.
 4. Gawain reconciles objections and revises the Codex prompt.
 5. Codex executes only the approved lane in the correct repo.
 6. Codex returns checkpoint.
-7. Gawain obtains raw diff or full changed-file payload.
+7. Gawain obtains bounded review evidence.
 8. Gawain sends Gemini implementation review packet with evidence.
 9. Gemini returns Pass or Fail.
 10. Gawain reconciles.
@@ -63,7 +63,7 @@ Every implementation review packet must include:
 4. Lane name
 5. Files changed
 6. Validation reported
-7. Full raw diff or full changed-file payload
+7. File disposition, worktree status, validation log, and targeted evidence
 8. Doctrine checklist
 9. Specific review questions
 10. Required Pass/Fail output
@@ -82,15 +82,17 @@ test summary
 
 That is not reviewable.
 
-## Accepted Implementation Payloads
+## Default Evidence Packet
 
-```bash
-git show --stat --patch <commit>
-git diff <base>..<head>
-git diff main...<branch>
-```
+By default, Gemini receives:
 
-Full changed-file contents are acceptable only if they include enough context to verify doctrine and scope.
+- file disposition
+- worktree status
+- validation log
+- lane scope
+- targeted notes or excerpts needed to judge the lane
+
+Raw/full diffs are omitted by default. Gawain may explicitly authorize a raw evidence packet for a specific review.
 
 ## Merge Rule
 
