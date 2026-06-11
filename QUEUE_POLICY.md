@@ -2,45 +2,77 @@
 
 Gawain's Main must be fool-proof for multi-person, multi-agent work.
 
-Any work that is large, ambiguous, cross-repo, doctrine-sensitive, production-sensitive, or submitted by anyone other than Thomas must become a queued issue before Codex execution.
+The queue exists for work not directly initiated by Thomas, work already changed by someone else, partner/team requests, unclear requests, large work that Thomas chooses to park, and changes that need later routing.
 
-## Non-Negotiable Queue Rule
+Thomas works the queue. The queue does not block Thomas from giving direct instructions.
+
+## Thomas Direct-Action Rule
+
+When Thomas gives a direct instruction, Gawain should route it immediately instead of creating a queue issue by default.
 
 ```text
-If the work is too big, unclear, risky, cross-repo, partner-submitted, or requires Gemini arbitration, it goes into the queue first.
+Thomas direct instruction
+→ Gawain route decision
+→ Gemini objector if implementation is needed
+→ Codex lane prompt
+→ Codex checkpoint
+→ Gemini implementation review
+→ Gawain merge instruction
 ```
 
-No direct Codex implementation prompt may be issued until the work is routed, scoped, and arbitrated.
+Thomas may choose to put something in the queue, but the queue is not mandatory for Thomas-originated work.
+
+## Non-Thomas Queue Rule
+
+```text
+If the request or change is not from Thomas, it goes into the queue first.
+```
+
+This includes:
+
+- partner requests
+- teammate requests
+- another ChatGPT session's proposal
+- another Codex session's change
+- already-made changes by anyone other than Thomas
+- unclear ownership requests
+- requests with no lane boundary
 
 ## Changes That Must Become Issues
 
 Create a Gawain's Main issue before execution when any of these are true:
 
 - The request comes from anyone other than Thomas.
-- The request affects more than one repo.
-- The request changes production behavior.
-- The request changes auth, sessions, payments, safety, governance, database schema, contact gates, or deployment flow.
-- The request changes product doctrine or public positioning.
-- The request is too large to fit in one narrow lane.
-- The request needs Gemini pre-flight arbitration.
-- The request requires raw diff review before merge.
-- The requester is unsure which repo owns the work.
-- The change was already made by someone else and needs review before acceptance.
+- The change was already made by anyone other than Thomas.
 - A partner or teammate reports a desired change without a lane boundary.
+- The requester is unsure which repo owns the work.
+- Thomas explicitly says to put the work in the queue.
+- The work is too large and Thomas wants it split or parked.
 
-## Thomas Exception
+## Protected Work Still Requires Review
 
-Thomas may give direct emergency direction, but Gawain must still route it through:
+Direct Thomas instructions do not require a queue issue, but protected implementation still follows the review loop:
 
 ```text
 Gawain scope
 → Gemini objector if implementation is needed
 → Codex lane
+→ raw diff/full payload
 → Gemini implementation review
 → Gawain merge instruction
 ```
 
-The exception allows urgency. It does not remove review.
+Protected areas include:
+
+- auth
+- sessions
+- payments
+- safety
+- governance
+- database schema
+- contact gates
+- deployment flow
+- public product positioning
 
 ## Anyone-But-Thomas Rule
 
@@ -99,7 +131,7 @@ Merge status:
 
 ## Large Work Rule
 
-If work is larger than one lane, split it into a parent issue and child lane issues.
+If work is larger than one lane and Thomas chooses to queue it, split it into a parent issue and child lane issues.
 
 Parent issue stores the outcome and sequence.
 
@@ -109,7 +141,7 @@ Do not give Codex a parent issue as an implementation prompt.
 
 ## Already-Made Changes Rule
 
-If a partner or another ChatGPT/Codex session already made changes:
+If a partner, teammate, or another ChatGPT/Codex session already made changes:
 
 1. Create or update a Gawain's Main issue.
 2. Capture repo, branch, commit, and author/session if known.
