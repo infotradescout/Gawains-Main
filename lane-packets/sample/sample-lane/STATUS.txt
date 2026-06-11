@@ -1,6 +1,11 @@
 Repo: merlin
+Lane ID: merlin-sample-lane-20260611
 Lane: sample-lane
 Branch: governance/example
 Baseline SHA: abc123
+State: scoped
+Blocker: 
+Next action: Sample artifact only
+Owner: Gawain
 Worktree status:
 clean

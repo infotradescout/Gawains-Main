@@ -1,9 +1,11 @@
 # Gemini Request
 
-Created: 2026-06-11T23:15:53.166Z
+Created: 2026-06-11T23:21:56.321Z
+Lane ID: merlin-sample-lane-20260611
 Repo: Merlin (merlin)
 Branch: governance/example
 Lane: sample-lane
+State: scoped
 Baseline SHA: abc123
 Commit SHA: def456
 

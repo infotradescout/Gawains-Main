@@ -1,0 +1,11 @@
+Repo: autobott
+Lane ID: autobott-phase1-decision-cards-20260611
+Lane: phase1 decision cards
+Branch: engine/phase1-decision-cards
+Baseline SHA: sample-autobott-base
+State: blocked
+Blocker: Validation failed; runtime evidence required
+Next action: Owner must provide real validation evidence
+Owner: Thomas
+Worktree status:
+dirty target repo sample

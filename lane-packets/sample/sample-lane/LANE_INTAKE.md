@@ -1,12 +1,16 @@
 # Lane Intake
 
-Created: 2026-06-11T23:15:53.101Z
+Created: 2026-06-11T23:21:56.321Z
+Lane ID: merlin-sample-lane-20260611
 Repo: Merlin (merlin)
 Local path: D:\AAATraderCorner\TradeScout\merlin-os-action-layer
 Remote: https://github.com/infotradescout/merlin-os-action-layer.git
 Branch: governance/example
 Baseline SHA: abc123
 Lane: sample-lane
+State: scoped
+
+Multiple active lanes per repo are allowed unless a repo-specific policy blocks it. This lane has its own independent finite state.
 
 ## Goal
 Example control-layer lane

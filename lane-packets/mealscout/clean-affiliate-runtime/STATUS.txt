@@ -1,0 +1,11 @@
+Repo: mealscout
+Lane ID: mealscout-clean-affiliate-runtime-20260611
+Lane: clean affiliate runtime
+Branch: runtime/clean-affiliate-runtime
+Baseline SHA: sample-mealscout-base
+State: needs_gemini_review
+Blocker: 
+Next action: Gemini compact packet review
+Owner: Gemini
+Worktree status:
+clean

@@ -1,7 +1,12 @@
 Repo: {{REPO_KEY}}
+Lane ID: {{LANE_ID}}
 Lane: {{LANE_NAME}}
+State: {{LANE_STATE}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Commit SHA: {{COMMIT_SHA}}
+Blocker: {{BLOCKER}}
+Next action: {{NEXT_ACTION}}
+Owner: {{OWNER}}
 Worktree status:
 {{WORKTREE_STATUS}}

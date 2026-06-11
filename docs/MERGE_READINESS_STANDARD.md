@@ -10,4 +10,6 @@ Merge readiness requires:
 - no scope violations
 - no brand contamination
 
+Merge readiness is per lane, not global. Multiple lanes may be merge-ready at the same time. Each merge-ready lane must independently prove validation, review, clean worktree, resolved file disposition, no blockers, no scope violations, and no brand contamination.
+
 Codex does not grant itself merge authority. Gawain gives merge instruction only after the complete route is approved.

@@ -1,0 +1,26 @@
+{
+  "laneId": "autobott-phase1-decision-cards-20260611",
+  "repoKey": "autobott",
+  "repoName": "AutoBott",
+  "laneName": "phase1 decision cards",
+  "laneSlug": "phase1-decision-cards",
+  "branch": "engine/phase1-decision-cards",
+  "baselineSha": "sample-autobott-base",
+  "state": "blocked",
+  "blocker": "Validation failed; runtime evidence required",
+  "nextAction": "Owner must provide real validation evidence",
+  "owner": "Thomas",
+  "decisionNeeded": "",
+  "worktreeStatus": "dirty target repo sample",
+  "fileDisposition": "blocked pending validation owner",
+  "updatedAt": "2026-06-11T23:21:01.082Z",
+  "evidence": {
+    "codexPass": false,
+    "gawainPass": false,
+    "geminiPass": false,
+    "validationPass": false,
+    "cleanTargetWorktree": false,
+    "resolvedFileDisposition": false,
+    "noUnresolvedBlockers": false
+  }
+}

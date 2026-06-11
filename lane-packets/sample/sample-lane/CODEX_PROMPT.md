@@ -1,11 +1,13 @@
 # Codex Prompt
 
-Created: 2026-06-11T23:15:53.166Z
+Created: 2026-06-11T23:21:56.321Z
+Lane ID: merlin-sample-lane-20260611
 Repo: Merlin (merlin)
 Repo path: D:\AAATraderCorner\TradeScout\merlin-os-action-layer
 Branch: governance/example
 Baseline SHA: abc123
 Lane: sample-lane
+State: scoped
 
 ## Goal
 Example control-layer lane

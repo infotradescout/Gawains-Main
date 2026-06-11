@@ -7,8 +7,10 @@ import {
   packetValues,
   parseArgs,
   requireLane,
+  laneMetadata,
   renderTemplate,
   reviewRoot,
+  writeJsonFile,
   writeTextFile
 } from './repo-registry.mjs';
 
@@ -23,11 +25,13 @@ const geminiDir = path.join(geminiRoot(repo, args['gemini-root']), laneSlug);
 const review = renderTemplate(`# Review Packet
 
 Created: {{CREATED_AT}}
+Lane ID: {{LANE_ID}}
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
 Local path: {{REPO_PATH}}
 Remote: {{REPO_REMOTE}}
 Branch: {{BRANCH}}
 Lane: {{LANE_NAME}}
+State: {{LANE_STATE}}
 Baseline SHA: {{BASELINE_SHA}}
 Commit SHA: {{COMMIT_SHA}}
 
@@ -68,9 +72,11 @@ No raw/full git diff output is included by default. Raw diffs are exception-only
 const gemini = renderTemplate(`# Gemini Request
 
 Created: {{CREATED_AT}}
+Lane ID: {{LANE_ID}}
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
 Branch: {{BRANCH}}
 Lane: {{LANE_NAME}}
+State: {{LANE_STATE}}
 Baseline SHA: {{BASELINE_SHA}}
 Commit SHA: {{COMMIT_SHA}}
 
@@ -114,6 +120,7 @@ await writeTextFile(path.join(reviewDir, 'FILE_LIST.txt'), values.FILES_CHANGED)
 await writeTextFile(path.join(reviewDir, 'STATUS.txt'), `Worktree status:\n${values.WORKTREE_STATUS}\n`);
 await writeTextFile(path.join(reviewDir, 'FILE_DISPOSITION.txt'), values.FILE_DISPOSITION);
 await writeTextFile(path.join(geminiDir, 'GEMINI_REQUEST.md'), gemini);
+await writeJsonFile(path.join(reviewDir, 'LANE_METADATA.json'), laneMetadata(repo, values));
 
 console.log(reviewDir);
 console.log(geminiDir);

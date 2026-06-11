@@ -10,6 +10,10 @@
     "lane:create": "node scripts/create-lane-packet.mjs",
     "packet:create": "node scripts/create-review-packet.mjs",
     "prompt:create": "node scripts/create-codex-prompt.mjs",
-    "check:scripts": "node --check scripts/repo-registry.mjs && node --check scripts/list-repos.mjs && node --check scripts/check-repo.mjs && node --check scripts/check-lane-clean.mjs && node --check scripts/create-lane-packet.mjs && node --check scripts/create-codex-prompt.mjs && node --check scripts/create-review-packet.mjs"
+    "lanes:update": "node scripts/update-lane-board.mjs",
+    "lanes:list": "node scripts/list-lanes.mjs",
+    "decisions:list": "node scripts/list-decision-needed.mjs",
+    "merge-ready:list": "node scripts/list-merge-ready.mjs",
+    "check:scripts": "node --check scripts/repo-registry.mjs && node --check scripts/list-repos.mjs && node --check scripts/check-repo.mjs && node --check scripts/check-lane-clean.mjs && node --check scripts/create-lane-packet.mjs && node --check scripts/create-codex-prompt.mjs && node --check scripts/create-review-packet.mjs && node --check scripts/update-lane-board.mjs && node --check scripts/list-lanes.mjs && node --check scripts/list-decision-needed.mjs && node --check scripts/list-merge-ready.mjs"
   }
 }

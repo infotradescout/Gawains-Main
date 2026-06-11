@@ -16,11 +16,13 @@ export function renderCodexPrompt(values) {
   return renderTemplate(`# Codex Prompt
 
 Created: {{CREATED_AT}}
+Lane ID: {{LANE_ID}}
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
 Repo path: {{REPO_PATH}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Lane: {{LANE_NAME}}
+State: {{LANE_STATE}}
 
 ## Goal
 {{GOAL}}

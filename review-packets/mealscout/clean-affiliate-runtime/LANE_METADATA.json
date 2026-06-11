@@ -1,0 +1,26 @@
+{
+  "laneId": "mealscout-clean-affiliate-runtime-20260611",
+  "repoKey": "mealscout",
+  "repoName": "MealScout",
+  "laneName": "clean affiliate runtime",
+  "laneSlug": "clean-affiliate-runtime",
+  "branch": "runtime/clean-affiliate-runtime",
+  "baselineSha": "sample-mealscout-base",
+  "state": "needs_gemini_review",
+  "blocker": "",
+  "nextAction": "Gemini compact packet review",
+  "owner": "Gemini",
+  "decisionNeeded": "",
+  "worktreeStatus": "clean",
+  "fileDisposition": "resolved pending Gemini",
+  "updatedAt": "2026-06-11T23:21:01.043Z",
+  "evidence": {
+    "codexPass": true,
+    "gawainPass": true,
+    "geminiPass": false,
+    "validationPass": true,
+    "cleanTargetWorktree": true,
+    "resolvedFileDisposition": true,
+    "noUnresolvedBlockers": false
+  }
+}

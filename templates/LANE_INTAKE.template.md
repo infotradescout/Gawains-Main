@@ -1,10 +1,12 @@
 # Lane Intake
 
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
+Lane ID: {{LANE_ID}}
 Local path: {{REPO_PATH}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Lane: {{LANE_NAME}}
+State: {{LANE_STATE}}
 
 ## Goal
 {{GOAL}}

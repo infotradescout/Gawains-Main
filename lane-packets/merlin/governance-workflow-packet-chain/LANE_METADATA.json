@@ -1,0 +1,26 @@
+{
+  "laneId": "merlin-governance-workflow-packet-chain-20260611",
+  "repoKey": "merlin",
+  "repoName": "Merlin",
+  "laneName": "governance/workflow-packet-chain",
+  "laneSlug": "governance-workflow-packet-chain",
+  "branch": "governance/workflow-packet-chain",
+  "baselineSha": "sample-merlin-base",
+  "state": "complete",
+  "blocker": "",
+  "nextAction": "No action; complete record",
+  "owner": "Gawain",
+  "decisionNeeded": "",
+  "worktreeStatus": "clean",
+  "fileDisposition": "resolved",
+  "updatedAt": "2026-06-11T23:20:39.861Z",
+  "evidence": {
+    "codexPass": true,
+    "gawainPass": true,
+    "geminiPass": true,
+    "validationPass": true,
+    "cleanTargetWorktree": true,
+    "resolvedFileDisposition": true,
+    "noUnresolvedBlockers": true
+  }
+}

@@ -1,5 +1,7 @@
 # All Repos Operation
 
+All repos are managed at once through the repo board, lane board, and decision board. The system does not force repo order. Thomas can choose where to apply attention based on lane state, priority, blocker, and business impact.
+
 ## Step 1: Register Repo
 
 Add or update the repo in `registry/repos.json`. Include local path, default branch, validation commands, packet roots, brand rules, contamination warnings, and default file scopes.
@@ -8,6 +10,15 @@ Add or update the repo in `registry/repos.json`. Include local path, default bra
 
 ```bash
 node scripts/check-repo.mjs --repo-key merlin
+```
+
+Update the highway boards at any time:
+
+```bash
+node scripts/update-lane-board.mjs
+node scripts/list-lanes.mjs
+node scripts/list-decision-needed.mjs
+node scripts/list-merge-ready.mjs
 ```
 
 ## Step 3: Create Lane Packet

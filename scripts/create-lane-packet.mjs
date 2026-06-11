@@ -7,7 +7,9 @@ import {
   packetValues,
   parseArgs,
   requireLane,
+  laneMetadata,
   renderTemplate,
+  writeJsonFile,
   writeTextFile
 } from './repo-registry.mjs';
 import { renderCodexPrompt } from './create-codex-prompt.mjs';
@@ -22,12 +24,16 @@ const outputDir = path.join(laneRoot(repo, args['output-root']), laneSlug);
 const intake = renderTemplate(`# Lane Intake
 
 Created: {{CREATED_AT}}
+Lane ID: {{LANE_ID}}
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
 Local path: {{REPO_PATH}}
 Remote: {{REPO_REMOTE}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Lane: {{LANE_NAME}}
+State: {{LANE_STATE}}
+
+Multiple active lanes per repo are allowed unless a repo-specific policy blocks it. This lane has its own independent finite state.
 
 ## Goal
 {{GOAL}}
@@ -55,9 +61,14 @@ Gemini receives compact review packets only by default. Raw/full diffs are excep
 `, values);
 
 const status = renderTemplate(`Repo: {{REPO_KEY}}
+Lane ID: {{LANE_ID}}
 Lane: {{LANE_NAME}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
+State: {{LANE_STATE}}
+Blocker: {{BLOCKER}}
+Next action: {{NEXT_ACTION}}
+Owner: {{OWNER}}
 Worktree status:
 {{WORKTREE_STATUS}}
 `, values);
@@ -65,5 +76,6 @@ Worktree status:
 await writeTextFile(path.join(outputDir, 'LANE_INTAKE.md'), intake);
 await writeTextFile(path.join(outputDir, 'CODEX_PROMPT.md'), renderCodexPrompt(values));
 await writeTextFile(path.join(outputDir, 'STATUS.txt'), status);
+await writeJsonFile(path.join(outputDir, 'LANE_METADATA.json'), laneMetadata(repo, values));
 
 console.log(outputDir);

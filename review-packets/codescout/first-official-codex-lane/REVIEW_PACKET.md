@@ -1,24 +1,50 @@
 # Review Packet
 
-Created: 2026-06-11T23:01:40.510Z
+Created: 2026-06-11T23:22:26.339Z
+Lane ID: codescout-first-official-codex-lane-20260611
 Repo: CodeScout (codescout)
 Local path: D:\AAATraderCorner\TradeScout\CodeScout
 Remote: https://github.com/infotradescout/CodeScout.git
-Lane: first-official-codex-lane
 Branch: domain/immutable-local-amendment-foundation
+Lane: first-official-codex-lane
+State: scoped
 Baseline SHA: 8cade83
+Commit SHA: TBD
 
-## Worktree Status
-clean
-
-## File Disposition
-- Added: TBD
-- Modified: TBD
-- Deleted: TBD
-- Untracked: TBD
-
-## Validation
+## Files Changed
 TBD
 
-## Review Notes
-No raw git diff is included by default. Attach targeted evidence only when Gawain explicitly authorizes it.
+## Validation Summary
+TBD
+
+## Behavior Summary
+First official CodeScout lane packet proof
+
+## Scope Boundaries
+No product changes
+
+## Risks Checked
+No raw diff
+
+## File Disposition
+TBD
+
+## Worktree Status
+clean at packet creation
+
+## Repo Doctrine And Brand Rules
+- Municipal/code intelligence.
+- AHJ disclaimers required.
+- Neutral terms: status, evidence completeness, ambiguity.
+- No permit/fee/inspection/risk-scope expansion unless explicitly approved.
+
+## Banned Cross-Contamination
+- Do not import TradeScout business/community positioning.
+- Do not import Sway payment or queue terminology.
+- Do not claim AHJ certainty without evidence.
+
+## Review Question
+Is this lane packet structurally acceptable?
+
+## Raw Diff Policy
+No raw/full git diff output is included by default. Raw diffs are exception-only when Thomas explicitly asks, Gemini specifically requests it, or line-level review is required to resolve a blocker.

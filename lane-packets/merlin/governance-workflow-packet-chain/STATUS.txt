@@ -1,0 +1,11 @@
+Repo: merlin
+Lane ID: merlin-governance-workflow-packet-chain-20260611
+Lane: governance/workflow-packet-chain
+Branch: governance/workflow-packet-chain
+Baseline SHA: sample-merlin-base
+State: complete
+Blocker: 
+Next action: No action; complete record
+Owner: Gawain
+Worktree status:
+clean

@@ -1,0 +1,26 @@
+{
+  "laneId": "merlin-sample-lane-20260611",
+  "repoKey": "merlin",
+  "repoName": "Merlin",
+  "laneName": "sample-lane",
+  "laneSlug": "sample-lane",
+  "branch": "governance/example",
+  "baselineSha": "abc123",
+  "state": "scoped",
+  "blocker": "",
+  "nextAction": "Sample artifact only",
+  "owner": "Gawain",
+  "decisionNeeded": "",
+  "worktreeStatus": "clean",
+  "fileDisposition": "TBD",
+  "updatedAt": "2026-06-11T23:21:56.321Z",
+  "evidence": {
+    "codexPass": false,
+    "gawainPass": false,
+    "geminiPass": false,
+    "validationPass": false,
+    "cleanTargetWorktree": false,
+    "resolvedFileDisposition": false,
+    "noUnresolvedBlockers": false
+  }
+}

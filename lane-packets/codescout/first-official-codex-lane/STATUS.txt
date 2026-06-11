@@ -1,6 +1,11 @@
 Repo: codescout
+Lane ID: codescout-first-official-codex-lane-20260611
 Lane: first-official-codex-lane
 Branch: domain/immutable-local-amendment-foundation
 Baseline SHA: 8cade83
+State: scoped
+Blocker: 
+Next action: Update with real lane scope before execution
+Owner: Gawain
 Worktree status:
 clean

@@ -1,0 +1,26 @@
+{
+  "laneId": "codescout-first-official-codex-lane-20260611",
+  "repoKey": "codescout",
+  "repoName": "CodeScout",
+  "laneName": "first-official-codex-lane",
+  "laneSlug": "first-official-codex-lane",
+  "branch": "domain/immutable-local-amendment-foundation",
+  "baselineSha": "8cade83",
+  "state": "scoped",
+  "blocker": "",
+  "nextAction": "Update with real lane scope before execution",
+  "owner": "Gawain",
+  "decisionNeeded": "",
+  "worktreeStatus": "clean at packet creation",
+  "fileDisposition": "TBD",
+  "updatedAt": "2026-06-11T23:22:26.339Z",
+  "evidence": {
+    "codexPass": false,
+    "gawainPass": false,
+    "geminiPass": false,
+    "validationPass": false,
+    "cleanTargetWorktree": false,
+    "resolvedFileDisposition": false,
+    "noUnresolvedBlockers": false
+  }
+}
