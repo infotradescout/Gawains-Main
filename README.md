@@ -17,10 +17,28 @@ Across repos = parallel work
 
 ```text
 Gawain = doctrine, scope, routing, correction, merge order
-Codex = implementation inside one repo/lane
-Gemini = adversarial reviewer using supplied payloads only
+Gemini = arbitrator / adversarial objector / implementation reviewer
+Codex = implementation inside one repo/lane after Gemini objector pass
 Thomas = final human authority
 ```
+
+## Non-Negotiable Arbitrator Rule
+
+Gemini must be included before and after Codex execution.
+
+```text
+Gawain drafts lane
+→ Gemini objector reviews scope
+→ Gawain reconciles objections
+→ Codex executes
+→ Codex returns checkpoint
+→ Gawain supplies raw diff/full payload
+→ Gemini reviews implementation
+→ Gawain reconciles
+→ Codex merges only after Gawain instruction
+```
+
+Skipping the Gemini objector step is a workflow violation.
 
 ## Source of Truth Rule
 
