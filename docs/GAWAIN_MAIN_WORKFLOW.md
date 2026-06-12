@@ -1,8 +1,16 @@
 # Gawain-Main Workflow
 
-Gawain-Main is the command layer for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, and Gemini exports.
+Gawain-Main / RoundTable is the dispatcher and ledger for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, parent routing packets, terminal Git state records, and Gemini exports.
 
 It is not a product source mirror. Product repos stay separate and are referenced through `registry/repos.json`.
+
+## Foundation Lane Cap
+
+PR #2 is capped as the RoundTable foundation lane only.
+
+RoundTable owns parent/child routing doctrine, repository boundary records, markdown/frontmatter packet expectations, mechanical safety doctrine, time-freshness laws, and terminal Git state record expectations.
+
+RoundTable owns zero execution runtime. This workflow must not add SQLite schemas, Discord bot/API code, runtime execution, ephemeral workflow transition storage, Drive or Apps Script adapters, Merlin transport, product repo behavior, MealScout storage implementation, or Albion governance math.
 
 ## Universal Operating Rule
 

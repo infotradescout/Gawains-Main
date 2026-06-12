@@ -1,8 +1,36 @@
 # Universal Existing-State Requirement
 
-This is a global Merlin / Gawain / AI Council operating law.
+This is RoundTable foundation doctrine for routed work packets, review packets, terminal state records, and parent/child lane dispatch.
 
-It applies to every request made through Merlin or otherwise, not only code-building.
+It applies when RoundTable dispatches, records, reviews, or closes work. It does not give RoundTable execution runtime.
+
+## PR #2 Scope Cap
+
+PR #2 is capped as the RoundTable foundation lane only.
+
+RoundTable is the dispatcher and ledger. It owns:
+
+- parent routing packets
+- terminal Git state records
+- markdown/frontmatter packet schema expectations
+- repository boundary matrix
+- mechanical safety doctrine
+- time-freshness laws
+- Existing-State Law
+- parent/child routing doctrine
+
+RoundTable does not own:
+
+- SQLite schemas
+- Discord bot or API code
+- runtime execution
+- ephemeral workflow transition storage
+- Drive or Apps Script adapters
+- Merlin runtime or transport implementation
+- MealScout, TradeScout, Sway, AutoBott, or other product repo behavior
+- Albion governance math unless explicitly routed through Albion
+
+Runtime, storage, Discord bridge, approval verification, and adapter implementation must be routed into child lanes outside PR #2.
 
 ## Core Rule
 
@@ -11,24 +39,23 @@ No request should be executed from assumption alone.
 Read reality first. Preserve what works. Act only from evidence. Label assumptions. Make the smallest aligned move. Never fake status.
 ```
 
-Before producing a recommendation, prompt, review, document, workflow, plan, intake action, code change, business decision, image/screenshot processing step, contract draft, or AI Council packet, the agent must understand the existing state relevant to the request.
+Before RoundTable produces a routing recommendation, prompt, review packet, document packet, workflow packet, lane intake, terminal state record, or parent routing packet, the agent must understand the existing state relevant to the request.
 
 ## Applies To
 
-This requirement applies across:
+This requirement applies to RoundTable records for:
 
-- Merlin
-- Gawain's Main
-- AI Council workflows
-- Albion-adjacent governance workflows
+- Gawain's Main / RoundTable
+- parent routing packets
+- terminal Git state records
+- lane intake packets
+- review packets
 - Codex lanes
 - Gemini reviews
-- TradeScout
-- MealScout
-- Sway
-- AutoBott / Trader's Corner
-- CodeScout
-- documents, contracts, business workflows, screenshot/image intake, product strategy, UI/UX, research, reviews, and operations
+- repo boundary decisions
+- documents, contracts, business workflows, screenshot/image intake, product strategy, UI/UX, research, reviews, and operations routed through RoundTable
+
+Product, Merlin, storage, and Albion work remains owned by the target repo. RoundTable may record current state and route child lanes; it must not implement those systems in PR #2.
 
 ## Mandatory Phase 0 — Existing-State + Context Check
 
@@ -95,7 +122,7 @@ Before saying something is done, ready, merged, deployed, validated, accessible,
 1. Re-check the relevant source of truth and include the check timestamp.
 2. Label the statement as last-known status and avoid making an action decision from it.
 
-This applies to repo state, branch state, PR state, validation, deployment, Drive access, Discord packet state, approval state, production status, and agent completion.
+This applies to repo state, branch state, PR state, validation, deployment, Drive access, Discord packet state, approval state, production status, and agent completion as recorded or routed by RoundTable.
 
 Time passage, new user reports, possible agent activity, possible GitHub/Drive/Discord changes, or any approval/merge/apply/send decision makes freshness relevant.
 
@@ -113,14 +140,14 @@ A stale status claim must not support approve, merge, deploy, send, apply, close
 
 ## Human / GPT / Gemini / Codex Routing
 
-Default routed workflow:
+Default RoundTable routed workflow:
 
 ```text
 Human request
-→ Gawain existing-state + context check
+→ RoundTable / Gawain existing-state + context check
 → Gemini objector review when implementation/governance risk exists
 → Gawain reconciles objections
-→ Codex executes bounded lane only after approval
+→ Codex executes bounded lane in the target repo only after approval
 → Codex returns evidence packet
 → Gawain reviews evidence
 → Gemini implementation review when required

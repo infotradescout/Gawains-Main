@@ -1,8 +1,35 @@
 # Minimum Change Parameters
 
-No request or repo change should proceed without the minimum parameters needed to reduce AI drift, hallucinations, branch confusion, governance mistakes, and assumption-based execution.
+No RoundTable-routed request or repo change should proceed without the minimum parameters needed to reduce AI drift, hallucinations, branch confusion, governance mistakes, and assumption-based execution.
 
-This checklist applies to every product repo, to Gawain's Main itself, and to non-code work routed through Merlin/Gawain/AI Council workflows.
+This checklist applies to RoundTable lane packets, review packets, terminal state records, and child-lane dispatch. Target repos keep ownership of their runtime, storage, UI, product behavior, and governance implementation.
+
+## RoundTable Foundation Boundary
+
+PR #2 is capped as a dispatcher/ledger foundation lane.
+
+Allowed here:
+
+- Existing-State Law
+- doctrine routing rules
+- parent/child lane protocol
+- repository boundary matrix
+- markdown/frontmatter packet schema expectations
+- mechanical safety doctrine
+- time-freshness law
+- terminal Git state record expectations
+
+Forbidden here:
+
+- SQLite schemas
+- Discord bot or API code
+- runtime execution
+- ephemeral workflow transition storage
+- Drive or Apps Script adapters
+- Merlin runtime or transport implementation
+- product repo behavior
+- MealScout storage implementation
+- Albion governance math unless explicitly routed through Albion
 
 ## Universal Phase 0 Requirement
 

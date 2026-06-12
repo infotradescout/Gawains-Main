@@ -1,8 +1,10 @@
 # Gawain's Main
 
-Gawain's Main is the lightweight operating index, command layer, and Round Table for Thomas's product repos.
+Gawain's Main is the lightweight operating index, command layer, and RoundTable for Thomas's product repos.
 
-It is not a product repo. It is not a source-code mirror. It is the control plane for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, and Gawain/Codex/Gemini execution packets.
+It is not a product repo. It is not a source-code mirror. It is the dispatcher and ledger for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, parent routing packets, terminal Git state records, and Gawain/Codex/Gemini packet handoffs.
+
+RoundTable owns zero execution runtime. It does not own Discord bot code, SQLite schemas, ephemeral workflow state, Drive or Apps Script adapters, Merlin transport, product repo behavior, or Albion governance math unless a future lane explicitly routes that doctrine work to the proper repo.
 
 Use `registry/repos.json` as the live local repo registry. Scripts operate by `--repo-key` and resolve product paths from that registry.
 
@@ -15,11 +17,37 @@ Inside each repo = sequential lanes, one branch at a time
 Across repos = parallel work
 ```
 
+## RoundTable Foundation Boundary
+
+PR #2 is capped as the RoundTable foundation lane only.
+
+Allowed in this lane:
+
+- Existing-State Law
+- doctrine routing rules
+- parent/child lane protocol
+- repository boundary matrix
+- markdown/frontmatter packet schema expectations
+- mechanical safety doctrine
+- time-freshness law
+- terminal Git state record expectations
+
+Forbidden in this lane:
+
+- SQLite schemas
+- Discord bot or API code
+- runtime execution
+- ephemeral workflow transition storage
+- Drive or Apps Script adapters
+- Merlin runtime or transport implementation
+- MealScout, TradeScout, Sway, AutoBott, or other product repo behavior
+- Albion governance math unless explicitly routed through Albion
+
 ## Universal Existing-State Law
 
-All requests made through Merlin, Gawain, Codex, Gemini, AI Council workflows, or otherwise must begin by understanding the existing state before taking action.
+All RoundTable-routed requests must begin by understanding the existing state before action is routed, packeted, reviewed, merged, sent, applied, or marked complete.
 
-This applies to code, docs, reviews, screenshots, image intake, business workflows, contracts, product strategy, UI/UX, operations, research, and governance packets.
+This is a dispatcher/ledger requirement. It records and routes evidence; it does not implement runtime behavior in this repo.
 
 ```text
 Read reality first.

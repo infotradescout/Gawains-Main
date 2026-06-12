@@ -1,10 +1,18 @@
 # Review Rules
 
+## RoundTable Foundation Boundary
+
+RoundTable is the dispatcher and ledger. It owns parent routing packets, terminal Git state records, markdown/frontmatter packet schema expectations, mechanical safety doctrine, repository boundary records, and time-freshness laws.
+
+RoundTable owns zero execution runtime.
+
+PR #2 must not add SQLite schemas, Discord bot/API code, runtime execution, ephemeral workflow transition storage, Drive or Apps Script adapters, Merlin runtime or transport implementation, product repo behavior, or Albion governance math unless explicitly routed to the proper repo.
+
 ## Universal Existing-State Review Gate
 
-Every request routed through Merlin, Gawain, Codex, Gemini, or AI Council workflows must begin with an existing-state + context check.
+Every request routed through RoundTable/Gawain into Codex, Gemini, Merlin, AI Council, or a product repo must begin with an existing-state + context check.
 
-This applies to code and non-code work: docs, product decisions, reviews, screenshots, image intake, contracts, business workflows, operations, research, and governance packets.
+This applies to RoundTable packeting, routing, review, and terminal state recording for code and non-code work. The target repo still owns implementation behavior.
 
 ```text
 No existing-state/context check = no trusted execution.
@@ -49,7 +57,7 @@ Gawain must never send Codex an implementation prompt for a repo lane until:
 1. Gawain has completed the existing-state + context check.
 2. Gemini has reviewed the proposed lane plan and returned Pass or objections when implementation/governance risk exists.
 
-This rule applies across all workflows and all repos.
+This rule applies to RoundTable-routed workflows and all repos that receive a RoundTable lane packet.
 
 ```text
 No existing-state check = no Codex execution.
@@ -61,8 +69,8 @@ No Gemini implementation pass = no merge instruction.
 ## Full Workflow Loop
 
 ```text
-1. Human request enters Merlin/Gawain/AI Council workflow.
-2. Gawain performs existing-state + context check.
+1. Human request enters RoundTable/Gawain routing.
+2. RoundTable/Gawain performs existing-state + context check.
 3. Gawain drafts lane scope and Codex prompt.
 4. Gawain sends Gemini a pre-flight objector packet when implementation/governance risk exists.
 5. Gemini returns Pass or Object.
@@ -173,6 +181,8 @@ AI agents must not fabricate or silently substitute:
 - implementation evidence
 
 Where Albion governance requires Knight approval, the 3/3 path remains Gawain + Lancelot + Percival, and human consent remains required when specified by doctrine.
+
+RoundTable records and routes authority state. It does not alter Albion governance math in PR #2.
 
 ## Merge Rule
 
