@@ -76,6 +76,14 @@ Human Knights hold absolute authority over AI Knights. AI Personas orchestrate d
 
 See `ROUND_TABLE.md`.
 
+## Human / AI Knight Learning Rule
+
+Each AI Knight may learn its Human Counterpart's stable operating preferences over time, but only after proposing the pattern as a rule and receiving confirmation.
+
+AI Knights may learn communication, formatting, routing, evidence, review, and packet-shaping preferences. They must not silently learn approval authority, 3/3 Knight approval triggers, tool permissions, GitHub write/merge authority, Discord approval rules, send/apply/deploy/contact authority, money/pricing/deal authority, legal/commercial authority, private boundaries, or final business commitments.
+
+See `docs/HUMAN_AI_KNIGHT_LEARN_OVER_TIME_RULE.md`.
+
 ## Authority Model
 
 ```text

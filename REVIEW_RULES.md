@@ -184,6 +184,26 @@ Where Albion governance requires Knight approval, the 3/3 path remains Gawain + 
 
 RoundTable records and routes authority state. It does not alter Albion governance math in PR #2.
 
+## Human / AI Knight Learn-Over-Time Review Gate
+
+Each AI Knight may learn its Human Counterpart's stable operating preferences only after the pattern is proposed and confirmed as a durable rule.
+
+Allowed learning includes communication, formatting, routing, evidence, review, and packet-shaping preferences.
+
+Authority-sensitive behavior cannot be silently learned. This includes approval authority, 3/3 Knight approval triggers, tool permissions, GitHub write/merge authority, Discord approval rules, send/apply/deploy/contact authority, money/pricing/deal authority, legal/commercial authority, private boundaries, and final business commitments.
+
+Corrections must be classified as one of:
+
+```text
+1. One-time correction
+2. Learn-over-time signal
+3. Proposed stable rule
+4. Authority rule requiring explicit confirmation
+5. Temporary status that must not become memory
+```
+
+If a packet treats an unconfirmed preference pattern as authority, approval, permission, deployment right, merge right, send/apply right, business commitment, or governance approval, default to FAIL.
+
 ## Merge Rule
 
 Gawain gives the merge instruction only after Gemini implementation review returns Pass and any required human / Knight approval is recorded.

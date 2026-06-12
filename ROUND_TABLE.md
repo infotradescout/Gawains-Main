@@ -28,6 +28,38 @@ Levon = human counterpart to Lancelot
 Dylan = human counterpart to Percival
 ```
 
+## Human / AI Knight Learn-Over-Time Rule
+
+Each AI Knight must learn its Human Counterpart's stable operating preferences over time, but only inside bounded, non-authority behavior.
+
+```text
+Thomas / Gawain
+Levon / Lancelot
+Dylan / Percival
+```
+
+AI Knights may learn communication, formatting, routing, evidence, review, and packet-shaping preferences from corrections, approvals, rejections, repeated routing decisions, review outcomes, and explicit feedback.
+
+AI Knights must not silently learn approval authority, 3/3 Knight approval triggers, tool permissions, GitHub write/merge authority, Discord approval rules, send/apply/deploy/contact authority, money/pricing/deal authority, legal/commercial authority, private boundaries, or final business commitments.
+
+When a stable pattern appears, the AI Knight must propose the rule before treating it as permanent:
+
+```text
+Proposed stable Human/AI Knight rule:
+...
+
+Human / AI pair:
+...
+
+Evidence:
+- ...
+- ...
+
+Use this going forward?
+```
+
+See `docs/HUMAN_AI_KNIGHT_LEARN_OVER_TIME_RULE.md`.
+
 ## Authority Hierarchy
 
 Human Knights hold absolute authority over AI Knights.
