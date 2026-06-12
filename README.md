@@ -15,6 +15,25 @@ Inside each repo = sequential lanes, one branch at a time
 Across repos = parallel work
 ```
 
+## Universal Existing-State Law
+
+All requests made through Merlin, Gawain, Codex, Gemini, AI Council workflows, or otherwise must begin by understanding the existing state before taking action.
+
+This applies to code, docs, reviews, screenshots, image intake, business workflows, contracts, product strategy, UI/UX, operations, research, and governance packets.
+
+```text
+Read reality first.
+Preserve what works.
+Act only from evidence.
+Label assumptions.
+Make the smallest aligned move.
+Never fake status.
+```
+
+No implementation, recommendation, review, document, workflow, plan, intake action, or apply/send/merge decision may proceed from assumption alone when existing context can be inspected.
+
+See `docs/UNIVERSAL_EXISTING_STATE_REQUIREMENT.md`.
+
 ## Round Table Model
 
 Gawain's Main is the real-world Round Table for Albion.
@@ -43,7 +62,8 @@ Thomas = final human authority
 Gemini must be included before and after Codex execution.
 
 ```text
-Gawain drafts lane
+Gawain performs existing-state + context check
+→ Gawain drafts lane
 → Gemini objector reviews scope
 → Gawain reconciles objections
 → Codex executes
@@ -54,7 +74,7 @@ Gawain drafts lane
 → Codex merges only after Gawain instruction
 ```
 
-Skipping the Gemini objector step is a workflow violation.
+Skipping the existing-state check or Gemini objector step is a workflow violation.
 
 ## Minimum Change Rule
 
@@ -71,9 +91,10 @@ Thomas works the queue. The queue does not block Thomas from giving direct instr
 ```text
 Non-Thomas / unclear / partner-submitted
 → queue issue
+→ Gawain existing-state + context check
 → Gawain route decision
-→ Gemini objector pass
-→ Codex lane prompt
+→ Gemini objector pass when implementation/governance risk exists
+→ Codex lane prompt when approved
 ```
 
 ## Source of Truth Rule
@@ -95,7 +116,7 @@ This repo stores summaries and operating context only.
 
 Gemini has no repo, file, PR, or connector access.
 
-Gemini review packets include worktree status, file disposition, validation logs, and targeted evidence. Raw/full diffs are not included by default. Gawain may explicitly authorize a raw evidence packet when needed.
+Gemini review packets include worktree status, file disposition, validation logs, existing-state/context findings, and targeted evidence. Raw/full diffs are not included by default. Gawain may explicitly authorize a raw evidence packet when needed.
 
 ## Command Layer
 
