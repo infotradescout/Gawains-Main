@@ -1,6 +1,6 @@
-# Gawain's Main
+# RoundTable
 
-Gawain's Main is the lightweight operating index, command layer, and RoundTable for Thomas's product repos.
+RoundTable is the lightweight operating index, command table, and routing authority for Thomas's product repos.
 
 It is not a product repo. It is not a source-code mirror. It is the dispatcher and ledger for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, parent routing packets, terminal Git state records, and Gawain/Codex/Gemini packet handoffs.
 
@@ -62,9 +62,9 @@ No implementation, recommendation, review, document, workflow, plan, intake acti
 
 See `docs/UNIVERSAL_EXISTING_STATE_REQUIREMENT.md`.
 
-## Round Table Model
+## RoundTable Model
 
-Gawain's Main is the real-world Round Table for Albion.
+RoundTable is the real-world command table for Albion.
 
 ```text
 Thomas = human counterpart to Gawain

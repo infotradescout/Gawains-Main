@@ -13,4 +13,4 @@ Last-known vs current:
 Freshness risk:
 Re-check required before:
 
-Work only inside the target repo. Do not copy product source into Gawain-Main. Do not close with a dirty worktree.
+Work only inside the target repo. Do not copy product source into RoundTable. Do not close with a dirty worktree.

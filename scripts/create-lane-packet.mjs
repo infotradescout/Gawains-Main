@@ -70,7 +70,7 @@ TBD
 TBD
 
 ## Banned Files
-Product repos must remain isolated. Do not copy source into Gawain-Main.
+Product repos must remain isolated. Do not copy source into RoundTable.
 
 ## Validation Plan
 TBD

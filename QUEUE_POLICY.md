@@ -1,6 +1,6 @@
 # Queue Policy
 
-Gawain's Main must be fool-proof for multi-person, multi-agent work.
+RoundTable must be fool-proof for multi-person, multi-agent work.
 
 The queue exists for work not directly initiated by Thomas, work already changed by someone else, partner/team requests, unclear requests, large work that Thomas chooses to park, and changes that need later routing.
 
@@ -64,7 +64,7 @@ This includes:
 
 ## Changes That Must Become Issues
 
-Create a Gawain's Main issue before execution when any of these are true:
+Create a RoundTable issue before execution when any of these are true:
 
 - The request comes from anyone other than Thomas.
 - The change was already made by anyone other than Thomas.
@@ -109,7 +109,7 @@ No Codex execution without issue.
 No Gemini skip.
 ```
 
-The work must be captured as an issue in Gawain's Main or, if already in a product repo PR, linked from a Gawain's Main issue.
+The work must be captured as an issue in RoundTable or, if already in a product repo PR, linked from a RoundTable issue.
 
 ## Queue States
 
@@ -175,7 +175,7 @@ Do not let stale work linger indefinitely as fake priority.
 
 If a partner, teammate, or another ChatGPT/Codex session already made changes:
 
-1. Create or update a Gawain's Main issue.
+1. Create or update a RoundTable issue.
 2. Capture repo, branch, commit, and author/session if known.
 3. Require raw diff:
    ```bash
@@ -188,4 +188,4 @@ If a partner, teammate, or another ChatGPT/Codex session already made changes:
 
 Product repos remain source of truth for code.
 
-Gawain's Main is source of truth for routing, queue state, arbitration status, and cross-repo work memory.
+RoundTable is source of truth for routing, queue state, arbitration status, and cross-repo work memory.
