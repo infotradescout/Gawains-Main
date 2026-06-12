@@ -1,8 +1,29 @@
 # Minimum Change Parameters
 
-No repo change should proceed without the minimum parameters needed to reduce AI drift, hallucinations, branch confusion, and governance mistakes.
+No request or repo change should proceed without the minimum parameters needed to reduce AI drift, hallucinations, branch confusion, governance mistakes, and assumption-based execution.
 
-This checklist applies to every product repo and to Gawain's Main itself.
+This checklist applies to every product repo, to Gawain's Main itself, and to non-code work routed through Merlin/Gawain/AI Council workflows.
+
+## Universal Phase 0 Requirement
+
+Before any implementation, review, recommendation, document, contract, business workflow, screenshot/image intake action, product decision, or governance packet, the agent must complete an existing-state + context check.
+
+Required Phase 0 fields:
+
+```text
+Project / brand / workflow:
+Current known state:
+Existing artifacts reviewed:
+Existing files / docs / screenshots / packets / decisions inspected:
+Working capability to preserve:
+Prior approvals / rejections / constraints:
+Conflicts found:
+Gaps / unknowns / risks:
+Assumptions being made:
+Smallest aligned next action:
+```
+
+No implementation should begin from assumptions when existing context is available.
 
 ## Required Before Codex Execution
 
@@ -17,6 +38,8 @@ Branch name:
 Baseline SHA:
 Current worktree state:
 Stash status:
+Existing-state + context check:
+Working capability to preserve:
 Allowed files:
 Banned files:
 Do-not-touch areas:
@@ -44,6 +67,23 @@ Codex must not start a lane when unrelated work is dirty, untracked, or unstashe
 
 If unrelated work exists, Codex stops and reports it.
 
+## Existing-State Deep Dive Requirement
+
+Before changing files, Codex must inspect the current implementation and identify:
+
+- relevant files, routes, components, tests, docs, schemas, configs, and runtime boundaries
+- existing behavior that already satisfies the goal
+- existing behavior that partially satisfies the goal
+- conflicts with the requested doctrine or scope
+- fragile areas that should not be touched
+- dead, risky, deprecated, or quarantined surfaces
+- tests that already protect the area
+- missing tests
+
+Codex must not replace working functionality with a new abstraction unless the existing implementation is proven incompatible.
+
+Prefer minimal aligned changes over broad rewrites.
+
 ## Branch Requirement
 
 ```text
@@ -54,7 +94,7 @@ Do not stack unrelated work.
 
 ## Gemini Objector Requirement
 
-Before Codex execution, Gawain sends Gemini a pre-flight objector packet when implementation is needed.
+Before Codex execution, Gawain sends Gemini a pre-flight objector packet when implementation is needed or when governance/product risk exists.
 
 The packet must include:
 
@@ -63,6 +103,8 @@ The packet must include:
 - lane name
 - branch name
 - goal
+- existing-state/context findings
+- working capability to preserve
 - doctrine constraints
 - allowed files
 - banned files
@@ -77,10 +119,14 @@ After Codex returns a checkpoint, Gawain must obtain review evidence before Gemi
 Default evidence:
 
 ```text
+existing-state/context findings
 file disposition
 worktree status
 validation log
 lane scope
+working capability preserved
+conflicts found
+assumptions made
 ```
 
 Raw/full diffs are omitted by default and require explicit Gawain authorization.
@@ -92,6 +138,7 @@ Codex performs repo-local merge work only after:
 1. Gemini implementation review returns Pass.
 2. Gawain gives the merge instruction.
 3. The expected head SHA is confirmed.
+4. Any required human / Knight approval has been explicitly recorded.
 
 ## Minimum Return Checkpoint
 
@@ -102,7 +149,12 @@ Repo:
 Lane chosen:
 Branch:
 Baseline SHA:
+Existing-state deep dive:
 Files inspected:
+Current behavior found:
+Working capability preserved:
+Conflicts found:
+Gaps / risks / assumptions:
 Files changed:
 What changed:
 Tests run:
@@ -113,3 +165,5 @@ PR link if opened:
 Final git status:
 Risks / follow-up needed:
 ```
+
+Any checkpoint missing the existing-state deep dive defaults to FAIL or PASS WITH CONDITIONS until corrected.
