@@ -10,6 +10,11 @@ Required intake fields:
 - Current branch
 - Baseline SHA
 - Worktree status
+- Status timestamp
+- Source of truth checked
+- Last-known vs current
+- Freshness risk
+- Re-check required before
 - Goal
 - Existing-state/context findings
 - Existing files, docs, packets, decisions, screenshots, or artifacts inspected

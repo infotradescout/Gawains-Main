@@ -15,6 +15,10 @@ Required check:
 ```text
 What already exists?
 What is already known?
+When was status last checked?
+Which source of truth was checked?
+Is this current or last-known status?
+What must be re-checked before approval, merge, apply, send, or close?
 What prior decisions constrain this?
 What working capability must be preserved?
 What conflicts with the request?
@@ -43,3 +47,4 @@ What is the smallest aligned next action?
 - No lane may close with modified, deleted, or untracked files.
 - No raw/full diffs go to Gemini by default.
 - No agent may invent files, commits, validation logs, metrics, production status, review status, or completed work.
+- No stale status claim may support approve, merge, deploy, send, apply, close, or mark-complete decisions.

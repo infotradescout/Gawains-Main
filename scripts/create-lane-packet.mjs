@@ -42,6 +42,14 @@ Current branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Worktree status: {{WORKTREE_STATUS}}
 
+## Time Passage + Status Freshness
+
+Status timestamp: {{CREATED_AT}}
+Source of truth checked: local git snapshot from registry path
+Last-known vs current: current as of status timestamp
+Freshness risk: re-check required if time passes, another agent acts, user reports new activity, or approval/merge/apply/send/close is requested
+Re-check required before: Codex execution, Gemini review, merge, apply, send, close, or completion claim
+
 ## Mandatory Phase 0 — Existing-State + Context Check
 
 Project / brand / workflow: TBD
@@ -72,6 +80,11 @@ const status = renderTemplate(`Repo: {{REPO_KEY}}
 Lane: {{LANE_NAME}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
+Status timestamp: {{CREATED_AT}}
+Source of truth checked: local git snapshot from registry path
+Last-known vs current: current as of status timestamp
+Freshness risk: re-check required before action decisions
+Re-check required before: Codex execution, Gemini review, merge, apply, send, close, or completion claim
 Worktree status:
 {{WORKTREE_STATUS}}
 

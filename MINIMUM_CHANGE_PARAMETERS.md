@@ -13,6 +13,11 @@ Required Phase 0 fields:
 ```text
 Project / brand / workflow:
 Current known state:
+Status timestamp:
+Source of truth checked:
+Last-known vs current:
+Freshness risk:
+Re-check required before:
 Existing artifacts reviewed:
 Existing files / docs / screenshots / packets / decisions inspected:
 Working capability to preserve:
@@ -24,6 +29,24 @@ Smallest aligned next action:
 ```
 
 No implementation should begin from assumptions when existing context is available.
+
+## Time Passage And Status Freshness Requirement
+
+All status claims expire unless refreshed.
+
+Before saying something is done, ready, merged, deployed, validated, accessible, fixed, current, blocked, complete, or still true, the agent must re-check the relevant source of truth or explicitly label the statement as last-known status.
+
+Required wording:
+
+```text
+Current check:
+Last checked:
+Source of truth:
+Status freshness:
+Assumptions:
+```
+
+A stale status claim must not be used to approve, merge, deploy, send, apply, close, or mark work complete.
 
 ## Required Before Codex Execution
 
@@ -38,6 +61,11 @@ Branch name:
 Baseline SHA:
 Current worktree state:
 Stash status:
+Status timestamp:
+Source of truth checked:
+Last-known vs current:
+Freshness risk:
+Re-check required before:
 Existing-state + context check:
 Working capability to preserve:
 Allowed files:
@@ -149,6 +177,11 @@ Repo:
 Lane chosen:
 Branch:
 Baseline SHA:
+Status timestamp:
+Source of truth checked:
+Last-known vs current:
+Freshness risk:
+Re-check required before:
 Existing-state deep dive:
 Files inspected:
 Current behavior found:

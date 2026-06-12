@@ -30,6 +30,14 @@ Current branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Worktree status: {{WORKTREE_STATUS}}
 
+## Time Passage + Status Freshness
+
+Status timestamp: {{CREATED_AT}}
+Source of truth checked: local git snapshot from registry path
+Last-known vs current: current as of status timestamp
+Freshness risk: re-check required if time passes, another agent acts, user reports new activity, or approval/merge/apply/send/close is requested
+Re-check required before: implementation start, validation claim, commit claim, push claim, PR claim, merge, apply, send, close, or completion claim
+
 You are working inside the product repo listed above, not inside Gawain-Main.
 
 ## Mandatory Phase 0 — Existing-State + Context Check
@@ -59,7 +67,9 @@ Do not replace working functionality with a new abstraction unless the existing 
 - Preserve working capability by default.
 - Make the smallest aligned change that satisfies the approved goal.
 - Return existing-state findings, files inspected, files changed, validation output, commit SHA, push status, and final git status.
+- Return status timestamp, source of truth checked, last-known vs current, freshness risk, and re-check required before.
 - Do not invent files, commits, validation output, metrics, production state, review status, or completion.
+- Do not treat prior checks as current after meaningful time has passed.
 - Do not send raw git diff output to Gemini by default.
 
 Goal:

@@ -22,6 +22,24 @@ or, for harmless low-risk work only:
 PASS WITH CONDITIONS — existing-state/context check required before apply/send/merge
 ```
 
+## Time Passage And Status Freshness Review Gate
+
+All status claims are time-bound.
+
+Before a packet or review claims work is done, ready, merged, deployed, validated, accessible, fixed, current, blocked, complete, or still true, it must include:
+
+```text
+Status timestamp:
+Source of truth checked:
+Last-known vs current:
+Freshness risk:
+Re-check required before:
+```
+
+If status was not re-checked, the claim must be labeled as last-known status and must not support approve, merge, deploy, send, apply, close, or mark-complete decisions.
+
+A review packet with stale or missing status freshness defaults to FAIL for authority-sensitive work, or PASS WITH CONDITIONS only when the missing freshness can be corrected before action.
+
 ## Non-Negotiable Arbitrator Rule
 
 Gemini is the arbitrator and adversarial objector for workflow safety.
@@ -92,16 +110,19 @@ Every implementation review packet must include:
 2. PR / branch / commit
 3. Baseline SHA
 4. Lane name
-5. Existing-state/context findings
-6. Working capability preserved
-7. Conflicts found
-8. Assumptions made
-9. Files changed
-10. Validation reported
-11. File disposition, worktree status, validation log, and targeted evidence
-12. Doctrine checklist
-13. Specific review questions
-14. Required Pass/Fail output
+5. Status timestamp and source of truth checked
+6. Last-known vs current classification
+7. Freshness risk and re-check requirement
+8. Existing-state/context findings
+9. Working capability preserved
+10. Conflicts found
+11. Assumptions made
+12. Files changed
+13. Validation reported
+14. File disposition, worktree status, validation log, and targeted evidence
+15. Doctrine checklist
+16. Specific review questions
+17. Required Pass/Fail output
 
 ## No Summary-Only Reviews
 

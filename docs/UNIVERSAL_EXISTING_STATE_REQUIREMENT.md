@@ -86,6 +86,31 @@ The agent must not invent:
 
 If context is incomplete, the agent should make the best reasonable assumption, label it clearly, and continue unless the missing detail would make the action unsafe, misleading, or useless.
 
+## Time Passage And Status Freshness Law
+
+All status claims are time-sensitive.
+
+Before saying something is done, ready, merged, deployed, validated, accessible, fixed, current, blocked, complete, or still true, the agent must either:
+
+1. Re-check the relevant source of truth and include the check timestamp.
+2. Label the statement as last-known status and avoid making an action decision from it.
+
+This applies to repo state, branch state, PR state, validation, deployment, Drive access, Discord packet state, approval state, production status, and agent completion.
+
+Time passage, new user reports, possible agent activity, possible GitHub/Drive/Discord changes, or any approval/merge/apply/send decision makes freshness relevant.
+
+Required freshness fields:
+
+```text
+Status timestamp:
+Source of truth checked:
+Last-known vs current:
+Freshness risk:
+Re-check required before:
+```
+
+A stale status claim must not support approve, merge, deploy, send, apply, close, or mark-complete decisions.
+
 ## Human / GPT / Gemini / Codex Routing
 
 Default routed workflow:
@@ -135,6 +160,7 @@ Execution-ready outputs should include, when relevant:
 - conflicts or risks found
 - minimal aligned action
 - validation or review evidence
+- status timestamp and source-of-truth freshness when making status claims
 - exact next prompt, packet, checklist, draft, or action
 
 The standard is not more process for its own sake. The standard is to prevent AI from acting without reading what is already there.
