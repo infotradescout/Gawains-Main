@@ -42,6 +42,19 @@ Current branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Worktree status: {{WORKTREE_STATUS}}
 
+## Mandatory Phase 0 — Existing-State + Context Check
+
+Project / brand / workflow: TBD
+Existing artifacts reviewed: TBD
+Current behavior found: TBD
+Working capability to preserve: TBD
+Prior approvals / rejections / constraints: TBD
+Conflicts found: TBD
+Gaps / risks / assumptions: TBD
+Smallest aligned next action: TBD
+
+Do not implement, rewrite, rename, delete, apply, send, or merge before this section is completed.
+
 ## Goal
 TBD
 
@@ -61,6 +74,8 @@ Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Worktree status:
 {{WORKTREE_STATUS}}
+
+Existing-state/context check: REQUIRED BEFORE ACTION
 `, values);
 
 await writeTextFile(path.join(outputDir, 'LANE_INTAKE.md'), intake);
