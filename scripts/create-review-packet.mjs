@@ -43,6 +43,17 @@ Lane: {{LANE_NAME}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 
+## Existing-State + Context Check
+
+- Project / brand / workflow: TBD
+- Existing artifacts reviewed: TBD
+- Current behavior found: TBD
+- Working capability preserved: TBD
+- Prior decisions / constraints: TBD
+- Conflicts found: TBD
+- Gaps / risks / assumptions: TBD
+- Smallest aligned action chosen: TBD
+
 ## Worktree Status
 {{WORKTREE_STATUS}}
 
@@ -56,7 +67,7 @@ Baseline SHA: {{BASELINE_SHA}}
 TBD
 
 ## Review Notes
-No raw git diff is included by default. Attach targeted evidence only when Gawain explicitly authorizes it.
+No raw git diff is included by default. Attach targeted evidence only when Gawain authorizes it.
 `, values);
 
 const gemini = renderTemplate(`# Gemini Request
@@ -68,15 +79,18 @@ Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 
 ## Request
-Review the lane packet, file disposition, validation log, and worktree status. Return PASS or FAIL with objections.
+Review the lane packet, existing-state/context findings, file disposition, validation log, and worktree status. Return PASS or FAIL with specific concerns.
 
 ## Evidence Included
+- Existing-state/context findings
+- Working capability preserved
+- Conflicts / risks / assumptions
 - Worktree status
 - File disposition
 - Validation log
 
 ## Evidence Not Included By Default
-Raw/full git diff output is omitted unless Gawain explicitly requests it.
+Raw/full git diff output is omitted unless Gawain asks for it.
 
 ## Worktree Status
 {{WORKTREE_STATUS}}
@@ -85,6 +99,7 @@ Raw/full git diff output is omitted unless Gawain explicitly requests it.
 await writeTextFile(path.join(reviewDir, 'REVIEW_PACKET.md'), review);
 await writeTextFile(path.join(reviewDir, 'FILE_DISPOSITION.txt'), 'Added:\nModified:\nDeleted:\nUntracked:\n');
 await writeTextFile(path.join(reviewDir, 'STATUS.txt'), `Worktree status:\n${values.WORKTREE_STATUS}\n`);
+await writeTextFile(path.join(reviewDir, 'EXISTING_STATE_CONTEXT.txt'), 'Project / brand / workflow:\nExisting artifacts reviewed:\nCurrent behavior found:\nWorking capability preserved:\nPrior decisions / constraints:\nConflicts found:\nGaps / risks / assumptions:\nSmallest aligned action chosen:\n');
 await writeTextFile(path.join(reviewDir, 'VALIDATION_LOG.txt'), 'No validation run yet.');
 await writeTextFile(path.join(geminiDir, 'GEMINI_REQUEST.md'), gemini);
 
