@@ -1,0 +1,38 @@
+{
+  "packet_id": "mealscout-p0-scout-discovery-2026-06-13",
+  "repo": "MealScout",
+  "branch": "main",
+  "baseline_sha": "TBD",
+  "final_sha": "2b2f0a88",
+  "files_inspected": [
+    "/scout client route and component",
+    "/api/trucks/live client calls and handler",
+    "/api/restaurants/subscribed/:lat/:lng handler",
+    "business-access filtering",
+    "truck coordinate and service-area discoverability logic",
+    "Food Trucks count and card rendering",
+    "live/not-live status labeling",
+    "route CTA rendering"
+  ],
+  "files_changed": [
+    "MealScout repo commit 2b2f0a88"
+  ],
+  "root_cause": "/scout depended on /api/restaurants/subscribed/... for broader truck inventory. That endpoint's business-access filtering collapsed production output to only 3D Eats, and trucks without exact profile coordinates were dropped before the frontend could render them as service-area/not-live trucks.",
+  "behavior_before": "Production /scout showed only 3D Eats or collapsed broader discoverable truck inventory; trucks without exact coordinates could not render as service-area/not-live trucks.",
+  "behavior_after": "Production /scout shows six nearby food truck cards with honest not-live/live labeling. Public food-truck profiles and Pensacola service-area trucks without exact coordinates are included, truck rows are kept out of the restaurant lane, and route CTAs are removed unless live.",
+  "validation_results": [
+    "npm run check passed",
+    "npm run build:client passed",
+    "npm run build:server passed",
+    "Scout truck regression contracts passed",
+    "Live browser verification passed"
+  ],
+  "production_verification": {
+    "verified": true,
+    "source": "Thomas production verification decision",
+    "api_evidence": "X-MealScout-Public-Truck-Profiles: 15",
+    "browser_evidence": "Food Trucks 6 nearby; visible cards include 3D Eats & Tea, Blessed Berry Bowls, Sweet Love, All Gas No Brakes Reloaded, CREATIVBOWLS, and Jays Southern Cuisine"
+  },
+  "remaining_risks": [],
+  "final_git_status": "MealScout main at 2b2f0a88; production verified by Thomas"
+}

@@ -1,19 +1,17 @@
 {
   "ledger_id": "roundtable-repo-status-ledger",
-  "updated_at": "2026-06-13T00:00:00.000Z",
+  "updated_at": "2026-06-13T13:16:18.4558643-05:00",
   "repos": [
     {
       "repo": "MealScout",
       "local_path": "D:\\AAATraderCorner\\TradeScout\\MealScout",
       "default_branch": "main",
-      "active_packet_ids": [
-        "mealscout-p0-scout-discovery-2026-06-13"
-      ],
-      "last_closed_packet_id": "",
-      "last_known_branch": "",
-      "last_known_sha": "",
-      "last_status": "active packet created; execution evidence required",
-      "production_verified_at": ""
+      "active_packet_ids": [],
+      "last_closed_packet_id": "mealscout-p0-scout-discovery-2026-06-13",
+      "last_known_branch": "main",
+      "last_known_sha": "2b2f0a88",
+      "last_status": "closed: /scout P0 fixed and production-verified; visible acceptance PASS",
+      "production_verified_at": "2026-06-13T13:16:18.4558643-05:00"
     },
     {
       "repo": "TradeScout",

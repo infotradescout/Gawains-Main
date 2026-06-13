@@ -1,0 +1,11 @@
+{
+  "packet_id": "mealscout-p0-scout-discovery-2026-06-13",
+  "repo": "MealScout",
+  "decision": "pass",
+  "decided_by": "Thomas",
+  "reason": "MealScout /scout P0 is fixed and production-verified with live API and browser evidence.",
+  "conditions": [],
+  "merge_authorized": true,
+  "deployment_authorized": true,
+  "production_claim_allowed": true
+}

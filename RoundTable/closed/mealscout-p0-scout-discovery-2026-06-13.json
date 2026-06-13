@@ -1,11 +1,11 @@
 {
   "packet_id": "mealscout-p0-scout-discovery-2026-06-13",
   "repo": "MealScout",
-  "target_branch": "fix/scout-visible-discovery-recovery",
+  "target_branch": "main",
   "baseline_sha": "TBD",
   "issue_summary": "MealScout Scout page visible recovery",
   "visible_goal": "When Thomas opens https://www.mealscout.us/scout, all discoverable food trucks appear with honest status labels.",
-  "user_problem": "Only 3D Eats appears. Other trucks are missing. 3D Eats status labeling must be honest.",
+  "user_problem": "Only 3D Eats appeared. Other trucks were missing, broader subscribed truck inventory collapsed, and trucks without exact profile coordinates were dropped before not-live/service-area rendering.",
   "acceptance_criteria": [
     "Food Trucks count matches displayed truck cards",
     "Missing menu does not hide a truck",
@@ -18,6 +18,8 @@
     "/scout client route and component",
     "/api/trucks/live client calls",
     "/api/trucks/live server handler",
+    "/api/restaurants/subscribed/:lat/:lng server handler",
+    "business-access filtering",
     "lat/lng, radius, active, verified, live, schedule, menu, location, serving-area, and profile visibility filters",
     "Food Trucks count rendering",
     "Not live now rendering",
@@ -32,14 +34,16 @@
   ],
   "validation_required": [
     "npm run check",
-    "relevant Scout/discovery regression tests",
+    "npm run build:client",
+    "npm run build:server",
+    "Scout truck regression contracts",
     "production-facing API response with lat/lng",
     "browser-visible /scout result after deployment"
   ],
   "production_verification_required": true,
-  "decision_owner": "Thomas / Gawain",
+  "decision_owner": "Thomas",
   "gemini_required": true,
-  "status": "active",
+  "status": "closed",
   "created_at": "2026-06-13T00:00:00.000Z",
-  "updated_at": "2026-06-13T00:00:00.000Z"
+  "updated_at": "2026-06-13T13:16:18.4558643-05:00"
 }
