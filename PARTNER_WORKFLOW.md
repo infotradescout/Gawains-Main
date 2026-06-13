@@ -1,6 +1,6 @@
 # Partner Workflow
 
-Gawain's Main may be used by Thomas and approved business partners to route work across attached repos.
+RoundTable may be used by Thomas and approved business partners to route work across attached repos.
 
 ## Core Rule
 
@@ -82,4 +82,4 @@ Merlin work goes to Merlin.
 AutoBott work goes to AutoBott.
 ```
 
-Gawain's Main stores the routing record only.
+RoundTable stores the routing record only.

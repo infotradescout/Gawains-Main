@@ -1,8 +1,8 @@
 # Lane Intake
 
 Created: 2026-06-13
-Repo: RoundTable / Gawains-Main (roundtable)
-Local path: D:\AAATraderCorner\TradeScout\Gawains-Main
+Repo: RoundTable (roundtable)
+Local path: D:\AAATraderCorner\TradeScout\RoundTable
 Lane: canonical-discord-packet-authority-contract
 Current branch: roundtable/canonical-discord-contract
 Baseline SHA: 99037f04f6f0bd86350a6fe38c69c2b7100b6f02

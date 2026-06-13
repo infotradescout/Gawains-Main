@@ -1,6 +1,6 @@
-# Gawain-Main Workflow
+# RoundTable Workflow
 
-Gawain-Main / RoundTable is the dispatcher and ledger for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, parent routing packets, terminal Git state records, and Gemini exports.
+RoundTable is the dispatcher and ledger for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, parent routing packets, terminal Git state records, and Gemini exports.
 
 It is not a product source mirror. Product repos stay separate and are referenced through `registry/repos.json`.
 
@@ -66,8 +66,8 @@ Merge authorization remains blocked until `geminiStatus: execution_audit_passed`
 ## Non-Negotiables
 
 - Do not act from assumption alone when current state can be inspected.
-- Do not copy product source into Gawain-Main.
-- Do not place live product repos inside Gawain-Main.
+- Do not copy product source into RoundTable.
+- Do not place live product repos inside RoundTable.
 - Scripts must resolve product paths from `registry/repos.json`.
 - No lane may close with modified, deleted, or untracked files.
 - No raw/full diffs go to Gemini by default.

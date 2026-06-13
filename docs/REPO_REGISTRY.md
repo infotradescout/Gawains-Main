@@ -1,6 +1,6 @@
 # Repo Registry
 
-`registry/repos.json` is the live local registry for Gawain-Main.
+`registry/repos.json` is the live local registry for RoundTable.
 
 Each repo entry must include:
 
@@ -13,4 +13,4 @@ Each repo entry must include:
 - `status`: `discovered` or `placeholder`
 - `notes`: human context
 
-Product repo source stays in the product repo. Gawain-Main stores references, packets, and review artifacts only.
+Product repo source stays in the product repo. RoundTable stores references, packets, and review artifacts only.

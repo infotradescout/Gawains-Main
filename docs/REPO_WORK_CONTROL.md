@@ -1,6 +1,6 @@
 # Repo Work Control
 
-Round Table / Gawain's Main is the required control window for repo changes across:
+Round Table / RoundTable is the required control window for repo changes across:
 
 - MealScout
 - TradeScout
@@ -33,7 +33,7 @@ When Round Table needs to dispatch a post-Gemini-PASS instruction, the dispatch 
 - No DONE without production/user-visible verification when production behavior is involved.
 - No fake production claims.
 - Repo name must always be explicit.
-- Product code does not move into Gawain's Main.
+- Product code does not move into RoundTable.
 - Round Table cannot authorize merge/deploy from stale status.
 - A packet with `gemini_required: true` cannot be merge-authorized without Gemini execution audit evidence.
 - A dispatch packet must set `no_runtime_execution_by_roundtable: true`.

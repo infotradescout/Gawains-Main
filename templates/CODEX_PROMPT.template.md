@@ -22,4 +22,4 @@ geminiPreflightResultRef:
 geminiExecutionAuditResultRef:
 mergeAuthorization:
 
-Work only inside the target repo. Do not copy product source into Gawain-Main. Do not close with a dirty worktree.
+Work only inside the target repo. Do not copy product source into RoundTable. Do not close with a dirty worktree.

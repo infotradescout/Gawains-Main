@@ -1,6 +1,6 @@
 # Round Table Doctrine
 
-Gawain's Main is the real-world Round Table for Albion.
+RoundTable is the real-world Round Table for Albion.
 
 It is where the real Knights interact with the AI Council, route work, record objections, preserve decisions, and maintain the operating record before work moves into product repos.
 
@@ -69,7 +69,7 @@ The AI Council may advise, object, route, and record. It cannot silently approve
 
 ## Product Repo Boundary
 
-Gawain's Main is not the source of truth for product code.
+RoundTable is not the source of truth for product code.
 
 ```text
 TradeScout code stays in TradeScout
@@ -80,4 +80,4 @@ Merlin workflow stays in Merlin
 AutoBott code stays in AutoBott
 ```
 
-Gawain's Main is the Round Table record and routing layer.
+RoundTable is the Round Table record and routing layer.
