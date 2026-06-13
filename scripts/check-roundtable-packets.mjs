@@ -77,6 +77,29 @@ const schemaChecks = [
   {
     file: 'repo-status-ledger.schema.json',
     required: ['ledger_id', 'updated_at', 'repos']
+  },
+  {
+    file: 'routing-dispatch.schema.json',
+    required: [
+      'dispatch_id',
+      'packet_id',
+      'repo',
+      'target_branch',
+      'baseline_sha',
+      'dispatch_type',
+      'requested_action',
+      'gemini_status',
+      'gemini_result_ref',
+      'gawain_decision_ref',
+      'review_packet_ref',
+      'production_verification_ref',
+      'authority_state',
+      'execution_owner',
+      'no_runtime_execution_by_roundtable',
+      'status',
+      'created_at',
+      'updated_at'
+    ]
   }
 ];
 
@@ -132,6 +155,7 @@ const workSchema = readJson(path.join(schemasDir, 'work-packet.schema.json'));
 const reviewSchema = readJson(path.join(schemasDir, 'review-packet.schema.json'));
 const decisionSchema = readJson(path.join(schemasDir, 'decision-record.schema.json'));
 const productionSchema = readJson(path.join(schemasDir, 'production-verification.schema.json'));
+const dispatchSchema = readJson(path.join(schemasDir, 'routing-dispatch.schema.json'));
 const activeDir = path.join(ROOT, 'roundtable', 'active');
 for (const filePath of listJsonFiles(activeDir)) {
   const packet = readJson(filePath);
@@ -167,6 +191,17 @@ for (const filePath of listJsonFiles(closedDir)) {
   assert(allowedRepos.has(packet.repo), `${packet.packet_id} has unknown repo: ${packet.repo}`);
 }
 
+const dispatchDir = path.join(ROOT, 'roundtable', 'dispatch');
+for (const filePath of listJsonFiles(dispatchDir)) {
+  const packet = readJson(filePath);
+  assertRequiredFields(packet, dispatchSchema.required, path.relative(ROOT, filePath));
+  assert(allowedRepos.has(packet.repo), `${packet.dispatch_id} has unknown repo: ${packet.repo}`);
+  assert(
+    packet.no_runtime_execution_by_roundtable === true,
+    `${packet.dispatch_id} must set no_runtime_execution_by_roundtable to true`
+  );
+}
+
 const ledgerSchema = readJson(path.join(schemasDir, 'repo-status-ledger.schema.json'));
 const ledgerPath = path.join(ROOT, 'roundtable', 'ledgers', 'repo-status-ledger.json');
 const ledger = readJson(ledgerPath);
@@ -177,7 +212,7 @@ for (const repo of ledger.repos) {
   assert(Array.isArray(repo.active_packet_ids), `${repo.repo} active_packet_ids must be an array`);
 }
 
-const requiredDirs = ['inbox', 'active', 'review', 'approved', 'blocked', 'closed', 'ledgers', 'schemas'];
+const requiredDirs = ['inbox', 'active', 'review', 'approved', 'blocked', 'closed', 'dispatch', 'ledgers', 'schemas'];
 for (const dir of requiredDirs) {
   const fullPath = path.join(ROOT, 'roundtable', dir);
   assert(statSync(fullPath).isDirectory(), `Missing roundtable/${dir}/ directory`);

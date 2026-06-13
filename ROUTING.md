@@ -18,10 +18,13 @@ Request enters Gawain's Main
 → Gemini reviews implementation
 → Gawain reconciles
 → Round Table records decision and production/user-visible verification when required
+→ Round Table emits a bounded routing dispatch record only if the dispatch contract passes
 → Codex performs repo-local merge only after Gawain instruction
 ```
 
 No repo change is valid unless it has a Round Table packet first. No closeout is valid unless the packet has review evidence, decision state, and required production/user-visible verification.
+
+Routing dispatch records are governed by `docs/ROUNDTABLE_ROUTING_DISPATCH_CONTRACT.md`. They are records and instructions only; they do not give Round Table runtime execution authority.
 
 ## What Gawain's Main Can Do
 

@@ -24,6 +24,8 @@ Product code still changes inside the target repo. Round Table owns the control 
 9. Round Table records production/user-visible verification when required.
 10. Round Table closes the packet in `roundtable/closed/` and updates `roundtable/ledgers/repo-status-ledger.json`.
 
+When Round Table needs to dispatch a post-Gemini-PASS instruction, the dispatch record must follow `docs/ROUNDTABLE_ROUTING_DISPATCH_CONTRACT.md` and `roundtable/schemas/routing-dispatch.schema.json`.
+
 ## Hard Rules
 
 - No repo work without a Round Table packet first.
@@ -34,6 +36,7 @@ Product code still changes inside the target repo. Round Table owns the control 
 - Product code does not move into Gawain's Main.
 - Round Table cannot authorize merge/deploy from stale status.
 - A packet with `gemini_required: true` cannot be merge-authorized without Gemini execution audit evidence.
+- A dispatch packet must set `no_runtime_execution_by_roundtable: true`.
 
 ## Required Work Packet Fields
 

@@ -1,0 +1,94 @@
+{
+  "schema_name": "roundtable.routing_dispatch_packet",
+  "schema_version": 1,
+  "type": "object",
+  "required": [
+    "dispatch_id",
+    "packet_id",
+    "repo",
+    "target_branch",
+    "baseline_sha",
+    "dispatch_type",
+    "requested_action",
+    "gemini_status",
+    "gemini_result_ref",
+    "gawain_decision_ref",
+    "review_packet_ref",
+    "production_verification_ref",
+    "authority_state",
+    "execution_owner",
+    "no_runtime_execution_by_roundtable",
+    "status",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "dispatch_id": { "type": "string" },
+    "packet_id": { "type": "string" },
+    "repo": { "type": "string" },
+    "target_branch": { "type": "string" },
+    "baseline_sha": { "type": "string" },
+    "dispatch_type": {
+      "type": "string",
+      "enum": [
+        "repo_work",
+        "gemini_review",
+        "merge_instruction",
+        "deployment_instruction",
+        "closure_record",
+        "merlin_transport"
+      ]
+    },
+    "requested_action": { "type": "string" },
+    "gemini_status": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "preflight_pending",
+        "preflight_passed",
+        "execution_audit_pending",
+        "execution_audit_passed",
+        "pass_with_conditions_resolved",
+        "blocked",
+        "held_pending_gemini"
+      ]
+    },
+    "gemini_result_ref": { "type": "string" },
+    "gawain_decision_ref": { "type": "string" },
+    "review_packet_ref": { "type": "string" },
+    "production_verification_ref": { "type": "string" },
+    "authority_state": {
+      "type": "object",
+      "required": [
+        "authorized_by",
+        "human_authority_required",
+        "gemini_required",
+        "merge_authorized",
+        "deployment_authorized",
+        "production_claim_allowed"
+      ],
+      "properties": {
+        "authorized_by": { "type": "string" },
+        "human_authority_required": { "type": "boolean" },
+        "gemini_required": { "type": "boolean" },
+        "merge_authorized": { "type": "boolean" },
+        "deployment_authorized": { "type": "boolean" },
+        "production_claim_allowed": { "type": "boolean" }
+      }
+    },
+    "execution_owner": { "type": "string" },
+    "no_runtime_execution_by_roundtable": { "type": "boolean" },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "blocked",
+        "dispatch_ready",
+        "dispatched",
+        "closed"
+      ]
+    },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" }
+  }
+}

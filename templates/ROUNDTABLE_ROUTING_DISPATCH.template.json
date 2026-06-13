@@ -1,0 +1,27 @@
+{
+  "dispatch_id": "roundtable.dispatch.example",
+  "packet_id": "OPEN QUESTION",
+  "repo": "OPEN QUESTION",
+  "target_branch": "OPEN QUESTION",
+  "baseline_sha": "OPEN QUESTION",
+  "dispatch_type": "repo_work",
+  "requested_action": "OPEN QUESTION",
+  "gemini_status": "preflight_pending",
+  "gemini_result_ref": "OPEN QUESTION",
+  "gawain_decision_ref": "OPEN QUESTION",
+  "review_packet_ref": "OPEN QUESTION",
+  "production_verification_ref": "OPEN QUESTION",
+  "authority_state": {
+    "authorized_by": "OPEN QUESTION",
+    "human_authority_required": true,
+    "gemini_required": true,
+    "merge_authorized": false,
+    "deployment_authorized": false,
+    "production_claim_allowed": false
+  },
+  "execution_owner": "target_repo_or_merlin",
+  "no_runtime_execution_by_roundtable": true,
+  "status": "blocked",
+  "created_at": "OPEN QUESTION",
+  "updated_at": "OPEN QUESTION"
+}
