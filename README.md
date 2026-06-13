@@ -89,6 +89,8 @@ Thomas = final human authority
 
 Gemini must be included before and after Codex execution.
 
+No Gemini status means no merge, no closeout, no "approved," and no "ready."
+
 ```text
 Gawain performs existing-state + context check
 → Gawain drafts lane
@@ -103,6 +105,14 @@ Gawain performs existing-state + context check
 ```
 
 Skipping the existing-state check or Gemini objector step is a workflow violation.
+
+For any lane involving doctrine, governance, workflow, authority, automation, core architecture, execution logic, cross-repo routing, merge authorization, deployment, money/legal commitments, storage/runtime, or product behavior changes:
+
+- Gemini pre-flight is required before Codex execution.
+- Gemini execution audit is required after Codex execution.
+- Gawain cannot authorize merge unless Gemini execution audit returned PASS or PASS WITH CONDITIONS with conditions explicitly resolved.
+- If Gemini is unavailable, the lane is `HELD_PENDING_GEMINI`.
+- GitHub mergeability, tests passing, Codex confidence, or Gawain review cannot substitute for Gemini PASS.
 
 ## Minimum Change Rule
 

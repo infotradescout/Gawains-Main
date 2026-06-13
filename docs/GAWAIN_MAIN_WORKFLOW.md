@@ -46,6 +46,23 @@ What is the smallest aligned next action?
 8. Create a Gemini handoff in `exports/gemini/` when implementation review is required.
 9. Close only after Codex PASS, Gawain PASS, Gemini PASS when required, required human/Knight signoff when applicable, and a clean target worktree.
 
+## Gemini Status Gate
+
+No Gemini status means no merge, no closeout, no "approved," and no "ready."
+
+Required packet fields:
+
+```text
+geminiStatus:
+geminiPreflightRequired:
+geminiExecutionAuditRequired:
+geminiPreflightResultRef:
+geminiExecutionAuditResultRef:
+mergeAuthorization:
+```
+
+Merge authorization remains blocked until `geminiStatus: execution_audit_passed`, except for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes marked `geminiStatus: not_required`.
+
 ## Non-Negotiables
 
 - Do not act from assumption alone when current state can be inspected.

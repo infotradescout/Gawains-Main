@@ -52,6 +52,8 @@ A review packet with stale or missing status freshness defaults to FAIL for auth
 
 Gemini is the arbitrator and adversarial objector for workflow safety.
 
+No Gemini status means no merge, no closeout, no "approved," and no "ready."
+
 Gawain must never send Codex an implementation prompt for a repo lane until:
 
 1. Gawain has completed the existing-state + context check.
@@ -65,6 +67,55 @@ No Gemini objector pass = no Codex execution.
 No review evidence = no Gemini implementation review.
 No Gemini implementation pass = no merge instruction.
 ```
+
+## Gemini Status Gate
+
+Every lane or PR packet must include:
+
+```text
+geminiStatus:
+geminiPreflightRequired:
+geminiExecutionAuditRequired:
+geminiPreflightResultRef:
+geminiExecutionAuditResultRef:
+mergeAuthorization:
+```
+
+Allowed `geminiStatus` values:
+
+```text
+not_required
+preflight_pending
+preflight_passed
+execution_audit_pending
+execution_audit_passed
+blocked
+held_pending_gemini
+```
+
+Allowed `mergeAuthorization` values:
+
+```text
+blocked
+authorized
+held_pending_gemini
+```
+
+For any lane involving doctrine, governance, workflow, authority, automation, core architecture, execution logic, cross-repo routing, merge authorization, deployment, money/legal commitments, storage/runtime, or product behavior changes:
+
+1. Gemini pre-flight is required before Codex execution.
+2. Gemini execution audit is required after Codex execution.
+3. Gawain cannot authorize merge unless Gemini execution audit returned PASS or PASS WITH CONDITIONS with conditions explicitly resolved.
+4. If Gemini is unavailable, the lane must be marked `held_pending_gemini`.
+5. GitHub mergeability, tests passing, Codex confidence, or Gawain review cannot substitute for Gemini PASS.
+
+Validation rule:
+
+- Missing `geminiStatus` on a merge-ready packet defaults to FAIL.
+- `preflight_pending`, `execution_audit_pending`, `blocked`, or `held_pending_gemini` on a merge-ready packet defaults to FAIL.
+- "ready," "approved," or "merge authorized" language without `geminiStatus: execution_audit_passed` defaults to FAIL.
+- If the Gemini channel/tool is unavailable, `geminiStatus` must be `held_pending_gemini`.
+- `geminiStatus: not_required` is allowed only for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes.
 
 ## Full Workflow Loop
 

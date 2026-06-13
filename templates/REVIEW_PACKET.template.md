@@ -24,6 +24,15 @@ Baseline SHA: {{BASELINE_SHA}}
 - Gaps / risks / assumptions:
 - Smallest aligned action chosen:
 
+## Gemini Status Gate
+
+- geminiStatus:
+- geminiPreflightRequired:
+- geminiExecutionAuditRequired:
+- geminiPreflightResultRef:
+- geminiExecutionAuditResultRef:
+- mergeAuthorization:
+
 ## Worktree Status
 {{WORKTREE_STATUS}}
 

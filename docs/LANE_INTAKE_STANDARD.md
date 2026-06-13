@@ -23,8 +23,15 @@ Required intake fields:
 - Allowed files
 - Banned files
 - Validation plan
-- Gemini objector status when applicable
+- geminiStatus
+- geminiPreflightRequired
+- geminiExecutionAuditRequired
+- geminiPreflightResultRef
+- geminiExecutionAuditResultRef
+- mergeAuthorization
 
-A lane packet missing the existing-state/context section is incomplete and should not be sent to Codex.
+A lane packet missing the existing-state/context section or Gemini status fields is incomplete and should not be sent to Codex.
+
+Use `geminiStatus: held_pending_gemini` when Gemini is unavailable. Use `geminiStatus: not_required` only for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes.
 
 Use `node scripts/create-lane-packet.mjs --repo-key <key> --lane <lane>`.

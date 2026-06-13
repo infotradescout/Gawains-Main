@@ -59,6 +59,19 @@ Do not implement from assumptions when current repo context, docs, tests, screen
 
 Do not replace working functionality with a new abstraction unless the existing implementation is proven incompatible.
 
+## Gemini Status Gate
+
+geminiStatus: preflight_pending
+geminiPreflightRequired: yes
+geminiExecutionAuditRequired: yes
+geminiPreflightResultRef: TBD
+geminiExecutionAuditResultRef: TBD
+mergeAuthorization: blocked
+
+No Gemini status means no merge, no closeout, no "approved," and no "ready."
+
+Do not begin Codex execution for doctrine, governance, workflow, authority, automation, core architecture, execution logic, cross-repo routing, merge authorization, deployment, money/legal, storage/runtime, or product behavior changes until Gemini pre-flight has passed. If Gemini is unavailable, mark the lane held_pending_gemini.
+
 ## Rules
 
 - Use only the target product repo path.
@@ -71,6 +84,7 @@ Do not replace working functionality with a new abstraction unless the existing 
 - Do not invent files, commits, validation output, metrics, production state, review status, or completion.
 - Do not treat prior checks as current after meaningful time has passed.
 - Do not send raw git diff output to Gemini by default.
+- Do not claim ready, approved, merge authorized, or complete without geminiStatus: execution_audit_passed or an explicit not_required justification for a standard non-core lane.
 
 Goal:
 TBD
