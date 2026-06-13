@@ -1,0 +1,74 @@
+{
+  "ledger_id": "roundtable-repo-status-ledger",
+  "updated_at": "2026-06-13T00:00:00.000Z",
+  "repos": [
+    {
+      "repo": "MealScout",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\MealScout",
+      "default_branch": "main",
+      "active_packet_ids": [
+        "mealscout-p0-scout-discovery-2026-06-13"
+      ],
+      "last_closed_packet_id": "",
+      "last_known_branch": "",
+      "last_known_sha": "",
+      "last_status": "active packet created; execution evidence required",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "TradeScout",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\TradeScoutPro",
+      "default_branch": "main",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "",
+      "last_known_branch": "",
+      "last_known_sha": "",
+      "last_status": "no active Round Table repo-work packet",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "Sway",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\sway\\sway.tips",
+      "default_branch": "main",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "",
+      "last_known_branch": "",
+      "last_known_sha": "",
+      "last_status": "no active Round Table repo-work packet",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "Albion",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\AI Council",
+      "default_branch": "main",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "",
+      "last_known_branch": "",
+      "last_known_sha": "",
+      "last_status": "no active Round Table repo-work packet",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "Merlin",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\merlin-os-action-layer",
+      "default_branch": "main",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "",
+      "last_known_branch": "",
+      "last_known_sha": "",
+      "last_status": "no active Round Table repo-work packet",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "AutoBott",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\AlpacaTradingbot",
+      "default_branch": "main",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "",
+      "last_known_branch": "",
+      "last_known_sha": "",
+      "last_status": "no active Round Table repo-work packet",
+      "production_verified_at": ""
+    }
+  ]
+}

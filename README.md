@@ -150,6 +150,26 @@ AutoBott code stays in AutoBott
 
 This repo stores summaries and operating context only.
 
+## Repo-Work Control Rule
+
+Every repo change must have a Round Table work packet before execution begins.
+
+```text
+Thomas raises issue in Round Table
+→ Round Table creates repo-scoped work packet
+→ work executes in target repo
+→ target repo returns review evidence
+→ Gemini audits when required
+→ Round Table records decision
+→ Round Table authorizes merge/deploy
+→ Round Table records production/user-visible verification
+→ Round Table closes the packet and updates the repo ledger
+```
+
+No PASS without evidence. No DONE without production/user-visible verification when production behavior is involved. No fake production claims.
+
+See `docs/REPO_WORK_CONTROL.md` and `roundtable/`.
+
 ## Gemini Review Rule
 
 Gemini has no repo, file, PR, or connector access.

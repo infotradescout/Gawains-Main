@@ -9,15 +9,19 @@ It is not a source-code mirror and it is not a replacement for product repos. It
 ```text
 Request enters Gawain's Main
 → Gawain identifies the correct product repo
+→ Round Table creates the required repo-scoped work packet
 → Gawain defines the lane and file boundaries
 → Gemini arbitrator reviews the lane before Codex runs
 → Codex executes inside the actual product repo only
-→ Codex returns checkpoint
+→ Codex returns review evidence to Round Table
 → Gawain supplies raw diff/full payload to Gemini
 → Gemini reviews implementation
 → Gawain reconciles
+→ Round Table records decision and production/user-visible verification when required
 → Codex performs repo-local merge only after Gawain instruction
 ```
+
+No repo change is valid unless it has a Round Table packet first. No closeout is valid unless the packet has review evidence, decision state, and required production/user-visible verification.
 
 ## What Gawain's Main Can Do
 

@@ -1,0 +1,43 @@
+{
+  "schema_name": "roundtable.repo_work_packet",
+  "schema_version": 1,
+  "type": "object",
+  "required": [
+    "packet_id",
+    "repo",
+    "target_branch",
+    "baseline_sha",
+    "issue_summary",
+    "visible_goal",
+    "user_problem",
+    "acceptance_criteria",
+    "files_or_areas_to_inspect",
+    "forbidden_changes",
+    "validation_required",
+    "production_verification_required",
+    "decision_owner",
+    "gemini_required",
+    "status",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "packet_id": { "type": "string" },
+    "repo": { "type": "string" },
+    "target_branch": { "type": "string" },
+    "baseline_sha": { "type": "string" },
+    "issue_summary": { "type": "string" },
+    "visible_goal": { "type": "string" },
+    "user_problem": { "type": "string" },
+    "acceptance_criteria": { "type": "array", "items": { "type": "string" } },
+    "files_or_areas_to_inspect": { "type": "array", "items": { "type": "string" } },
+    "forbidden_changes": { "type": "array", "items": { "type": "string" } },
+    "validation_required": { "type": "array", "items": { "type": "string" } },
+    "production_verification_required": { "type": "boolean" },
+    "decision_owner": { "type": "string" },
+    "gemini_required": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["inbox", "active", "review", "approved", "blocked", "closed"] },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" }
+  }
+}

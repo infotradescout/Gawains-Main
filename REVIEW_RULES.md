@@ -240,3 +240,13 @@ RoundTable records and routes authority state. It does not alter Albion governan
 Gawain gives the merge instruction only after Gemini implementation review returns Pass and any required human / Knight approval is recorded.
 
 Codex performs repo-local merge actions. Codex does not grant itself merge authority.
+
+## Repo-Work Packet Rule
+
+No repo change is valid unless a Round Table work packet exists first in `roundtable/active/` or another explicit Round Table control folder.
+
+Every repo-work packet must name the repo, target branch, baseline SHA, visible goal, user problem, acceptance criteria, files or areas to inspect, forbidden changes, validation required, production verification requirement, decision owner, Gemini requirement, status, and timestamps.
+
+No PASS may be recorded without a review packet containing files inspected, files changed, root cause, before/after behavior, validation results, production verification state, remaining risks, and final git status.
+
+No DONE may be recorded for production-facing work unless a production verification record exists and the decision record allows the production claim.

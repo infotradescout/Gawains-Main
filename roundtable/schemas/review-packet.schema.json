@@ -1,0 +1,37 @@
+{
+  "schema_name": "roundtable.repo_review_packet",
+  "schema_version": 1,
+  "type": "object",
+  "required": [
+    "packet_id",
+    "repo",
+    "branch",
+    "baseline_sha",
+    "final_sha",
+    "files_inspected",
+    "files_changed",
+    "root_cause",
+    "behavior_before",
+    "behavior_after",
+    "validation_results",
+    "production_verification",
+    "remaining_risks",
+    "final_git_status"
+  ],
+  "properties": {
+    "packet_id": { "type": "string" },
+    "repo": { "type": "string" },
+    "branch": { "type": "string" },
+    "baseline_sha": { "type": "string" },
+    "final_sha": { "type": "string" },
+    "files_inspected": { "type": "array", "items": { "type": "string" } },
+    "files_changed": { "type": "array", "items": { "type": "string" } },
+    "root_cause": { "type": "string" },
+    "behavior_before": { "type": "string" },
+    "behavior_after": { "type": "string" },
+    "validation_results": { "type": "array", "items": { "type": "string" } },
+    "production_verification": { "type": "object" },
+    "remaining_risks": { "type": "array", "items": { "type": "string" } },
+    "final_git_status": { "type": "string" }
+  }
+}
