@@ -1,0 +1,8 @@
+docs/ROUNDTABLE_DISCORD_PACKET_AUTHORITY_CONTRACT.md
+templates/ROUNDTABLE_DISCORD_PACKET.template.json
+scripts/check-discord-contract.mjs
+package.json
+lane-packets/roundtable/canonical-discord-packet-authority-contract/LANE_INTAKE.md
+lane-packets/roundtable/canonical-discord-packet-authority-contract/FILE_LIST.txt
+lane-packets/roundtable/canonical-discord-packet-authority-contract/STATUS.txt
+lane-packets/roundtable/canonical-discord-packet-authority-contract/VALIDATION_LOG.txt

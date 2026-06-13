@@ -1,0 +1,17 @@
+Validation command: npm run check:scripts
+Result: PASS
+Output:
+> gawains-main@0.1.0 check:scripts
+> node --check scripts/repo-registry.mjs && node --check scripts/list-repos.mjs && node --check scripts/check-repo.mjs && node --check scripts/check-lane-clean.mjs && node --check scripts/create-lane-packet.mjs && node --check scripts/create-codex-prompt.mjs && node --check scripts/create-review-packet.mjs && node --check scripts/check-discord-contract.mjs
+
+Validation command: npm run check:discord-contract
+Result: PASS
+Output:
+> gawains-main@0.1.0 check:discord-contract
+> node scripts/check-discord-contract.mjs
+RoundTable Discord contract and packet template checks passed.
+
+Validation command: git diff --check
+Result: PASS
+Output:
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
