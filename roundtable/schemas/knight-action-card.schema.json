@@ -86,6 +86,26 @@
     "requiresThreeKnightEscalation": { "type": "boolean" },
     "doctrineConflict": { "type": "boolean" },
     "responseDueBy": { "type": "string" },
+    "sourceKnight": {
+      "type": "string",
+      "enum": ["Gawain", "Lancelot", "Percival"]
+    },
+    "sourceHuman": {
+      "type": "string",
+      "enum": ["Thomas", "Levon", "Dylan"]
+    },
+    "updateIntent": {
+      "type": "string",
+      "enum": [
+        "menu",
+        "schedule",
+        "logo",
+        "cover",
+        "social_links",
+        "contact_correction",
+        "profile_correction"
+      ]
+    },
     "routingReason": { "type": "string" },
     "noExecutionClaim": { "type": "boolean" },
     "relatedPackets": {

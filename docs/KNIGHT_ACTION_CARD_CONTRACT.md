@@ -67,6 +67,9 @@ The packet MAY include:
 responseDueBy
 relatedPackets
 doctrineRefs
+sourceKnight
+sourceHuman
+updateIntent
 ```
 
 Required field meanings:
@@ -93,6 +96,38 @@ Required field meanings:
 - `doctrineConflict`: whether the request contradicts existing law, doctrine, safety rules, authority boundaries, or locked workflow protocol.
 - `routingReason`: why RoundTable routed the card to that Knight or all-three escalation.
 - `noExecutionClaim`: must be `true`; KnightActionCards do not execute, apply, send, merge, deploy, or mutate.
+- `sourceKnight`: for Knight-origin MealScout profile update routing, the originating AI Knight: `Gawain`, `Lancelot`, or `Percival`.
+- `sourceHuman`: for Knight-origin MealScout profile update routing, the originating human Knight: `Thomas`, `Levon`, or `Dylan`.
+- `updateIntent`: for MealScout truck profile update routing, the structured update class such as menu, schedule, logo, cover, social links, contact correction, or profile correction.
+
+## MealScout Truck Profile Update Handoff
+
+Merlin-generated `truck_profile_update` KnightActionCards are RoundTable routing packets for owner-style MealScout profile updates. They are not loose evidence cards, and they do not apply production changes.
+
+Valid Knight-origin source pairs are:
+
+- Thomas/Gawain
+- Dylan/Percival
+- Levon/Lancelot
+
+A `truck_profile_update` card MUST preserve:
+
+- source Knight and human pair
+- target product, usually `MealScout`
+- update intent
+- source artifact references
+- extracted or normalized candidate fields
+- confidence and currentness evidence
+- whether the source is owner-submitted-equivalent
+- `productionApplied: false`
+- verification requirements before any product safe-apply path
+
+RoundTable routes the resulting card by what decision is needed:
+
+- technical safe-apply, schema, geocode, or validation questions route to Gawain/Thomas
+- owner confirmation, social links, contact changes, or currentness questions route to Lancelot/Levon
+- logos, covers, visual profile polish, or asset quality questions route to Percival/Dylan
+- doctrine conflicts, authority boundary conflicts, or mixed high-risk public trust questions route to `all_three`
 
 ## Routing Doctrine
 

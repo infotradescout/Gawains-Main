@@ -15,7 +15,22 @@ const allowedKnightHumans = {
   all_three: 'all_three'
 };
 
+const allowedSourceKnightHumans = {
+  Gawain: 'Thomas',
+  Lancelot: 'Levon',
+  Percival: 'Dylan'
+};
+
 const allowedPriorities = new Set(['P0', 'P1', 'P2', 'P3']);
+const allowedTruckProfileUpdateIntents = new Set([
+  'menu',
+  'schedule',
+  'logo',
+  'cover',
+  'social_links',
+  'contact_correction',
+  'profile_correction'
+]);
 const requiredFields = [
   'packetId',
   'packetType',
@@ -99,6 +114,38 @@ function validateActionCard(card, label) {
       `${label} doctrineConflict requiresThreeKnightEscalation true`
     );
   }
+  if (card.problemType === 'truck_profile_update') {
+    assert(card.sourceSystem === 'MealScout', `${label} truck_profile_update sourceSystem must be MealScout`);
+    assert(card.sourceAgent === 'Merlin', `${label} truck_profile_update sourceAgent must be Merlin`);
+    assert(card.targetSystem === 'MealScout', `${label} truck_profile_update targetSystem must be MealScout`);
+    assert(
+      Object.prototype.hasOwnProperty.call(allowedSourceKnightHumans, card.sourceKnight),
+      `${label} truck_profile_update requires sourceKnight`
+    );
+    assert(
+      card.sourceHuman === allowedSourceKnightHumans[card.sourceKnight],
+      `${label} truck_profile_update sourceHuman must match sourceKnight`
+    );
+    assert(
+      allowedTruckProfileUpdateIntents.has(card.updateIntent),
+      `${label} truck_profile_update requires valid updateIntent`
+    );
+    const evidenceTypes = new Set((card.evidence ?? []).map((item) => item.type));
+    for (const requiredEvidenceType of [
+      'source_artifact',
+      'extraction_result',
+      'confidence',
+      'currentness',
+      'owner_submitted_equivalent',
+      'verification_requirements'
+    ]) {
+      assert(
+        evidenceTypes.has(requiredEvidenceType),
+        `${label} truck_profile_update missing evidence type: ${requiredEvidenceType}`
+      );
+    }
+    assert(card.blockedBy, `${label} truck_profile_update must state verification or routing blocker`);
+  }
 }
 
 const contract = readFileSync(contractPath, 'utf8');
@@ -124,7 +171,12 @@ const requiredContractText = [
   'Route to Percival/Dylan',
   'Route to `all_three`',
   'If `doctrineConflict` is true',
-  'This is a schema and routing contract. It is not runtime delivery'
+  'This is a schema and routing contract. It is not runtime delivery',
+  'Merlin-generated `truck_profile_update` KnightActionCards',
+  'Thomas/Gawain',
+  'Dylan/Percival',
+  'Levon/Lancelot',
+  'owner-submitted-equivalent'
 ];
 
 for (const text of requiredContractText) {
@@ -154,7 +206,8 @@ const exampleProblemTypes = new Set(examples.map(([, card]) => card.problemType)
 for (const requiredType of [
   'owner_confirmation_needed',
   'asset_decision_needed',
-  'technical_apply_pending'
+  'technical_apply_pending',
+  'truck_profile_update'
 ]) {
   assert(exampleProblemTypes.has(requiredType), `missing example problemType: ${requiredType}`);
 }
