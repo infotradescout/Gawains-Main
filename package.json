@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check:scripts": "node --check scripts/repo-registry.mjs && node --check scripts/list-repos.mjs && node --check scripts/check-repo.mjs && node --check scripts/check-lane-clean.mjs && node --check scripts/create-lane-packet.mjs && node --check scripts/create-codex-prompt.mjs && node --check scripts/create-review-packet.mjs && node --check scripts/check-discord-contract.mjs && node --check scripts/check-roundtable-packets.mjs && node --check scripts/check-routing-dispatch-contract.mjs && node scripts/check-roundtable-packets.mjs && node scripts/check-routing-dispatch-contract.mjs",
-    "check:discord-contract": "node scripts/check-discord-contract.mjs"
+    "check:scripts": "node --check scripts/repo-registry.mjs && node --check scripts/list-repos.mjs && node --check scripts/check-repo.mjs && node --check scripts/check-lane-clean.mjs && node --check scripts/create-lane-packet.mjs && node --check scripts/create-codex-prompt.mjs && node --check scripts/create-review-packet.mjs && node --check scripts/check-discord-contract.mjs && node --check scripts/check-knight-action-card-contract.mjs && node --check scripts/check-roundtable-packets.mjs && node --check scripts/check-routing-dispatch-contract.mjs && node scripts/check-knight-action-card-contract.mjs && node scripts/check-roundtable-packets.mjs && node scripts/check-routing-dispatch-contract.mjs",
+    "check:discord-contract": "node scripts/check-discord-contract.mjs",
+    "check:knight-action-card": "node scripts/check-knight-action-card-contract.mjs"
   }
 }

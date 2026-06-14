@@ -1,0 +1,50 @@
+{
+  "packetId": "mealscout.knight-action-card.schedule-geocode-pending.sample-truck",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-06-14T00:00:00.000Z",
+  "sourceSystem": "MealScout",
+  "sourceAgent": "Merlin",
+  "targetSystem": "MealScout",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P1",
+  "problemType": "technical_apply_pending",
+  "entityRef": {
+    "entityType": "schedule_artifact",
+    "id": "OPEN QUESTION",
+    "name": "Sample Truck schedule image",
+    "profileRef": "mealscout://profiles/sample-truck",
+    "sourceArtifactRefs": [
+      "merlin://uploads/mealscout/schedules/sample-truck/latest-image"
+    ]
+  },
+  "summary": "A schedule image was uploaded, but extracted schedule locations have not been geocoded or applied.",
+  "whyThisMatters": "Ungrounded schedule data can leave the public map and live feed out of sync with the food truck's actual stops.",
+  "requestedAction": "Open or route a technical apply lane for geocode validation before any schedule mutation.",
+  "allowedResponses": [
+    "Route technical geocode/apply lane",
+    "Block pending clearer source artifact",
+    "Request owner confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "scheduleImage",
+      "value": "uploaded_not_applied",
+      "sourceArtifactRef": "merlin://uploads/mealscout/schedules/sample-truck/latest-image",
+      "notes": "Image exists but no safe-path geocode/apply result is recorded."
+    }
+  ],
+  "blockedBy": "technical_geocode_apply_required",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Technical apply safety and geocode validation route to Gawain/Thomas.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "packetId": "mealscout.knight-action-card.menu-extraction-incomplete.3d-eats-tea",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-06-14T00:00:00.000Z",
+  "sourceSystem": "MealScout",
+  "sourceAgent": "Merlin",
+  "targetSystem": "MealScout",
+  "targetKnight": "Lancelot",
+  "targetHuman": "Levon",
+  "priority": "P1",
+  "problemType": "owner_confirmation_needed",
+  "entityRef": {
+    "entityType": "menu_source",
+    "id": "OPEN QUESTION",
+    "name": "3D Eats & Tea menu source",
+    "profileRef": "mealscout://profiles/3d-eats-tea",
+    "sourceArtifactRefs": [
+      "merlin://detectors/mealscout/menu/3d-eats-tea/source-found"
+    ]
+  },
+  "summary": "A menu source was found for 3D Eats & Tea, but item extraction is incomplete and currentness is unknown.",
+  "whyThisMatters": "Publishing an incomplete or stale menu risks misleading customers and creating owner trust issues.",
+  "requestedAction": "Confirm whether owner outreach is needed before structuring or applying the menu.",
+  "allowedResponses": [
+    "Ask owner for current menu confirmation",
+    "Approve extraction review only",
+    "Reject the source as stale",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "menuSource",
+      "value": "found_but_not_structured",
+      "sourceArtifactRef": "merlin://detectors/mealscout/menu/3d-eats-tea/source-found",
+      "notes": "Menu source exists, but structured item extraction is incomplete."
+    },
+    {
+      "type": "currentness_state",
+      "field": "menuCurrentness",
+      "value": "unknown",
+      "sourceArtifactRef": "merlin://detectors/mealscout/menu/3d-eats-tea/currentness-check",
+      "notes": "Currentness requires confirmation before production profile use."
+    }
+  ],
+  "blockedBy": "owner_confirmation_required",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Owner confirmation and ambiguous public-source approval route to Lancelot/Levon.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md"
+  ]
+}

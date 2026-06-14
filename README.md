@@ -85,6 +85,22 @@ Codex = implementation inside one repo/lane after Gemini objector pass
 Thomas = final human authority
 ```
 
+## Problem Delivery System
+
+RoundTable routes detected problems as KnightActionCards so Knights do not have to search every repo, chat, Drive folder, dashboard, or product system for what needs attention.
+
+```text
+System/source detects issue
+-> Merlin extracts/classifies
+-> RoundTable routes to correct Knight
+-> Knight ChatGPT presents the Action Card
+-> Knight approves/fixes/blocks/escalates
+-> RoundTable records disposition
+-> Merlin/product system executes only through an approved safe path
+```
+
+Phase 1 is schema/contract only. See `docs/KNIGHT_ACTION_CARD_CONTRACT.md`.
+
 ## Non-Negotiable Arbitrator Rule
 
 Gemini must be included before and after Codex execution.

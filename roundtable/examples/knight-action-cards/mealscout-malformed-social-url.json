@@ -1,0 +1,57 @@
+{
+  "packetId": "mealscout.knight-action-card.malformed-social-url.blessed-berry-bowls",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-06-14T00:00:00.000Z",
+  "sourceSystem": "MealScout",
+  "sourceAgent": "Merlin",
+  "targetSystem": "MealScout",
+  "targetKnight": "Lancelot",
+  "targetHuman": "Levon",
+  "priority": "P1",
+  "problemType": "owner_confirmation_needed",
+  "entityRef": {
+    "entityType": "business_profile",
+    "id": "OPEN QUESTION",
+    "name": "Blessed Berry Bowls",
+    "profileRef": "mealscout://profiles/blessed-berry-bowls",
+    "sourceArtifactRefs": [
+      "merlin://detectors/mealscout/social-url/blessed-berry-bowls"
+    ]
+  },
+  "summary": "Blessed Berry Bowls has malformed social URLs. Source-backed candidate URLs exist, but doctrine requires owner approval before replacing non-blank social fields.",
+  "whyThisMatters": "Bad public links hurt customer trust and prevent profile completion.",
+  "requestedAction": "Confirm whether the Instagram and Facebook URLs are approved for update.",
+  "allowedResponses": [
+    "Approve the proposed URLs",
+    "Reject the proposed URLs",
+    "Ask owner for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "current_value",
+      "field": "instagramUrl",
+      "value": "https://@blessed.berrybowls",
+      "sourceArtifactRef": "merlin://detectors/mealscout/social-url/blessed-berry-bowls/current-instagram",
+      "notes": "Current value is malformed."
+    },
+    {
+      "type": "candidate_value",
+      "field": "instagramUrl",
+      "value": "https://www.instagram.com/blessedberrybowls/",
+      "sourceArtifactRef": "merlin://detectors/mealscout/social-url/blessed-berry-bowls/candidate-instagram",
+      "notes": "Candidate still requires owner confirmation before replacing a non-blank field."
+    }
+  ],
+  "blockedBy": "owner_confirmation_required",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Owner confirmation and social/profile verification route to Lancelot/Levon.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md"
+  ]
+}

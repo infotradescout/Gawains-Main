@@ -46,6 +46,24 @@ What is the smallest aligned next action?
 8. Create a Gemini handoff in `exports/gemini/` when implementation review is required.
 9. Close only after Codex PASS, Gawain PASS, Gemini PASS when required, required human/Knight signoff when applicable, and a clean target worktree.
 
+## Problem Delivery Loop
+
+RoundTable may receive or prepare KnightActionCards for exception routing:
+
+```text
+System/source detects issue
+-> Merlin extracts/classifies
+-> RoundTable routes to correct Knight
+-> Knight ChatGPT presents the Action Card
+-> Knight approves/fixes/blocks/escalates
+-> RoundTable records disposition
+-> Merlin/product system executes only through an approved safe path
+```
+
+KnightActionCards are schema-only records until a later lane implements delivery. They must not claim execution, production mutation, Discord delivery, or bot automation.
+
+See `docs/KNIGHT_ACTION_CARD_CONTRACT.md`.
+
 ## Gemini Status Gate
 
 No Gemini status means no merge, no closeout, no "approved," and no "ready."

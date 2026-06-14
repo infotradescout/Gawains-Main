@@ -100,6 +100,33 @@ const schemaChecks = [
       'created_at',
       'updated_at'
     ]
+  },
+  {
+    file: 'knight-action-card.schema.json',
+    required: [
+      'packetId',
+      'packetType',
+      'createdAt',
+      'sourceSystem',
+      'sourceAgent',
+      'targetSystem',
+      'targetKnight',
+      'targetHuman',
+      'priority',
+      'problemType',
+      'entityRef',
+      'summary',
+      'whyThisMatters',
+      'requestedAction',
+      'allowedResponses',
+      'evidence',
+      'blockedBy',
+      'productionApplied',
+      'requiresThreeKnightEscalation',
+      'doctrineConflict',
+      'routingReason',
+      'noExecutionClaim'
+    ]
   }
 ];
 

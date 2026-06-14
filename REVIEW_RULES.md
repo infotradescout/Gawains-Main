@@ -235,6 +235,18 @@ Where Albion governance requires Knight approval, the 3/3 path remains Gawain + 
 
 RoundTable records and routes authority state. It does not alter Albion governance math in PR #2.
 
+## KnightActionCard Review Rule
+
+KnightActionCards route detected problems to the right Knight through RoundTable.
+
+They must be evidence-backed, target exactly one Knight/Human pair or `all_three`, and preserve source artifact references for MealScout profile/update cards.
+
+They must not claim execution, production mutation, Discord/bot delivery, GitHub Actions automation, approval, merge, deploy, send, or apply.
+
+P0/P1 KnightActionCards require evidence.
+
+If `doctrineConflict: true`, the card must route to `all_three`, set `requiresThreeKnightEscalation: true`, and remain blocked until 3/3 resolution is recorded.
+
 ## Merge Rule
 
 Gawain gives the merge instruction only after Gemini implementation review returns Pass and any required human / Knight approval is recorded.

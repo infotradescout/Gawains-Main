@@ -1,0 +1,51 @@
+{
+  "packetId": "mealscout.knight-action-card.missing-logo.3d-eats-tea",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-06-14T00:00:00.000Z",
+  "sourceSystem": "MealScout",
+  "sourceAgent": "Merlin",
+  "targetSystem": "MealScout",
+  "targetKnight": "Percival",
+  "targetHuman": "Dylan",
+  "priority": "P2",
+  "problemType": "asset_decision_needed",
+  "entityRef": {
+    "entityType": "business_profile",
+    "id": "OPEN QUESTION",
+    "name": "3D Eats & Tea",
+    "profileRef": "mealscout://profiles/3d-eats-tea",
+    "sourceArtifactRefs": [
+      "merlin://detectors/mealscout/assets/3d-eats-tea/logo-missing"
+    ]
+  },
+  "summary": "3D Eats & Tea profile is missing a logo asset.",
+  "whyThisMatters": "Missing visual identity makes the public profile look incomplete and lowers customer trust.",
+  "requestedAction": "Decide whether to request a logo, use an approved placeholder, or block profile polish until an asset is available.",
+  "allowedResponses": [
+    "Request logo from owner",
+    "Approve existing candidate asset",
+    "Use approved placeholder",
+    "Block until asset source is supplied",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "profile_asset_state",
+      "field": "logo",
+      "value": null,
+      "sourceArtifactRef": "merlin://detectors/mealscout/assets/3d-eats-tea/logo-missing",
+      "notes": "No logo asset is currently linked."
+    }
+  ],
+  "blockedBy": "asset_decision_required",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Logo, visual presentation, and profile polish route to Percival/Dylan.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md"
+  ]
+}
