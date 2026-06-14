@@ -47,6 +47,61 @@ A RoundTable routing dispatch packet is eligible only when all are true:
 - Dispatch does not grant RoundTable runtime authority.
 - Dispatch does not rely on text fields such as `approvalStatus`, `approvedBy`, or summaries as authority.
 
+## Albion Authority Reference
+
+The Gemini unconditional PASS routing accelerator is derived from Albion doctrine commit `0acafbd4f8f6c74b2262fc86d6d47de4c2ae686c` on branch `doctrine/gemini-pass-routing-accelerator`.
+
+This is a routing accelerator only. It does not grant Gemini merge authority, policy authority, governance authority, Roundtable 3/3 authority, AI Council 3/3 authority, or Merlin execution authority.
+
+## Gemini Unconditional PASS Routing Accelerator
+
+A Gemini or High Court review packet may route directly to Roundtable Dispatch only when all clean PASS criteria are true:
+
+- `verdict` is exactly `PASS`.
+- `conditions`, `blockers`, and `warnings` are empty.
+- No database/schema migration requirement is present.
+- No legal/trust warning is present.
+- No authority warning or authority ambiguity is present.
+- No merge-risk annotation is present.
+- No scope caveat is present.
+- No validation uncertainty is present.
+- No repo/branch uncertainty is present.
+- No Squire, Village, Merlin, or AI Council routing ambiguity is present.
+- The target Squire, Village, Merlin, or AI Council route is explicit when the packet needs one.
+
+When every clean PASS criterion is satisfied, the packet may set:
+
+```text
+gemini_pass_accelerator.next_hop = roundtable_dispatch
+gemini_pass_accelerator.gawain_manual_preflight_required = false
+gemini_pass_accelerator.bypasses_gawain_manual_preflight_only = true
+```
+
+This bypasses only redundant Gawain manual pre-flight routing validation. It does not bypass Gawain merge instruction authority, required human/Knight approval, Roundtable 3/3, AI Council validation, or any Merlin execution packet requirement.
+
+The accelerator is void and the packet MUST route back to Gawain manual review when any of the following is true:
+
+- Gemini returns `PASS WITH CONDITIONS`, `BLOCK`, or `needs_revision`.
+- Any condition, blocker, warning, non-trivial caveat, legal/trust warning, authority ambiguity, database/schema migration requirement, merge-risk annotation, validation uncertainty, repo/branch uncertainty, or routing ambiguity is present.
+- The target Squire, Village, Merlin, or AI Council route is missing or unclear.
+
+When the accelerator is void, the packet must set:
+
+```text
+gemini_pass_accelerator.next_hop = gawain_manual_review
+gemini_pass_accelerator.gawain_manual_preflight_required = true
+```
+
+The authority boundary fields must remain false for Gemini PASS acceleration:
+
+```text
+gemini_pass_accelerator.merge_authority_created = false
+gemini_pass_accelerator.policy_authority_created = false
+gemini_pass_accelerator.roundtable_3_of_3_satisfied = false
+gemini_pass_accelerator.ai_council_3_of_3_satisfied = false
+gemini_pass_accelerator.merlin_execution_authorized = false
+```
+
 ## Required Dispatch Packet Shape
 
 A canonical RoundTable routing dispatch packet MUST include:
@@ -65,6 +120,7 @@ gawain_decision_ref
 review_packet_ref
 production_verification_ref
 authority_state
+gemini_pass_accelerator
 execution_owner
 no_runtime_execution_by_roundtable
 status

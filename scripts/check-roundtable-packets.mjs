@@ -94,6 +94,7 @@ const schemaChecks = [
       'review_packet_ref',
       'production_verification_ref',
       'authority_state',
+      'gemini_pass_accelerator',
       'execution_owner',
       'no_runtime_execution_by_roundtable',
       'status',
