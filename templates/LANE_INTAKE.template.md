@@ -15,6 +15,15 @@ Last-known vs current:
 Freshness risk:
 Re-check required before:
 
+## Gemini Status Gate
+
+geminiStatus:
+geminiPreflightRequired:
+geminiExecutionAuditRequired:
+geminiPreflightResultRef:
+geminiExecutionAuditResultRef:
+mergeAuthorization:
+
 ## Goal
 
 ## Allowed Files

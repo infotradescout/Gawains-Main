@@ -1,0 +1,25 @@
+{
+  "schema_name": "roundtable.production_verification_record",
+  "schema_version": 1,
+  "type": "object",
+  "required": [
+    "packet_id",
+    "repo",
+    "url_or_endpoint_checked",
+    "deployed_sha_observed",
+    "evidence",
+    "pass_fail",
+    "verified_by",
+    "verified_at"
+  ],
+  "properties": {
+    "packet_id": { "type": "string" },
+    "repo": { "type": "string" },
+    "url_or_endpoint_checked": { "type": "string" },
+    "deployed_sha_observed": { "type": "string" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "pass_fail": { "type": "string", "enum": ["pass", "fail", "not_checked"] },
+    "verified_by": { "type": "string" },
+    "verified_at": { "type": "string" }
+  }
+}

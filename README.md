@@ -1,6 +1,6 @@
-# Gawain's Main
+# RoundTable
 
-Gawain's Main is the lightweight operating index, command layer, and RoundTable for Thomas's product repos.
+RoundTable is the lightweight operating index, command layer, and RoundTable for Thomas's product repos.
 
 It is not a product repo. It is not a source-code mirror. It is the dispatcher and ledger for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, parent routing packets, terminal Git state records, and Gawain/Codex/Gemini packet handoffs.
 
@@ -64,7 +64,7 @@ See `docs/UNIVERSAL_EXISTING_STATE_REQUIREMENT.md`.
 
 ## Round Table Model
 
-Gawain's Main is the real-world Round Table for Albion.
+RoundTable is the real-world Round Table for Albion.
 
 ```text
 Thomas = human counterpart to Gawain
@@ -85,9 +85,27 @@ Codex = implementation inside one repo/lane after Gemini objector pass
 Thomas = final human authority
 ```
 
+## Problem Delivery System
+
+RoundTable routes detected problems as KnightActionCards so Knights do not have to search every repo, chat, Drive folder, dashboard, or product system for what needs attention.
+
+```text
+System/source detects issue
+-> Merlin extracts/classifies
+-> RoundTable routes to correct Knight
+-> Knight ChatGPT presents the Action Card
+-> Knight approves/fixes/blocks/escalates
+-> RoundTable records disposition
+-> Merlin/product system executes only through an approved safe path
+```
+
+Phase 1 is schema/contract only. See `docs/KNIGHT_ACTION_CARD_CONTRACT.md`.
+
 ## Non-Negotiable Arbitrator Rule
 
 Gemini must be included before and after Codex execution.
+
+No Gemini status means no merge, no closeout, no "approved," and no "ready."
 
 ```text
 Gawain performs existing-state + context check
@@ -103,6 +121,14 @@ Gawain performs existing-state + context check
 ```
 
 Skipping the existing-state check or Gemini objector step is a workflow violation.
+
+For any lane involving doctrine, governance, workflow, authority, automation, core architecture, execution logic, cross-repo routing, merge authorization, deployment, money/legal commitments, storage/runtime, or product behavior changes:
+
+- Gemini pre-flight is required before Codex execution.
+- Gemini execution audit is required after Codex execution.
+- Gawain cannot authorize merge unless Gemini execution audit returned PASS or PASS WITH CONDITIONS with conditions explicitly resolved.
+- If Gemini is unavailable, the lane is `HELD_PENDING_GEMINI`.
+- GitHub mergeability, tests passing, Codex confidence, or Gawain review cannot substitute for Gemini PASS.
 
 ## Minimum Change Rule
 
@@ -139,6 +165,26 @@ AutoBott code stays in AutoBott
 ```
 
 This repo stores summaries and operating context only.
+
+## Repo-Work Control Rule
+
+Every repo change must have a Round Table work packet before execution begins.
+
+```text
+Thomas raises issue in Round Table
+→ Round Table creates repo-scoped work packet
+→ work executes in target repo
+→ target repo returns review evidence
+→ Gemini audits when required
+→ Round Table records decision
+→ Round Table authorizes merge/deploy
+→ Round Table records production/user-visible verification
+→ Round Table closes the packet and updates the repo ledger
+```
+
+No PASS without evidence. No DONE without production/user-visible verification when production behavior is involved. No fake production claims.
+
+See `docs/REPO_WORK_CONTROL.md` and `roundtable/`.
 
 ## Gemini Review Rule
 

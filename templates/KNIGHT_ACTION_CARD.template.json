@@ -1,0 +1,51 @@
+{
+  "packetId": "roundtable.knight-action-card.example",
+  "packetType": "knight_action_card",
+  "createdAt": "OPEN QUESTION",
+  "sourceSystem": "OPEN QUESTION",
+  "sourceAgent": "Merlin",
+  "targetSystem": "OPEN QUESTION",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P1",
+  "problemType": "OPEN QUESTION",
+  "entityRef": {
+    "entityType": "OPEN QUESTION",
+    "id": "OPEN QUESTION",
+    "name": "OPEN QUESTION",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "OPEN QUESTION"
+    ]
+  },
+  "summary": "OPEN QUESTION",
+  "whyThisMatters": "OPEN QUESTION",
+  "requestedAction": "OPEN QUESTION",
+  "allowedResponses": [
+    "Approve",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "OPEN QUESTION",
+      "value": "OPEN QUESTION",
+      "sourceArtifactRef": "OPEN QUESTION",
+      "notes": "Evidence is required for P0/P1 cards."
+    }
+  ],
+  "blockedBy": "OPEN QUESTION",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "responseDueBy": "OPEN QUESTION",
+  "routingReason": "OPEN QUESTION",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md"
+  ]
+}

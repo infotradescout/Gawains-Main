@@ -1,0 +1,19 @@
+Repo: roundtable
+Lane: canonical-discord-packet-authority-contract
+Branch: roundtable/canonical-discord-contract
+Baseline SHA: 99037f04f6f0bd86350a6fe38c69c2b7100b6f02
+Status timestamp: 2026-06-13
+Source of truth checked: local git status, RoundTable doctrine docs, lane templates, package scripts
+Last-known vs current: current as of status timestamp
+Freshness risk: re-check required before merge, send, apply, or live Discord activation
+Re-check required before: merge, approval claim, live Discord env configuration, live Discord send, or Merlin activation
+Worktree status: one pre-existing untracked REVIEW_RULES.old.md; left untouched
+
+Existing-state/context check: completed
+Gemini status:
+geminiStatus: preflight_pending
+geminiPreflightRequired: yes
+geminiExecutionAuditRequired: yes
+geminiPreflightResultRef: TBD
+geminiExecutionAuditResultRef: TBD
+mergeAuthorization: blocked

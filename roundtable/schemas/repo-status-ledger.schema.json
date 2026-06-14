@@ -1,0 +1,42 @@
+{
+  "schema_name": "roundtable.repo_status_ledger",
+  "schema_version": 1,
+  "type": "object",
+  "required": [
+    "ledger_id",
+    "updated_at",
+    "repos"
+  ],
+  "properties": {
+    "ledger_id": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "repos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "repo",
+          "local_path",
+          "default_branch",
+          "active_packet_ids",
+          "last_closed_packet_id",
+          "last_known_branch",
+          "last_known_sha",
+          "last_status",
+          "production_verified_at"
+        ],
+        "properties": {
+          "repo": { "type": "string" },
+          "local_path": { "type": "string" },
+          "default_branch": { "type": "string" },
+          "active_packet_ids": { "type": "array", "items": { "type": "string" } },
+          "last_closed_packet_id": { "type": "string" },
+          "last_known_branch": { "type": "string" },
+          "last_known_sha": { "type": "string" },
+          "last_status": { "type": "string" },
+          "production_verified_at": { "type": "string" }
+        }
+      }
+    }
+  }
+}

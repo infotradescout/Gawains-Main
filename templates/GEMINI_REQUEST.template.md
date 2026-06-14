@@ -12,6 +12,15 @@ Last-known vs current:
 Freshness risk:
 Re-check required before:
 
+## Gemini Status Gate
+
+geminiStatus:
+geminiPreflightRequired:
+geminiExecutionAuditRequired:
+geminiPreflightResultRef:
+geminiExecutionAuditResultRef:
+mergeAuthorization:
+
 Return PASS or FAIL with objections.
 
 Raw/full diff output is omitted by default.

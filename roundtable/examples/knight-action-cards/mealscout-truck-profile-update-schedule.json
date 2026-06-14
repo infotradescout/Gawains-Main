@@ -1,0 +1,94 @@
+{
+  "packetId": "mealscout.knight-action-card.truck-profile-update.blessed-berry-bowls.schedule",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-06-14T00:00:00.000Z",
+  "sourceSystem": "MealScout",
+  "sourceAgent": "Merlin",
+  "targetSystem": "MealScout",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P1",
+  "problemType": "truck_profile_update",
+  "sourceKnight": "Gawain",
+  "sourceHuman": "Thomas",
+  "updateIntent": "schedule",
+  "entityRef": {
+    "entityType": "truck_profile",
+    "id": "OPEN QUESTION",
+    "name": "Blessed Berry Bowls",
+    "profileRef": "mealscout://profiles/blessed-berry-bowls",
+    "sourceArtifactRefs": [
+      "merlin://mealscout/truck-profile-update/blessed-berry-bowls/schedule-image"
+    ]
+  },
+  "summary": "A Knight-origin schedule image for Blessed Berry Bowls needs structured MealScout schedule update review.",
+  "whyThisMatters": "A schedule image can change where customers find the truck, so MealScout needs verified structured schedule data before any safe apply.",
+  "requestedAction": "Review the extracted schedule fields and decide whether Merlin should prepare a MealScout safe-apply packet or request more verification.",
+  "allowedResponses": [
+    "Prepare schedule safe-apply packet",
+    "Request currentness verification",
+    "Reject the schedule source",
+    "Route to Lancelot for owner confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "scheduleImage",
+      "value": "provided_by_knight_origin",
+      "sourceArtifactRef": "merlin://mealscout/truck-profile-update/blessed-berry-bowls/schedule-image",
+      "notes": "Merlin records the image as a structured profile update artifact, not loose evidence."
+    },
+    {
+      "type": "extraction_result",
+      "field": "schedule",
+      "value": "pending_structured_review",
+      "sourceArtifactRef": "merlin://mealscout/truck-profile-update/blessed-berry-bowls/schedule-extraction",
+      "notes": "Candidate schedule fields must be normalized before MealScout receives a safe-apply packet."
+    },
+    {
+      "type": "confidence",
+      "field": "scheduleExtractionConfidence",
+      "value": "medium",
+      "sourceArtifactRef": "merlin://mealscout/truck-profile-update/blessed-berry-bowls/confidence",
+      "notes": "Schedule image extraction needs technical review before production use."
+    },
+    {
+      "type": "currentness",
+      "field": "scheduleCurrentness",
+      "value": "requires_verification",
+      "sourceArtifactRef": "merlin://mealscout/truck-profile-update/blessed-berry-bowls/currentness",
+      "notes": "Currentness must be verified before public schedule mutation."
+    },
+    {
+      "type": "owner_submitted_equivalent",
+      "field": "ownerSubmittedEquivalent",
+      "value": true,
+      "sourceArtifactRef": "merlin://mealscout/truck-profile-update/blessed-berry-bowls/source-knight",
+      "notes": "The card preserves Knight-origin owner-style profile update routing."
+    },
+    {
+      "type": "verification_requirements",
+      "field": "preApplyVerification",
+      "value": [
+        "source artifact retained",
+        "schedule fields normalized",
+        "currentness checked",
+        "productionApplied remains false until MealScout safe apply"
+      ],
+      "sourceArtifactRef": "merlin://mealscout/truck-profile-update/blessed-berry-bowls/verification",
+      "notes": "RoundTable routing does not apply the schedule."
+    }
+  ],
+  "blockedBy": "schedule_safe_apply_review_required",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Schedule safe-apply, normalization, and technical profile behavior route to Gawain/Thomas.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md"
+  ]
+}

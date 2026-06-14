@@ -1,6 +1,6 @@
-# Gawain-Main Workflow
+# RoundTable Workflow
 
-Gawain-Main / RoundTable is the dispatcher and ledger for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, parent routing packets, terminal Git state records, and Gemini exports.
+RoundTable is the dispatcher and ledger for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, parent routing packets, terminal Git state records, and Gemini exports.
 
 It is not a product source mirror. Product repos stay separate and are referenced through `registry/repos.json`.
 
@@ -46,11 +46,46 @@ What is the smallest aligned next action?
 8. Create a Gemini handoff in `exports/gemini/` when implementation review is required.
 9. Close only after Codex PASS, Gawain PASS, Gemini PASS when required, required human/Knight signoff when applicable, and a clean target worktree.
 
+## Problem Delivery Loop
+
+RoundTable may receive or prepare KnightActionCards for exception routing:
+
+```text
+System/source detects issue
+-> Merlin extracts/classifies
+-> RoundTable routes to correct Knight
+-> Knight ChatGPT presents the Action Card
+-> Knight approves/fixes/blocks/escalates
+-> RoundTable records disposition
+-> Merlin/product system executes only through an approved safe path
+```
+
+KnightActionCards are schema-only records until a later lane implements delivery. They must not claim execution, production mutation, Discord delivery, or bot automation.
+
+See `docs/KNIGHT_ACTION_CARD_CONTRACT.md`.
+
+## Gemini Status Gate
+
+No Gemini status means no merge, no closeout, no "approved," and no "ready."
+
+Required packet fields:
+
+```text
+geminiStatus:
+geminiPreflightRequired:
+geminiExecutionAuditRequired:
+geminiPreflightResultRef:
+geminiExecutionAuditResultRef:
+mergeAuthorization:
+```
+
+Merge authorization remains blocked until `geminiStatus: execution_audit_passed`, except for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes marked `geminiStatus: not_required`.
+
 ## Non-Negotiables
 
 - Do not act from assumption alone when current state can be inspected.
-- Do not copy product source into Gawain-Main.
-- Do not place live product repos inside Gawain-Main.
+- Do not copy product source into RoundTable.
+- Do not place live product repos inside RoundTable.
 - Scripts must resolve product paths from `registry/repos.json`.
 - No lane may close with modified, deleted, or untracked files.
 - No raw/full diffs go to Gemini by default.

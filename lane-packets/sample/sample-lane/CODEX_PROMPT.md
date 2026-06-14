@@ -18,11 +18,11 @@ Worktree status:  M client/src/AppRoutes.tsx
 ?? "fix log 2.txt"
 ?? setup-old-laptop.ps1
 
-You are working inside the product repo listed above, not inside Gawain-Main.
+You are working inside the product repo listed above, not inside RoundTable.
 
 Rules:
 - Use only the target product repo path.
-- Do not copy product source into Gawain-Main.
+- Do not copy product source into RoundTable.
 - Do not close the lane with untracked, modified, or deleted files.
 - Return files inspected, files changed, validation output, commit SHA, push status, and final git status.
 - Do not send raw git diff output to Gemini by default.

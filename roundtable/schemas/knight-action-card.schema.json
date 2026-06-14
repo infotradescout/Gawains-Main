@@ -1,0 +1,120 @@
+{
+  "schema_name": "roundtable.knight_action_card",
+  "schema_version": 1,
+  "type": "object",
+  "required": [
+    "packetId",
+    "packetType",
+    "createdAt",
+    "sourceSystem",
+    "sourceAgent",
+    "targetSystem",
+    "targetKnight",
+    "targetHuman",
+    "priority",
+    "problemType",
+    "entityRef",
+    "summary",
+    "whyThisMatters",
+    "requestedAction",
+    "allowedResponses",
+    "evidence",
+    "blockedBy",
+    "productionApplied",
+    "requiresThreeKnightEscalation",
+    "doctrineConflict",
+    "routingReason",
+    "noExecutionClaim"
+  ],
+  "properties": {
+    "packetId": { "type": "string" },
+    "packetType": { "type": "string", "enum": ["knight_action_card"] },
+    "createdAt": { "type": "string" },
+    "sourceSystem": { "type": "string" },
+    "sourceAgent": { "type": "string" },
+    "targetSystem": { "type": "string" },
+    "targetKnight": {
+      "type": "string",
+      "enum": ["Gawain", "Lancelot", "Percival", "all_three"]
+    },
+    "targetHuman": {
+      "type": "string",
+      "enum": ["Thomas", "Levon", "Dylan", "all_three"]
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["P0", "P1", "P2", "P3"]
+    },
+    "problemType": { "type": "string" },
+    "entityRef": {
+      "type": "object",
+      "required": ["entityType", "name", "sourceArtifactRefs"],
+      "properties": {
+        "entityType": { "type": "string" },
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "profileRef": { "type": "string" },
+        "sourceArtifactRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "summary": { "type": "string" },
+    "whyThisMatters": { "type": "string" },
+    "requestedAction": { "type": "string" },
+    "allowedResponses": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "sourceArtifactRef"],
+        "properties": {
+          "type": { "type": "string" },
+          "field": { "type": "string" },
+          "value": {},
+          "sourceArtifactRef": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "blockedBy": { "type": "string" },
+    "productionApplied": { "type": "boolean", "default": false },
+    "requiresThreeKnightEscalation": { "type": "boolean" },
+    "doctrineConflict": { "type": "boolean" },
+    "responseDueBy": { "type": "string" },
+    "sourceKnight": {
+      "type": "string",
+      "enum": ["Gawain", "Lancelot", "Percival"]
+    },
+    "sourceHuman": {
+      "type": "string",
+      "enum": ["Thomas", "Levon", "Dylan"]
+    },
+    "updateIntent": {
+      "type": "string",
+      "enum": [
+        "menu",
+        "schedule",
+        "logo",
+        "cover",
+        "social_links",
+        "contact_correction",
+        "profile_correction"
+      ]
+    },
+    "routingReason": { "type": "string" },
+    "noExecutionClaim": { "type": "boolean" },
+    "relatedPackets": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "doctrineRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

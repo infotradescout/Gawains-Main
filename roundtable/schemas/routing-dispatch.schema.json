@@ -1,0 +1,146 @@
+{
+  "schema_name": "roundtable.routing_dispatch_packet",
+  "schema_version": 1,
+  "type": "object",
+  "required": [
+    "dispatch_id",
+    "packet_id",
+    "repo",
+    "target_branch",
+    "baseline_sha",
+    "dispatch_type",
+    "requested_action",
+    "gemini_status",
+    "gemini_result_ref",
+    "gawain_decision_ref",
+    "review_packet_ref",
+    "production_verification_ref",
+    "authority_state",
+    "gemini_pass_accelerator",
+    "execution_owner",
+    "no_runtime_execution_by_roundtable",
+    "status",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "dispatch_id": { "type": "string" },
+    "packet_id": { "type": "string" },
+    "repo": { "type": "string" },
+    "target_branch": { "type": "string" },
+    "baseline_sha": { "type": "string" },
+    "dispatch_type": {
+      "type": "string",
+      "enum": [
+        "repo_work",
+        "gemini_review",
+        "merge_instruction",
+        "deployment_instruction",
+        "closure_record",
+        "merlin_transport"
+      ]
+    },
+    "requested_action": { "type": "string" },
+    "gemini_status": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "preflight_pending",
+        "preflight_passed",
+        "execution_audit_pending",
+        "execution_audit_passed",
+        "pass_with_conditions_resolved",
+        "blocked",
+        "held_pending_gemini"
+      ]
+    },
+    "gemini_result_ref": { "type": "string" },
+    "gawain_decision_ref": { "type": "string" },
+    "review_packet_ref": { "type": "string" },
+    "production_verification_ref": { "type": "string" },
+    "authority_state": {
+      "type": "object",
+      "required": [
+        "authorized_by",
+        "human_authority_required",
+        "gemini_required",
+        "merge_authorized",
+        "deployment_authorized",
+        "production_claim_allowed"
+      ],
+      "properties": {
+        "authorized_by": { "type": "string" },
+        "human_authority_required": { "type": "boolean" },
+        "gemini_required": { "type": "boolean" },
+        "merge_authorized": { "type": "boolean" },
+        "deployment_authorized": { "type": "boolean" },
+        "production_claim_allowed": { "type": "boolean" }
+      }
+    },
+    "gemini_pass_accelerator": {
+      "type": "object",
+      "required": [
+        "albion_authority_commit",
+        "verdict",
+        "conditions",
+        "blockers",
+        "warnings",
+        "migration_required",
+        "legal_trust_warning",
+        "authority_warning",
+        "merge_risk_annotation",
+        "scope_caveat",
+        "validation_uncertainty",
+        "repo_branch_uncertainty",
+        "routing_ambiguity",
+        "route_target_explicit",
+        "next_hop",
+        "gawain_manual_preflight_required",
+        "bypasses_gawain_manual_preflight_only",
+        "merge_authority_created",
+        "policy_authority_created",
+        "roundtable_3_of_3_satisfied",
+        "ai_council_3_of_3_satisfied",
+        "merlin_execution_authorized"
+      ],
+      "properties": {
+        "albion_authority_commit": { "type": "string" },
+        "verdict": { "type": "string" },
+        "conditions": { "type": "array", "items": { "type": "string" } },
+        "blockers": { "type": "array", "items": { "type": "string" } },
+        "warnings": { "type": "array", "items": { "type": "string" } },
+        "migration_required": { "type": "boolean" },
+        "legal_trust_warning": { "type": "boolean" },
+        "authority_warning": { "type": "boolean" },
+        "merge_risk_annotation": { "type": "boolean" },
+        "scope_caveat": { "type": "boolean" },
+        "validation_uncertainty": { "type": "boolean" },
+        "repo_branch_uncertainty": { "type": "boolean" },
+        "routing_ambiguity": { "type": "boolean" },
+        "route_target_explicit": { "type": "boolean" },
+        "next_hop": { "type": "string", "enum": ["roundtable_dispatch", "gawain_manual_review"] },
+        "gawain_manual_preflight_required": { "type": "boolean" },
+        "bypasses_gawain_manual_preflight_only": { "type": "boolean" },
+        "merge_authority_created": { "type": "boolean" },
+        "policy_authority_created": { "type": "boolean" },
+        "roundtable_3_of_3_satisfied": { "type": "boolean" },
+        "ai_council_3_of_3_satisfied": { "type": "boolean" },
+        "merlin_execution_authorized": { "type": "boolean" }
+      }
+    },
+    "execution_owner": { "type": "string" },
+    "no_runtime_execution_by_roundtable": { "type": "boolean" },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "blocked",
+        "dispatch_ready",
+        "dispatched",
+        "closed"
+      ]
+    },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" }
+  }
+}

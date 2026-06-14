@@ -45,7 +45,7 @@ Before RoundTable produces a routing recommendation, prompt, review packet, docu
 
 This requirement applies to RoundTable records for:
 
-- Gawain's Main / RoundTable
+- RoundTable
 - parent routing packets
 - terminal Git state records
 - lane intake packets

@@ -1,0 +1,27 @@
+{
+  "schema_name": "roundtable.repo_decision_record",
+  "schema_version": 1,
+  "type": "object",
+  "required": [
+    "packet_id",
+    "repo",
+    "decision",
+    "decided_by",
+    "reason",
+    "conditions",
+    "merge_authorized",
+    "deployment_authorized",
+    "production_claim_allowed"
+  ],
+  "properties": {
+    "packet_id": { "type": "string" },
+    "repo": { "type": "string" },
+    "decision": { "type": "string", "enum": ["pass", "pass_with_conditions", "fail", "blocked", "held_pending_gemini"] },
+    "decided_by": { "type": "string" },
+    "reason": { "type": "string" },
+    "conditions": { "type": "array", "items": { "type": "string" } },
+    "merge_authorized": { "type": "boolean" },
+    "deployment_authorized": { "type": "boolean" },
+    "production_claim_allowed": { "type": "boolean" }
+  }
+}

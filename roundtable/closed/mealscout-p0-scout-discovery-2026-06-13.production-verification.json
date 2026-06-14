@@ -1,0 +1,19 @@
+{
+  "packet_id": "mealscout-p0-scout-discovery-2026-06-13",
+  "repo": "MealScout",
+  "url_or_endpoint_checked": "https://www.mealscout.us/scout; https://mealscout.onrender.com/api/trucks/live?lat=30.4213&lng=-87.2169&radiusKm=25; https://mealscout.onrender.com/api/restaurants/subscribed/30.4213/-87.2169?radius=25",
+  "deployed_sha_observed": "2b2f0a88",
+  "evidence": [
+    "Production API response included X-MealScout-Public-Truck-Profiles: 15",
+    "Live browser showed Food Trucks 6 nearby",
+    "Visible cards: 3D Eats & Tea",
+    "Visible cards: Blessed Berry Bowls",
+    "Visible cards: Sweet Love",
+    "Visible cards: All Gas No Brakes Reloaded",
+    "Visible cards: CREATIVBOWLS",
+    "Visible cards: Jays Southern Cuisine"
+  ],
+  "pass_fail": "pass",
+  "verified_by": "Thomas",
+  "verified_at": "2026-06-13T13:16:18.4558643-05:00"
+}

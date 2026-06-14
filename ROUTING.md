@@ -1,27 +1,34 @@
-# Gawain Routing Gateway
+# RoundTable Routing Gateway
 
-Gawain's Main is the routing gateway for work across attached Thomas-owned repos.
+RoundTable is the routing gateway for work across attached Thomas-owned repos.
 
 It is not a source-code mirror and it is not a replacement for product repos. It is the place where partners and operators can describe work once, route it to the correct repo, define the lane, preserve doctrine, and produce Codex/Gemini/Gawain packets.
 
 ## Routing Rule
 
 ```text
-Request enters Gawain's Main
+Request enters RoundTable
 → Gawain identifies the correct product repo
+→ Round Table creates the required repo-scoped work packet
 → Gawain defines the lane and file boundaries
 → Gemini arbitrator reviews the lane before Codex runs
 → Codex executes inside the actual product repo only
-→ Codex returns checkpoint
+→ Codex returns review evidence to Round Table
 → Gawain supplies raw diff/full payload to Gemini
 → Gemini reviews implementation
 → Gawain reconciles
+→ Round Table records decision and production/user-visible verification when required
+→ Round Table emits a bounded routing dispatch record only if the dispatch contract passes
 → Codex performs repo-local merge only after Gawain instruction
 ```
 
-## What Gawain's Main Can Do
+No repo change is valid unless it has a Round Table packet first. No closeout is valid unless the packet has review evidence, decision state, and required production/user-visible verification.
 
-Gawain's Main can hold:
+Routing dispatch records are governed by `docs/ROUNDTABLE_ROUTING_DISPATCH_CONTRACT.md`. They are records and instructions only; they do not give Round Table runtime execution authority.
+
+## What RoundTable Can Do
+
+RoundTable can hold:
 
 - repo summaries
 - doctrine summaries
@@ -34,9 +41,9 @@ Gawain's Main can hold:
 - merge/correction decisions
 - links to PRs, commits, and raw-diff payload locations
 
-## What Gawain's Main Must Not Do
+## What RoundTable Must Not Do
 
-Gawain's Main must not:
+RoundTable must not:
 
 - contain product source code
 - replace product repos as source of truth
@@ -48,7 +55,7 @@ Gawain's Main must not:
 
 ## Partner Routing Model
 
-Partners may use Gawain's Main to submit work requests, but every request must be routed through the same doctrine:
+Partners may use RoundTable to submit work requests, but every request must be routed through the same doctrine:
 
 ```text
 Partner request
@@ -80,4 +87,4 @@ Every routed request should identify:
 
 The target product repo remains source of truth for code, tests, runtime behavior, and product-specific doctrine.
 
-Gawain's Main stores route context and review memory only.
+RoundTable stores route context and review memory only.

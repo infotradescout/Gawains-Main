@@ -63,6 +63,19 @@ Smallest aligned next action: TBD
 
 Do not implement, rewrite, rename, delete, apply, send, or merge before this section is completed.
 
+## Gemini Status Gate
+
+geminiStatus: preflight_pending
+geminiPreflightRequired: yes
+geminiExecutionAuditRequired: yes
+geminiPreflightResultRef: TBD
+geminiExecutionAuditResultRef: TBD
+mergeAuthorization: blocked
+
+No Gemini status means no merge, no closeout, no "approved," and no "ready."
+
+Use geminiStatus: not_required only for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes. Use geminiStatus: held_pending_gemini when Gemini is unavailable.
+
 ## Goal
 TBD
 
@@ -70,7 +83,7 @@ TBD
 TBD
 
 ## Banned Files
-Product repos must remain isolated. Do not copy source into Gawain-Main.
+Product repos must remain isolated. Do not copy source into RoundTable.
 
 ## Validation Plan
 TBD
@@ -89,6 +102,13 @@ Worktree status:
 {{WORKTREE_STATUS}}
 
 Existing-state/context check: REQUIRED BEFORE ACTION
+Gemini status:
+geminiStatus: preflight_pending
+geminiPreflightRequired: yes
+geminiExecutionAuditRequired: yes
+geminiPreflightResultRef: TBD
+geminiExecutionAuditResultRef: TBD
+mergeAuthorization: blocked
 `, values);
 
 await writeTextFile(path.join(outputDir, 'LANE_INTAKE.md'), intake);

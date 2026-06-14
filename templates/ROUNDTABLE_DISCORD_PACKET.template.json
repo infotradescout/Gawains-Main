@@ -1,0 +1,37 @@
+{
+  "packetId": "roundtable.discord.example",
+  "packetType": "discord_approval_request",
+  "createdAt": "OPEN QUESTION",
+  "sourceRepo": "OPEN QUESTION",
+  "sourceBranch": "OPEN QUESTION",
+  "sourceCommit": "OPEN QUESTION",
+  "lane": "OPEN QUESTION",
+  "title": "OPEN QUESTION",
+  "summary": "OPEN QUESTION",
+  "requestedAction": "OPEN QUESTION",
+  "approvedActionScopes": [
+    "OPEN QUESTION"
+  ],
+  "authorityRequired": {
+    "humanAuthority": "OPEN QUESTION",
+    "councilAuthority": "OPEN QUESTION",
+    "notes": "approvalStatus and approvedBy text are not authority"
+  },
+  "delivery": {
+    "target": "discord",
+    "channelRef": "OPEN QUESTION",
+    "containsSecrets": false,
+    "merlinOwnsDispatch": true,
+    "roundTableOwnsRuntime": false
+  },
+  "evidence": {
+    "sourcePacketRefs": [],
+    "reviewPacketRefs": [],
+    "validationRefs": []
+  },
+  "doctrineRefs": [
+    "docs/ROUNDTABLE_DISCORD_PACKET_AUTHORITY_CONTRACT.md"
+  ],
+  "terminalRecordRequired": true,
+  "noExecutionAuthorized": true
+}

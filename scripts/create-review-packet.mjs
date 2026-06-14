@@ -62,6 +62,17 @@ Re-check required before: Gemini review, merge, apply, send, close, or completio
 - Gaps / risks / assumptions: TBD
 - Smallest aligned action chosen: TBD
 
+## Gemini Status Gate
+
+- geminiStatus: execution_audit_pending
+- geminiPreflightRequired: yes
+- geminiExecutionAuditRequired: yes
+- geminiPreflightResultRef: TBD
+- geminiExecutionAuditResultRef: TBD
+- mergeAuthorization: blocked
+
+No Gemini status means no merge, no closeout, no "approved," and no "ready." Merge authorization remains blocked until geminiStatus: execution_audit_passed, or until not_required is explicitly justified for a standard non-core lane.
+
 ## Worktree Status
 {{WORKTREE_STATUS}}
 
@@ -94,14 +105,24 @@ Last-known vs current: current as of status timestamp
 Freshness risk: re-check required if time passes, another agent acts, user reports new activity, or approval/merge/apply/send/close is requested
 Re-check required before: Gemini review, merge, apply, send, close, or completion claim
 
+## Gemini Status Gate
+
+geminiStatus: execution_audit_pending
+geminiPreflightRequired: yes
+geminiExecutionAuditRequired: yes
+geminiPreflightResultRef: TBD
+geminiExecutionAuditResultRef: TBD
+mergeAuthorization: blocked
+
 ## Request
-Review the lane packet, time/status freshness, existing-state/context findings, file disposition, validation log, and worktree status. Return PASS or FAIL with specific concerns.
+Review the lane packet, time/status freshness, Gemini status gate, existing-state/context findings, file disposition, validation log, and worktree status. Return PASS or FAIL with specific concerns.
 
 ## Evidence Included
 - Existing-state/context findings
 - Status timestamp and source of truth checked
 - Last-known vs current freshness classification
 - Freshness risk and re-check requirement
+- Gemini status gate and merge authorization state
 - Working capability preserved
 - Conflicts / risks / assumptions
 - Worktree status
@@ -119,6 +140,7 @@ await writeTextFile(path.join(reviewDir, 'REVIEW_PACKET.md'), review);
 await writeTextFile(path.join(reviewDir, 'FILE_DISPOSITION.txt'), 'Added:\nModified:\nDeleted:\nUntracked:\n');
 await writeTextFile(path.join(reviewDir, 'STATUS.txt'), `Status timestamp:\n${values.CREATED_AT}\nSource of truth checked:\nlocal git snapshot from registry path\nLast-known vs current:\ncurrent as of status timestamp\nFreshness risk:\nre-check required before action decisions\nRe-check required before:\nGemini review, merge, apply, send, close, or completion claim\nWorktree status:\n${values.WORKTREE_STATUS}\n`);
 await writeTextFile(path.join(reviewDir, 'EXISTING_STATE_CONTEXT.txt'), 'Project / brand / workflow:\nExisting artifacts reviewed:\nCurrent behavior found:\nWorking capability preserved:\nPrior decisions / constraints:\nConflicts found:\nGaps / risks / assumptions:\nSmallest aligned action chosen:\n');
+await writeTextFile(path.join(reviewDir, 'GEMINI_STATUS.txt'), 'geminiStatus: execution_audit_pending\ngeminiPreflightRequired: yes\ngeminiExecutionAuditRequired: yes\ngeminiPreflightResultRef: TBD\ngeminiExecutionAuditResultRef: TBD\nmergeAuthorization: blocked\n');
 await writeTextFile(path.join(reviewDir, 'VALIDATION_LOG.txt'), 'No validation run yet.');
 await writeTextFile(path.join(geminiDir, 'GEMINI_REQUEST.md'), gemini);
 

@@ -1,0 +1,49 @@
+{
+  "packet_id": "mealscout-p0-scout-discovery-2026-06-13",
+  "repo": "MealScout",
+  "target_branch": "main",
+  "baseline_sha": "TBD",
+  "issue_summary": "MealScout Scout page visible recovery",
+  "visible_goal": "When Thomas opens https://www.mealscout.us/scout, all discoverable food trucks appear with honest status labels.",
+  "user_problem": "Only 3D Eats appeared. Other trucks were missing, broader subscribed truck inventory collapsed, and trucks without exact profile coordinates were dropped before not-live/service-area rendering.",
+  "acceptance_criteria": [
+    "Food Trucks count matches displayed truck cards",
+    "Missing menu does not hide a truck",
+    "Missing schedule does not hide a truck",
+    "Missing exact live location does not hide a truck if serving-area or city-level discoverability exists",
+    "No truck is falsely labeled live",
+    "Production page is browser-verified"
+  ],
+  "files_or_areas_to_inspect": [
+    "/scout client route and component",
+    "/api/trucks/live client calls",
+    "/api/trucks/live server handler",
+    "/api/restaurants/subscribed/:lat/:lng server handler",
+    "business-access filtering",
+    "lat/lng, radius, active, verified, live, schedule, menu, location, serving-area, and profile visibility filters",
+    "Food Trucks count rendering",
+    "Not live now rendering",
+    "Menu available rendering",
+    "truck cards rendering"
+  ],
+  "forbidden_changes": [
+    "No fake data",
+    "No weakened affiliate safety",
+    "No weakened slug safety",
+    "Do not move product code into Round Table"
+  ],
+  "validation_required": [
+    "npm run check",
+    "npm run build:client",
+    "npm run build:server",
+    "Scout truck regression contracts",
+    "production-facing API response with lat/lng",
+    "browser-visible /scout result after deployment"
+  ],
+  "production_verification_required": true,
+  "decision_owner": "Thomas",
+  "gemini_required": true,
+  "status": "closed",
+  "created_at": "2026-06-13T00:00:00.000Z",
+  "updated_at": "2026-06-13T13:16:18.4558643-05:00"
+}
