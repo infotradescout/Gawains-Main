@@ -12,26 +12,61 @@ const contract = fs.readFileSync(contractPath, 'utf8');
 const template = JSON.parse(fs.readFileSync(templatePath, 'utf8'));
 const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
 
+const failClosedBooleanFields = [
+  'migration_required',
+  'legal_trust_warning',
+  'authority_warning',
+  'merge_risk_annotation',
+  'scope_caveat',
+  'validation_uncertainty',
+  'repo_branch_uncertainty',
+  'routing_ambiguity'
+];
+
+const authorityBoundaryFields = [
+  'merge_authority_created',
+  'policy_authority_created',
+  'roundtable_3_of_3_satisfied',
+  'ai_council_3_of_3_satisfied',
+  'merlin_execution_authorized'
+];
+
 function assert(condition, message) {
   if (!condition) {
     throw new Error(message);
   }
 }
 
+function assertArrayOfStrings(packet, field, label) {
+  assert(Array.isArray(packet[field]), `${label}.${field} must be an array`);
+  assert(packet[field].every((item) => typeof item === 'string'), `${label}.${field} must contain only strings`);
+}
+
+function assertBoolean(packet, field, label) {
+  assert(typeof packet[field] === 'boolean', `${label}.${field} must be an explicit boolean`);
+}
+
+function assertString(packet, field, label) {
+  assert(typeof packet[field] === 'string', `${label}.${field} must be a string`);
+}
+
+function validateGeminiReviewPacket(packet, label) {
+  assert(packet && typeof packet === 'object' && !Array.isArray(packet), `${label} must be an object`);
+  assertString(packet, 'verdict', label);
+  for (const field of ['conditions', 'blockers', 'warnings']) {
+    assertArrayOfStrings(packet, field, label);
+  }
+  for (const field of [...failClosedBooleanFields, 'route_target_explicit']) {
+    assertBoolean(packet, field, label);
+  }
+}
+
 function classifyGeminiPassAccelerator(packet) {
+  validateGeminiReviewPacket(packet, 'gemini_pass_accelerator_input');
   const hasTextItems = ['conditions', 'blockers', 'warnings'].some(
-    (field) => Array.isArray(packet[field]) && packet[field].length > 0
+    (field) => packet[field].length > 0
   );
-  const hasFailClosedFlag = [
-    'migration_required',
-    'legal_trust_warning',
-    'authority_warning',
-    'merge_risk_annotation',
-    'scope_caveat',
-    'validation_uncertainty',
-    'repo_branch_uncertainty',
-    'routing_ambiguity'
-  ].some((field) => packet[field] === true);
+  const hasFailClosedFlag = failClosedBooleanFields.some((field) => packet[field] === true);
 
   const cleanPass =
     packet.verdict === 'PASS' &&
@@ -62,6 +97,50 @@ function classifyGeminiPassAccelerator(packet) {
       };
 }
 
+function expectedNextHopFor(packet) {
+  return classifyGeminiPassAccelerator(packet).next_hop;
+}
+
+function validateDispatchPacket(packet, label) {
+  assert(packet && typeof packet === 'object' && !Array.isArray(packet), `${label} must be an object`);
+  assert(packet.no_runtime_execution_by_roundtable === true, `${label}.no_runtime_execution_by_roundtable must be true`);
+
+  const accelerator = packet.gemini_pass_accelerator;
+  assert(
+    accelerator && typeof accelerator === 'object' && !Array.isArray(accelerator),
+    `${label}.gemini_pass_accelerator must be an object`
+  );
+  validateGeminiReviewPacket(accelerator, `${label}.gemini_pass_accelerator`);
+  assert(
+    accelerator.albion_authority_commit === albionAuthorityCommit,
+    `${label}.gemini_pass_accelerator must reference the Albion doctrine authority commit`
+  );
+  assert(
+    ['roundtable_dispatch', 'gawain_manual_review'].includes(accelerator.next_hop),
+    `${label}.gemini_pass_accelerator.next_hop must be a known route`
+  );
+  assertBoolean(accelerator, 'gawain_manual_preflight_required', `${label}.gemini_pass_accelerator`);
+  assertBoolean(accelerator, 'bypasses_gawain_manual_preflight_only', `${label}.gemini_pass_accelerator`);
+  for (const field of authorityBoundaryFields) {
+    assertBoolean(accelerator, field, `${label}.gemini_pass_accelerator`);
+    assert(accelerator[field] === false, `${label}.gemini_pass_accelerator.${field} must be false`);
+  }
+
+  const expectedNextHop = expectedNextHopFor(accelerator);
+  assert(
+    accelerator.next_hop === expectedNextHop,
+    `${label}.gemini_pass_accelerator.next_hop must match clean PASS fail-closed routing`
+  );
+  assert(
+    accelerator.gawain_manual_preflight_required === (expectedNextHop === 'gawain_manual_review'),
+    `${label}.gemini_pass_accelerator.gawain_manual_preflight_required must match next_hop`
+  );
+  assert(
+    accelerator.bypasses_gawain_manual_preflight_only === (expectedNextHop === 'roundtable_dispatch'),
+    `${label}.gemini_pass_accelerator.bypasses_gawain_manual_preflight_only must match next_hop`
+  );
+}
+
 function cleanPacket(overrides = {}) {
   return {
     verdict: 'PASS',
@@ -78,6 +157,17 @@ function cleanPacket(overrides = {}) {
     routing_ambiguity: false,
     route_target_explicit: true,
     ...overrides
+  };
+}
+
+function dispatchPacket(overrides = {}) {
+  return {
+    ...template,
+    no_runtime_execution_by_roundtable: true,
+    gemini_pass_accelerator: {
+      ...template.gemini_pass_accelerator,
+      ...overrides
+    }
   };
 }
 
@@ -102,6 +192,16 @@ function assertRoutesToGawain(packet, label) {
   assert(result.roundtable_3_of_3_satisfied === false, `${label} must not satisfy Roundtable 3/3`);
   assert(result.ai_council_3_of_3_satisfied === false, `${label} must not satisfy AI Council 3/3`);
   assert(result.merlin_execution_authorized === false, `${label} must not authorize Merlin execution`);
+}
+
+function assertThrows(callback, label) {
+  let threw = false;
+  try {
+    callback();
+  } catch {
+    threw = true;
+  }
+  assert(threw, `${label} should reject malformed input`);
 }
 
 const requiredContractNeedles = [
@@ -173,6 +273,7 @@ assert(
   'template must reference the Albion doctrine authority commit'
 );
 assert(template.no_runtime_execution_by_roundtable === true, 'dispatch template must not allow RoundTable runtime execution');
+validateDispatchPacket(template, 'routing dispatch template');
 
 assertRoutesToRoundtableDispatch(cleanPacket(), 'clean PASS');
 assertRoutesToGawain(cleanPacket({ verdict: 'PASS WITH CONDITIONS', conditions: ['condition'] }), 'PASS WITH CONDITIONS');
@@ -188,5 +289,34 @@ assertRoutesToGawain(cleanPacket({ validation_uncertainty: true }), 'validation 
 assertRoutesToGawain(cleanPacket({ repo_branch_uncertainty: true }), 'repo/branch uncertainty');
 assertRoutesToGawain(cleanPacket({ routing_ambiguity: true }), 'routing ambiguity');
 assertRoutesToGawain(cleanPacket({ route_target_explicit: false }), 'unclear route target');
+
+validateDispatchPacket(
+  dispatchPacket({
+    verdict: 'PASS',
+    route_target_explicit: true,
+    next_hop: 'roundtable_dispatch',
+    gawain_manual_preflight_required: false,
+    bypasses_gawain_manual_preflight_only: true
+  }),
+  'clean PASS dispatch packet'
+);
+validateDispatchPacket(dispatchPacket({ verdict: 'PASS WITH CONDITIONS', conditions: ['condition'] }), 'fail-closed packet');
+
+assertThrows(() => classifyGeminiPassAccelerator(cleanPacket({ conditions: 'none' })), 'non-array conditions');
+assertThrows(() => classifyGeminiPassAccelerator(cleanPacket({ warnings: [1] })), 'non-string warning');
+assertThrows(() => classifyGeminiPassAccelerator(cleanPacket({ migration_required: 'false' })), 'non-boolean flag');
+assertThrows(() => classifyGeminiPassAccelerator(cleanPacket({ route_target_explicit: undefined })), 'missing route target');
+assertThrows(
+  () => validateDispatchPacket(dispatchPacket({ albion_authority_commit: 'wrong' }), 'wrong authority commit'),
+  'wrong authority commit'
+);
+assertThrows(
+  () => validateDispatchPacket(dispatchPacket({ verdict: 'PASS', route_target_explicit: true }), 'wrong next hop'),
+  'roundtable dispatch consistency'
+);
+assertThrows(
+  () => validateDispatchPacket(dispatchPacket({ merge_authority_created: true }), 'authority escalation'),
+  'authority escalation'
+);
 
 console.log('Gemini PASS RoundTable dispatch accelerator contract checks passed.');
