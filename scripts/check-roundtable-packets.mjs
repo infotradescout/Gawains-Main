@@ -140,6 +140,11 @@ const allowedRepos = new Set([
   'AutoBott'
 ]);
 
+const legacyBaselineExceptions = new Set([
+  path.join('roundtable', 'closed', 'mealscout-p0-scout-discovery-2026-06-13.json'),
+  path.join('roundtable', 'review', 'mealscout-p0-scout-discovery-2026-06-13.review.json')
+]);
+
 function readJson(filePath) {
   return JSON.parse(readFileSync(filePath, 'utf8'));
 }
@@ -154,6 +159,19 @@ function assertRequiredFields(object, required, label) {
   for (const field of required) {
     assert(Object.prototype.hasOwnProperty.call(object, field), `${label} missing required field: ${field}`);
   }
+}
+
+function assertExplicitBaselineSha(packet, relativePath) {
+  if (!Object.prototype.hasOwnProperty.call(packet, 'baseline_sha')) {
+    return;
+  }
+  if (packet.baseline_sha === 'TBD' && legacyBaselineExceptions.has(relativePath)) {
+    return;
+  }
+  assert(
+    /^[0-9a-f]{7,40}$/i.test(packet.baseline_sha),
+    `${relativePath} baseline_sha must be an explicit git SHA, not ${JSON.stringify(packet.baseline_sha)}`
+  );
 }
 
 function listJsonFiles(dir) {
@@ -187,7 +205,9 @@ const dispatchSchema = readJson(path.join(schemasDir, 'routing-dispatch.schema.j
 const activeDir = path.join(ROOT, 'roundtable', 'active');
 for (const filePath of listJsonFiles(activeDir)) {
   const packet = readJson(filePath);
-  assertRequiredFields(packet, workSchema.required, path.relative(ROOT, filePath));
+  const relativePath = path.relative(ROOT, filePath);
+  assertRequiredFields(packet, workSchema.required, relativePath);
+  assertExplicitBaselineSha(packet, relativePath);
   assert(allowedRepos.has(packet.repo), `${packet.packet_id} has unknown repo: ${packet.repo}`);
   assert(packet.status === 'active', `${packet.packet_id} in active/ must have status active`);
 }
@@ -195,7 +215,9 @@ for (const filePath of listJsonFiles(activeDir)) {
 const reviewDir = path.join(ROOT, 'roundtable', 'review');
 for (const filePath of listJsonFiles(reviewDir)) {
   const packet = readJson(filePath);
-  assertRequiredFields(packet, reviewSchema.required, path.relative(ROOT, filePath));
+  const relativePath = path.relative(ROOT, filePath);
+  assertRequiredFields(packet, reviewSchema.required, relativePath);
+  assertExplicitBaselineSha(packet, relativePath);
   assert(allowedRepos.has(packet.repo), `${packet.packet_id} has unknown repo: ${packet.repo}`);
 }
 
@@ -214,6 +236,7 @@ for (const filePath of listJsonFiles(closedDir)) {
     assertRequiredFields(packet, productionSchema.required, relativePath);
   } else {
     assertRequiredFields(packet, workSchema.required, relativePath);
+    assertExplicitBaselineSha(packet, relativePath);
     assert(packet.status === 'closed', `${packet.packet_id} in closed/ must have status closed`);
   }
   assert(allowedRepos.has(packet.repo), `${packet.packet_id} has unknown repo: ${packet.repo}`);
@@ -222,7 +245,9 @@ for (const filePath of listJsonFiles(closedDir)) {
 const dispatchDir = path.join(ROOT, 'roundtable', 'dispatch');
 for (const filePath of listJsonFiles(dispatchDir)) {
   const packet = readJson(filePath);
-  assertRequiredFields(packet, dispatchSchema.required, path.relative(ROOT, filePath));
+  const relativePath = path.relative(ROOT, filePath);
+  assertRequiredFields(packet, dispatchSchema.required, relativePath);
+  assertExplicitBaselineSha(packet, relativePath);
   assert(allowedRepos.has(packet.repo), `${packet.dispatch_id} has unknown repo: ${packet.repo}`);
   assert(
     packet.no_runtime_execution_by_roundtable === true,
